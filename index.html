@@ -122,10 +122,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介<br></h4><blockquote>
-<p>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到github.io仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
-</blockquote>
-<h4 id="二-安装清单-Win"><a href="#二-安装清单-Win" class="headerlink" title="二 安装清单(Win)"></a>二 安装清单(Win)<br></h4><p> <table><br>        <tr><br>            <th>安装环境</th><br>            <th>安装原因</th><br>        </tr><br>        <tr><br>            <th>Node.js</th><br>            <th>Hexo基于Node.js</th><br>        </tr><br>        <tr><br>            <th>hexo</th><br>            <th>生成博客静态页面</th><br>        </tr><br></table></p>
+        <h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介<br></h4><pre><code>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到github.io仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。
+</code></pre><h4 id="二-安装清单-Win"><a href="#二-安装清单-Win" class="headerlink" title="二 安装清单(Win)"></a>二 安装清单(Win)<br></h4><p> <table><br>        <tr><br>            <th>安装环境</th><br>            <th>安装原因</th><br>        </tr><br>        <tr><br>            <th>Node.js</th><br>            <th>Hexo基于Node.js</th><br>        </tr><br>        <tr><br>            <th>hexo</th><br>            <th>生成博客静态页面</th><br>        </tr><br></table></p>
 <h4 id="三-创建github-io网站"><a href="#三-创建github-io网站" class="headerlink" title="三 创建github.io网站"></a>三 创建github.io网站</h4><ol>
 <li>点击New repository </li>
 <li>输入Repository name，必需为username.github.io格式 (username替换为用户名)</li>
@@ -153,7 +151,8 @@
 <h4 id="七、Hexo关联github"><a href="#七、Hexo关联github" class="headerlink" title="七、Hexo关联github"></a>七、Hexo关联github</h4><p>1）进入hexo-blog根目录</p>
 <p>2）安装npm install hexo-deployer-git –save，用Hexo发布博文</p>
 <p>3）打开hexo-blog根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：<br>    Deployment<br>         Docs: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">http://hexo.io/docs/deployment.html</a><br>        deploy:<br>          type: git<br>          repository: <a href="https://github.com/username/username.github.io" target="_blank" rel="noopener">https://github.com/username/username.github.io</a><br>          branch: master<br>4）进入hexo-blog根目录执行如下命令（参考：<a href="https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码</a><br><br>hexo clean<br><br>hexo generate<br><br>hexo deploy<br><br>5）如果成功，就可以打开 <a href="http://username.github.io,username替换成自己用户名" target="_blank" rel="noopener">http://username.github.io,username替换成自己用户名</a></p>
-<p></p><h4>八 使用Hexo创建和发布文章<h4><br>1) 进入hexo-blog根目录<br>2) 创建文章命令：hexo new “文章标题”<p></p>
+<p></p><h4>八 使用Hexo创建和发布文章 <h4> <p></p>
+<p>1) 进入hexo-blog根目录<br>2) 创建文章命令：hexo new “文章标题”</p>
 <blockquote>
 <p>➜  blog hexo new “Hexo部署github博客”<br><br>INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md<br></p>
 </blockquote>
