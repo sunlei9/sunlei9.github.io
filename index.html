@@ -62,6 +62,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CMS练习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/31/CMS练习/" class="article-date">
+  <time datetime="2019-05-31T01:13:21.000Z" itemprop="datePublished">2019-05-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/31/CMS练习/">CMS练习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/31/CMS练习/" data-id="cjwbe9z330000nktd9p8b8nnf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hexo部署github博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/28/Hexo部署github博客/" class="article-date">
@@ -87,12 +123,50 @@
         <h4 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介<br></h4><blockquote>
 <p>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到github.io仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
 </blockquote>
-<h4 id="二-安装清单"><a href="#二-安装清单" class="headerlink" title="二 安装清单"></a>二 安装清单<br></h4><p>创建github账号</p>
-<h4 id="三-创建github-io网站"><a href="#三-创建github-io网站" class="headerlink" title="三 创建github.io网站"></a>三 创建github.io网站</h4>
+<h4 id="二-安装清单-Win"><a href="#二-安装清单-Win" class="headerlink" title="二 安装清单(Win)"></a>二 安装清单(Win)<br></h4><p> <table><br>        <tr><br>            <th>安装环境</th><br>            <th>安装原因</th><br>        </tr><br>        <tr><br>            <th>Node.js</th><br>            <th>Hexo基于Node.js</th><br>        </tr><br>        <tr><br>            <th>hexo</th><br>            <th>生成博客静态页面</th><br>        </tr><br></table></p>
+<h4 id="三-创建github-io网站"><a href="#三-创建github-io网站" class="headerlink" title="三 创建github.io网站"></a>三 创建github.io网站</h4><ol>
+<li>点击New repository </li>
+<li>输入Repository name，必需为username.github.io格式 (username替换为用户名)</li>
+<li>点击按钮Create repository</li>
+<li>进入仓库username.github.io,点击setting,找到GitHub Pages模块</li>
+<li>访问<a href="https://username.github.io就可以访问博客网站了" target="_blank" rel="noopener">https://username.github.io就可以访问博客网站了</a><h4 id="四-安装git"><a href="#四-安装git" class="headerlink" title="四 安装git"></a>四 安装git</h4>下载安装：<a href="https://gitforwindows.org/" target="_blank" rel="noopener">https://gitforwindows.org/</a><br><br>验证是否安装成功：<br><blockquote>
+<p>➜  ~ git version<br><br>git version 2.15.0<br></p>
+</blockquote>
+####五 安装Node.js<br>下载安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+</ol>
+<p>验证是否安装成功：</p>
+<blockquote>
+<p>➜  ~ node -v<br><br>v8.9.4<br></p>
+</blockquote>
+<p>####六、安装Hexo<br>安装命令:</p>
+<blockquote>
+<p> npm install -g hexo-cli</p>
+</blockquote>
+<p>验证是否安装成功：</p>
+<blockquote>
+<p>➜  ~ hexo -v<br><br>hexo-cli: 1.1.0<br><br>os: Darwin 17.3.0 darwin x64<br><br>http_parser: 2.7.0<br><br>node: 8.9.4<br><br>v8: 6.1.534.50<br><br>uv: 1.15.0<br><br>zlib: 1.2.11<br><br>ares: 1.10.1-DEV<br><br>modules: 57<br><br>nghttp2: 1.25.0<br><br>openssl: 1.0.2n<br><br>icu: 59.1<br><br>unicode: 9.0<br><br>cldr: 31.0.1<br><br>tz: 2017b<br></p>
+</blockquote>
+<p>####七、创建本地博文服务<br>然后创建一个空文件夹, 比如：hexo-blog<br><br>进入hexo-blog目录<br><br>执行hexo init初始化博客站点，如果最后一行显示Start blogging<br> with Hexo!，代表创建成功<br><br>执行hexo server 启动博文站点<br><br>访问<a href="http://localhost:4000就能打开博文了" target="_blank" rel="noopener">http://localhost:4000就能打开博文了</a><br><br>Ctrl+C关闭服务器<br></p>
+<p>➜  ~ mkdir hexo-blog<br><br>➜  ~ cd hexo-blog<br><br>➜  hexo-blog hexo init<br><br>INFO  Cloning hexo-starter to ~/hexo-blog<br><br>Cloning into ‘/Users/zhengyong/hexo-blog’…<br>remote: Counting objects: 68, done.<br>remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67<br>Unpacking objects: 100% (68/68), done.<br>Submodule ‘themes/landscape’ (<a href="https://github.com/hexojs/hexo-theme-landscape.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-theme-landscape.git</a>) registered for path ‘themes/landscape’<br>Cloning into ‘/Users/zhengyong/hexo-blog/themes/landscape’…<br>remote: Counting objects: 838, done.<br>remote: Compressing objects: 100% (6/6), done.<br>remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832<br>Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.<br>Resolving deltas: 100% (441/441), done.<br>Submodule path ‘themes/landscape’: checked out ‘73a23c51f8487cfcd7c6deec96ccc7543960d350’<br>INFO  Install dependencies<br>npm WARN deprecated <a href="mailto:titlecase@1.1.2" target="_blank" rel="noopener">titlecase@1.1.2</a>: no longer maintained<br>npm WARN deprecated <a href="mailto:postinstall-build@5.0.3" target="_blank" rel="noopener">postinstall-build@5.0.3</a>: postinstall-build’s behavior is now built into npm! You should migrate off of postinstall-build and use the new <code>prepare</code> lifecycle script with npm 5.0.0 or greater.</p>
+<p><a href="mailto:fsevents@1.2.4" target="_blank" rel="noopener">fsevents@1.2.4</a> install /Users/zhengyong/hexo-blog/node_modules/fsevents<br>node install</p>
+<p>[fsevents] Success: “/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node” already installed<br>Pass –update-binary to reinstall or –build-from-source to recompile</p>
+<p><a href="mailto:nunjucks@3.1.3" target="_blank" rel="noopener">nunjucks@3.1.3</a> postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks<br><br>node postinstall-build.js src<br></p>
+<p>npm notice created a lockfile as package-lock.json. You should commit this file.<br><br>added 464 packages in 28.659s<br><br>INFO  Start blogging with Hexo!<br><br>➜  hexo-blog hexo server<br><br>INFO  Start processing<br><br>INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.<br><br>^CINFO  Good bye<br><br>七、Hexo关联github<br>1）进入hexo-blog根目录</p>
+<p>2）安装npm install hexo-deployer-git –save，用Hexo发布博文</p>
+<p>3）打开hexo-blog根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：</p>
+<h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><h2 id="Docs-http-hexo-io-docs-deployment-html"><a href="#Docs-http-hexo-io-docs-deployment-html" class="headerlink" title="Docs: http://hexo.io/docs/deployment.html"></a>Docs: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">http://hexo.io/docs/deployment.html</a></h2><p>deploy:<br>  type: git<br>  repository: <a href="https://github.com/username/username.github.io" target="_blank" rel="noopener">https://github.com/username/username.github.io</a><br>  branch: master<br>1<br>2<br>3<br>4<br>5<br>6<br>4）进入hexo-blog根目录执行如下命令（参考：<a href="https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码</a></p>
+<p>hexo clean<br>hexo generate<br>hexo deploy<br>1<br>2<br>3<br>5）如果成功，就可以打开 <a href="http://username.github.io,username替换成自己用户名" target="_blank" rel="noopener">http://username.github.io,username替换成自己用户名</a></p>
+<p>八、使用Hexo创建和发布文章<br>1) 进入hexo-blog根目录</p>
+<p>2) 创建文章命令：hexo new “文章标题”</p>
+<p>➜  blog hexo new “Hexo部署github博客”<br>INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md<br>1<br>2<br>3) 打开编辑Hexo部署github博客.md文件进行Markdown编辑</p>
+<p>open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`<br>1<br>4）发布文章：hexo d -g</p>
+<p>➜  blog hexo d -g<br>INFO  Start processing<br>INFO  Files loaded in 922 ms<br>INFO  Generated: index.html<br>INFO  Generated: archives/2018/09/index.html<br>INFO  Generated: archives/index.html<br>INFO  Generated: 2018/09/03/hello-world/index.html<br>INFO  Generated: archives/2018/index.html<br>INFO  Generated: 2018/09/03/my-first-hexo-blog/index.html<br>INFO  Generated: fonts/iconfont.8c627f.woff<br>INFO  Generated: fonts/iconfont.45d7ee.svg<br>INFO  Generated: fonts/iconfont.16acc2.ttf<br>INFO  Generated: fonts/default-skin.b257fa.svg<br>INFO  Generated: fonts/tooltip.4004ff.svg<br>INFO  Generated: img/default-skin.png<br>INFO  Generated: img/scrollbar_arrow.png<br>INFO  Generated: img/preloader.gif<br>INFO  Generated: fonts/iconfont.b322fa.eot<br>INFO  Generated: slider.e37972.js<br>INFO  Generated: mobile.992cbe.js<br>INFO  Generated: main.0cf68a.js<br>INFO  Generated: main.0cf68a.css<br>INFO  Generated: 2018/09/04/Hexo部署github博客/index.html<br>INFO  20 files generated in 475 ms<br>INFO  Deploying: git<br>INFO  Clearing .deploy_git folder…<br>INFO  Copying files from public folder…<br>INFO  Copying files from extend dirs…<br>warning: CRLF will be replaced by LF in fonts/tooltip.4004ff.svg.<br>The file will have its original line endings in your working directory.<br>[master d1c205f] Site updated: 2018-09-04 11:11:08<br> 6 files changed, 835 insertions(+)<br> create mode 100644 2018/09/04/Hexo部署github博客/index.html<br>To <a href="https://github.com/zyongjava/zyongjava.github.io" target="_blank" rel="noopener">https://github.com/zyongjava/zyongjava.github.io</a><br>   3f0aab7..d1c205f  HEAD -&gt; master<br>Branch ‘master’ set up to track remote branch ‘master’ from ‘<a href="https://github.com/zyongjava/zyongjava.github.io&#39;" target="_blank" rel="noopener">https://github.com/zyongjava/zyongjava.github.io&#39;</a>.</p>
+<h2 id="INFO-Deploy-done-git"><a href="#INFO-Deploy-done-git" class="headerlink" title="INFO  Deploy done: git"></a>INFO  Deploy done: git</h2><p>作者：全力付出<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/zhengyong15984285623/article/details/82380735" target="_blank" rel="noopener">https://blog.csdn.net/zhengyong15984285623/article/details/82380735</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjw8jox5w0001gotdcrf0jumt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwbe9z3k0001nktdsa9jimbd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/hello-world/" data-id="cjw8jox5f0000gotdeb8h8pkq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/hello-world/" data-id="cjwbe9z3q0002nktd2m3ql28e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,6 +249,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/31/CMS练习/">CMS练习</a>
+          </li>
         
           <li>
             <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
