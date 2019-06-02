@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="SUN LEI">
 <meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T02:42:43.370Z">
+<meta property="og:updated_time" content="2019-06-02T02:49:46.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMS练习">
 <meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
@@ -99,17 +99,18 @@ private String intro;
 private boolean isenabled;
 //时间
 private Date inputdate = new Date();
-</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：<br>    <code>private int currentPage;//当前页
-    private int pageSize;//每页显示多少条
-    private int recordCount;//总记录数
-    private List recordList;//本页的数据列表
-    private int pageCount;//总页数
-    private int prePage;//上一页
-    private int nextPage;//下一页
-    private int firstPage;//首页
-    private int endPage;//尾页
-    /**</code></p>
-<pre><code> * 只接受前4个必要的属性，会自动计算出其他3个属性的值
+</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：</p>
+<pre><code>private int currentPage;//当前页
+private int pageSize;//每页显示多少条
+private int recordCount;//总记录数
+private List recordList;//本页的数据列表
+private int pageCount;//总页数
+private int prePage;//上一页
+private int nextPage;//下一页
+private int firstPage;//首页
+private int endPage;//尾页
+/**
+ * 只接受前4个必要的属性，会自动计算出其他3个属性的值
  * @param currentPage
  * @param pageSize
  * @param recordCount
@@ -126,30 +127,33 @@ public PageBean(int currentPage, int pageSize, int recordCount,List recordList) 
     this.endPage=pageCount;
     this.prePage=currentPage==1?1:currentPage-1;
     this.nextPage=currentPage==endPage?endPage:currentPage+1;
-}`
-</code></pre><p>Dao：<br>    <code>//分页查询
-    public PageBean getPageBean(Condition condition) {
-        int pageNum = condition.getPageNum();
-        int pageSize = condition.getPageSize();
-        // 查询列表
-        String sql=&quot;SELECT * FROM pic limit ?,?&quot;;
-        List&lt;Pic&gt; list = jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Pic.class), (pageNum - 1) * pageSize, pageNum * pageSize);
-        // 查询总记录数量
-        String sql2=&quot;SELECT COUNT(*) FROM pic t&quot;;
-        int aLong = jdbcTemplate.queryForObject(sql2, int.class);
-        return new PageBean(pageNum, pageSize,aLong, list);
-    }</code></p>
-<h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表<br>    <code>private Long id;//id
-    private String title;//工作职位
-    private Integer addrId;//地点
-    private Integer jobnum;//招聘人数
-    private Integer treatment;//薪水
-    private String describes;//职位描述
-    private String requires;//职位要求
-    private Integer positiontype;
-    private Integer isenabled;//是否启用前台展示
-    private Date inputdate=new Date();//发布时间
-    private String htmlurl;//展示页面地址</code><br>地址表</p>
+}
+</code></pre><p>Dao：</p>
+<pre><code>//分页查询
+public PageBean getPageBean(Condition condition) {
+    int pageNum = condition.getPageNum();
+    int pageSize = condition.getPageSize();
+    // 查询列表
+    String sql=&quot;SELECT * FROM pic limit ?,?&quot;;
+    List&lt;Pic&gt; list = jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Pic.class), (pageNum - 1) * pageSize, pageNum * pageSize);
+    // 查询总记录数量
+    String sql2=&quot;SELECT COUNT(*) FROM pic t&quot;;
+    int aLong = jdbcTemplate.queryForObject(sql2, int.class);
+    return new PageBean(pageNum, pageSize,aLong, list);
+}
+</code></pre><h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
+<pre><code>private Long id;//id
+private String title;//工作职位
+private Integer addrId;//地点
+private Integer jobnum;//招聘人数
+private Integer treatment;//薪水
+private String describes;//职位描述
+private String requires;//职位要求
+private Integer positiontype;
+private Integer isenabled;//是否启用前台展示
+private Date inputdate=new Date();//发布时间
+private String htmlurl;//展示页面地址
+</code></pre><p>地址表</p>
 <h4 id="2-分页查询展示"><a href="#2-分页查询展示" class="headerlink" title="2.分页查询展示"></a>2.分页查询展示</h4>
       
     </div>
