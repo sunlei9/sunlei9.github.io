@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>CMS练习 | SUN LEI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMS练习">
+<meta property="og:url" content="http://yoursite.com/2019/05/31/CMS招聘网站/index.html">
+<meta property="og:site_name" content="SUN LEI">
+<meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-02T02:34:35.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMS练习">
+<meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+  
+    <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SUN LEI</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CMS招聘网站" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/31/CMS招聘网站/" class="article-date">
+  <time datetime="2019-05-31T01:13:21.000Z" itemprop="datePublished">2019-05-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CMS练习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
+<h2 id="一-项目介绍"><a href="#一-项目介绍" class="headerlink" title="一 项目介绍"></a>一 项目介绍</h2><p>后台控制前台轮播图的展示 后台操作数据库轮播图<br>后台控制前台职位展示 后台操作数据库职位</p>
+<h2 id="二-环境搭建"><a href="#二-环境搭建" class="headerlink" title="二 环境搭建"></a>二 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播CRUD"><a href="#轮播CRUD" class="headerlink" title="轮播CRUD"></a>轮播CRUD</h2><h4 id="1-domain"><a href="#1-domain" class="headerlink" title="1.domain"></a>1.domain</h4><pre><code>//id
+private Long id;
+//路径
+private String storepath;
+//简述
+private String intro;
+//是否启用
+private boolean isenabled;
+//时间
+private Date inputdate = new Date();
+</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：<br>    `private int currentPage;//当前页<br>    private int pageSize;//每页显示多少条<br>    private int recordCount;//总记录数<br>    private List recordList;//本页的数据列表<br>    private int pageCount;//总页数<br>    private int prePage;//上一页<br>    private int nextPage;//下一页<br>    private int firstPage;//首页<br>    private int endPage;//尾页<br>    /**</p>
+<pre><code> * 只接受前4个必要的属性，会自动计算出其他3个属性的值
+ * @param currentPage
+ * @param pageSize
+ * @param recordCount
+ * @param recordList
+ */
+public PageBean(int currentPage, int pageSize, int recordCount,List recordList) {
+    this.firstPage=1;
+    this.currentPage = currentPage;
+    this.pageSize = pageSize;
+    this.recordCount = recordCount;
+    this.recordList = recordList;
+    //计算总页码
+    pageCount = (recordCount + pageSize - 1) / pageSize;
+    this.endPage=pageCount;
+    this.prePage=currentPage==1?1:currentPage-1;
+    this.nextPage=currentPage==endPage?endPage:currentPage+1;
+}`
+</code></pre><p>Dao：<br>    //分页查询<br>    public PageBean getPageBean(Condition condition) {<br>        int pageNum = condition.getPageNum();<br>        int pageSize = condition.getPageSize();<br>        // 查询列表<br>        String sql=”SELECT <em> FROM pic limit ?,?”;<br>        List<pic> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Pic.class), (pageNum - 1) </pic></em> pageSize, pageNum <em> pageSize);<br>        // 查询总记录数量<br>        String sql2=”SELECT COUNT(</em>) FROM pic t”;<br>        int aLong = jdbcTemplate.queryForObject(sql2, int.class);<br>        return new PageBean(pageNum, pageSize,aLong, list);<br>    }</p>
+<h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表<br>    private Long id;//id<br>    private String title;//工作职位<br>    private Integer addrId;//地点<br>    private Integer jobnum;//招聘人数<br>    private Integer treatment;//薪水<br>    private String describes;//职位描述<br>    private String requires;//职位要求<br>    private Integer positiontype;<br>    private Integer isenabled;//是否启用前台展示<br>    private Date inputdate=new Date();//发布时间<br>    private String htmlurl;//展示页面地址<br>地点表</p>
+<h4 id="2-分页查询展示"><a href="#2-分页查询展示" class="headerlink" title="2.分页查询展示"></a>2.分页查询展示</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwec1u1100004gtdobssa7aq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/28/Hexo部署github博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo部署github博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/31/CMS招聘网站/">CMS练习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 sunlei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

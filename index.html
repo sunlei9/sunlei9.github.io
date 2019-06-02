@@ -9,7 +9,7 @@
 <meta property="og:title" content="SUN LEI">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="SUN LEI">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SUN LEI">
   
@@ -51,7 +51,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -62,9 +62,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CMS练习" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CMS招聘网站" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/05/31/CMS练习/" class="article-date">
+    <a href="/2019/05/31/CMS招聘网站/" class="article-date">
   <time datetime="2019-05-31T01:13:21.000Z" itemprop="datePublished">2019-05-31</time>
 </a>
     
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/CMS练习/">CMS练习</a>
+      <a class="article-title" href="/2019/05/31/CMS招聘网站/">CMS练习</a>
     </h1>
   
 
@@ -84,13 +84,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 内容管理系统是企业信息化建设和电子政务的新宠，也是一个相对较新的市场。对于内容管理，业界还没有一个统一的定义，不同的机构有不同的理解。</p>
-<p>##环境搭建<br>Maven+spring+springMVC+springJDBC<br>导包</p>
-
+        <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
+<h2 id="一-项目介绍"><a href="#一-项目介绍" class="headerlink" title="一 项目介绍"></a>一 项目介绍</h2><p>后台控制前台轮播图的展示 后台操作数据库轮播图<br>后台控制前台职位展示 后台操作数据库职位</p>
+<h2 id="二-环境搭建"><a href="#二-环境搭建" class="headerlink" title="二 环境搭建"></a>二 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播CRUD"><a href="#轮播CRUD" class="headerlink" title="轮播CRUD"></a>轮播CRUD</h2><h4 id="1-domain"><a href="#1-domain" class="headerlink" title="1.domain"></a>1.domain</h4><pre><code>//id
+private Long id;
+//路径
+private String storepath;
+//简述
+private String intro;
+//是否启用
+private boolean isenabled;
+//时间
+private Date inputdate = new Date();
+</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：<br>    `private int currentPage;//当前页<br>    private int pageSize;//每页显示多少条<br>    private int recordCount;//总记录数<br>    private List recordList;//本页的数据列表<br>    private int pageCount;//总页数<br>    private int prePage;//上一页<br>    private int nextPage;//下一页<br>    private int firstPage;//首页<br>    private int endPage;//尾页<br>    /**</p>
+<pre><code> * 只接受前4个必要的属性，会自动计算出其他3个属性的值
+ * @param currentPage
+ * @param pageSize
+ * @param recordCount
+ * @param recordList
+ */
+public PageBean(int currentPage, int pageSize, int recordCount,List recordList) {
+    this.firstPage=1;
+    this.currentPage = currentPage;
+    this.pageSize = pageSize;
+    this.recordCount = recordCount;
+    this.recordList = recordList;
+    //计算总页码
+    pageCount = (recordCount + pageSize - 1) / pageSize;
+    this.endPage=pageCount;
+    this.prePage=currentPage==1?1:currentPage-1;
+    this.nextPage=currentPage==endPage?endPage:currentPage+1;
+}`
+</code></pre><p>Dao：<br>    //分页查询<br>    public PageBean getPageBean(Condition condition) {<br>        int pageNum = condition.getPageNum();<br>        int pageSize = condition.getPageSize();<br>        // 查询列表<br>        String sql=”SELECT <em> FROM pic limit ?,?”;<br>        List<pic> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Pic.class), (pageNum - 1) </pic></em> pageSize, pageNum <em> pageSize);<br>        // 查询总记录数量<br>        String sql2=”SELECT COUNT(</em>) FROM pic t”;<br>        int aLong = jdbcTemplate.queryForObject(sql2, int.class);<br>        return new PageBean(pageNum, pageSize,aLong, list);<br>    }</p>
+<h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表<br>    private Long id;//id<br>    private String title;//工作职位<br>    private Integer addrId;//地点<br>    private Integer jobnum;//招聘人数<br>    private Integer treatment;//薪水<br>    private String describes;//职位描述<br>    private String requires;//职位要求<br>    private Integer positiontype;<br>    private Integer isenabled;//是否启用前台展示<br>    private Date inputdate=new Date();//发布时间<br>    private String htmlurl;//展示页面地址<br>地点表</p>
+<h4 id="2-分页查询展示"><a href="#2-分页查询展示" class="headerlink" title="2.分页查询展示"></a>2.分页查询展示</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS练习/" data-id="cjwbo0r990002bktdzjhw28k0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwec1u1100004gtdobssa7aq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,51 +200,6 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/28/hello-world/" class="article-date">
-  <time datetime="2019-05-28T10:22:36.794Z" itemprop="datePublished">2019-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/28/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/hello-world/" data-id="cjwbo0r960001bktdqziu3snj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
@@ -228,9 +215,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -238,20 +225,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2019/05/31/CMS练习/">CMS练习</a>
+            <a href="/2019/05/31/CMS招聘网站/">CMS练习</a>
           </li>
         
           <li>
             <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/28/hello-world/">Hello World</a>
           </li>
         
       </ul>
