@@ -5,17 +5,17 @@
   
   <title>CMS招聘网站 | SUN LEI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+  <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMS招聘网站">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/CMS招聘网站/index.html">
 <meta property="og:site_name" content="SUN LEI">
-<meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+<meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T07:14:00.543Z">
+<meta property="og:updated_time" content="2019-06-04T01:03:01.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMS招聘网站">
-<meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
+<meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
   
     <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
   
@@ -89,7 +89,7 @@
         <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
 <h2 id="一-项目介绍"><a href="#一-项目介绍" class="headerlink" title="一 项目介绍"></a>一 项目介绍</h2><p>后台控制前台轮播图的展示 后台操作数据库轮播图<br>后台控制前台职位展示 后台操作数据库职位</p>
 <h2 id="二-环境搭建"><a href="#二-环境搭建" class="headerlink" title="二 环境搭建"></a>二 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播CRUD"><a href="#轮播CRUD" class="headerlink" title="轮播CRUD"></a>轮播CRUD</h2><h4 id="1-domain"><a href="#1-domain" class="headerlink" title="1.domain"></a>1.domain</h4><pre><code>//id
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播CRUD"><a href="#轮播CRUD" class="headerlink" title="轮播CRUD"></a>轮播CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><pre><code>//id
 private Long id;
 //路径
 private String storepath;
@@ -99,7 +99,9 @@ private String intro;
 private boolean isenabled;
 //时间
 private Date inputdate = new Date();
-</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：</p>
+</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><p>富文本框回显：加到div标签里面</p>
+<pre><code>&lt;c:out value=&quot;${picOne.intro}&quot; escapeXml=&quot;false&quot;/&gt;
+</code></pre><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：</p>
 <pre><code>private int currentPage;//当前页
 private int pageSize;//每页显示多少条
 private int recordCount;//总记录数
@@ -188,7 +190,7 @@ public String list(Model model,Condition condition) {
     &lt;/li&gt;
 &lt;/ul&gt;
 </code></pre><p></p>
-<h2 id="职位模块"><a href="#职位模块" class="headerlink" title="职位模块"></a>职位模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
+<h2 id="职位模块"><a href="#职位模块" class="headerlink" title="职位模块"></a>职位模块</h2><h4 id="1-建表-1"><a href="#1-建表-1" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
 <pre><code>private Long id;//id
 private String title;//工作职位
 private Integer addrId;//地点
