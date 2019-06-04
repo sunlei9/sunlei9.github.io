@@ -3,18 +3,18 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>CMS练习 | SUN LEI</title>
+  <title>CMS招聘网站 | SUN LEI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMS练习">
+<meta property="og:title" content="CMS招聘网站">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/CMS招聘网站/index.html">
 <meta property="og:site_name" content="SUN LEI">
 <meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-02T02:49:46.696Z">
+<meta property="og:updated_time" content="2019-06-02T07:14:00.543Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMS练习">
+<meta name="twitter:title" content="CMS招聘网站">
 <meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.domain/">
   
     <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CMS练习
+      CMS招聘网站
     </h1>
   
 
@@ -128,6 +128,9 @@ public PageBean(int currentPage, int pageSize, int recordCount,List recordList) 
     this.prePage=currentPage==1?1:currentPage-1;
     this.nextPage=currentPage==endPage?endPage:currentPage+1;
 }
+</code></pre><p>Condition：</p>
+<pre><code>private int pageNum = 1;// 当前页
+private int pageSize = 5;// 每页显示多少条记录
 </code></pre><p>Dao：</p>
 <pre><code>//分页查询
 public PageBean getPageBean(Condition condition) {
@@ -141,7 +144,51 @@ public PageBean getPageBean(Condition condition) {
     int aLong = jdbcTemplate.queryForObject(sql2, int.class);
     return new PageBean(pageNum, pageSize,aLong, list);
 }
-</code></pre><h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
+</code></pre><p>controller:</p>
+<pre><code>//分页查询
+@RequestMapping(&quot;/list&quot;)
+public String list(Model model,Condition condition) {
+    PageBean pageBean = picService.getPageBean(condition);
+    model.addAttribute(&quot;pageList&quot;,pageBean );
+    return &quot;main&quot;;
+}
+</code></pre><p>前端JSP页面:</p>
+<pre><code>&lt;!--分页--&gt;
+&lt;nav class=&quot;navbar-right&quot;&gt;
+&lt;ul class=&quot;pagination&quot; id=&quot;paging&quot;&gt;
+    &lt;li&gt;
+        &lt;span&gt;当前第${pageList.currentPage}页&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.firstPage}&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;首页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.prePage}&quot; aria-label=&quot;上一页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;上一页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.nextPage}&quot; aria-label=&quot;下一页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;下一页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.endPage}&quot; aria-label=&quot;尾页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;尾页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;span&gt;总页数：共${pageList.pageCount}页&lt;/span&gt;
+        &lt;span&gt;总数据：共${pageList.recordCount}条&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p></p>
+<h2 id="职位模块"><a href="#职位模块" class="headerlink" title="职位模块"></a>职位模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
 <pre><code>private Long id;//id
 private String title;//工作职位
 private Integer addrId;//地点
@@ -153,12 +200,12 @@ private Integer positiontype;
 private Integer isenabled;//是否启用前台展示
 private Date inputdate=new Date();//发布时间
 private String htmlurl;//展示页面地址
-</code></pre><p>地址表</p>
-<h4 id="2-分页查询展示"><a href="#2-分页查询展示" class="headerlink" title="2.分页查询展示"></a>2.分页查询展示</h4>
+</code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="静态化页面"><a href="#静态化页面" class="headerlink" title="静态化页面"></a>静态化页面</h4><p>把动态页面转为静态页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker和velocity</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwec1u1100004gtdobssa7aq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwefkz4s00000ctd92vyse2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +254,7 @@ private String htmlurl;//展示页面地址
       <ul>
         
           <li>
-            <a href="/2019/05/31/CMS招聘网站/">CMS练习</a>
+            <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
           </li>
         
           <li>

@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/CMS招聘网站/">CMS练习</a>
+      <a class="article-title" href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
     </h1>
   
 
@@ -126,6 +126,9 @@ public PageBean(int currentPage, int pageSize, int recordCount,List recordList) 
     this.prePage=currentPage==1?1:currentPage-1;
     this.nextPage=currentPage==endPage?endPage:currentPage+1;
 }
+</code></pre><p>Condition：</p>
+<pre><code>private int pageNum = 1;// 当前页
+private int pageSize = 5;// 每页显示多少条记录
 </code></pre><p>Dao：</p>
 <pre><code>//分页查询
 public PageBean getPageBean(Condition condition) {
@@ -139,7 +142,51 @@ public PageBean getPageBean(Condition condition) {
     int aLong = jdbcTemplate.queryForObject(sql2, int.class);
     return new PageBean(pageNum, pageSize,aLong, list);
 }
-</code></pre><h2 id="职位CRUD"><a href="#职位CRUD" class="headerlink" title="职位CRUD"></a>职位CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
+</code></pre><p>controller:</p>
+<pre><code>//分页查询
+@RequestMapping(&quot;/list&quot;)
+public String list(Model model,Condition condition) {
+    PageBean pageBean = picService.getPageBean(condition);
+    model.addAttribute(&quot;pageList&quot;,pageBean );
+    return &quot;main&quot;;
+}
+</code></pre><p>前端JSP页面:</p>
+<pre><code>&lt;!--分页--&gt;
+&lt;nav class=&quot;navbar-right&quot;&gt;
+&lt;ul class=&quot;pagination&quot; id=&quot;paging&quot;&gt;
+    &lt;li&gt;
+        &lt;span&gt;当前第${pageList.currentPage}页&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.firstPage}&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;首页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.prePage}&quot; aria-label=&quot;上一页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;上一页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.nextPage}&quot; aria-label=&quot;下一页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;下一页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        &lt;a href=&quot;/pic/list?pageNum=${pageList.endPage}&quot; aria-label=&quot;尾页&quot;&gt;
+            &lt;span aria-hidden=&quot;true&quot;&gt;尾页&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;span&gt;总页数：共${pageList.pageCount}页&lt;/span&gt;
+        &lt;span&gt;总数据：共${pageList.recordCount}条&lt;/span&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre><p></p>
+<h2 id="职位模块"><a href="#职位模块" class="headerlink" title="职位模块"></a>职位模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><p>职位表</p>
 <pre><code>private Long id;//id
 private String title;//工作职位
 private Integer addrId;//地点
@@ -151,12 +198,12 @@ private Integer positiontype;
 private Integer isenabled;//是否启用前台展示
 private Date inputdate=new Date();//发布时间
 private String htmlurl;//展示页面地址
-</code></pre><p>地址表</p>
-<h4 id="2-分页查询展示"><a href="#2-分页查询展示" class="headerlink" title="2.分页查询展示"></a>2.分页查询展示</h4>
+</code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="静态化页面"><a href="#静态化页面" class="headerlink" title="静态化页面"></a>静态化页面</h4><p>把动态页面转为静态页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker和velocity</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwec1u1100004gtdobssa7aq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwefkz4s00000ctd92vyse2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +271,7 @@ private String htmlurl;//展示页面地址
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwbo0r900000bktd5ar4xp3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwefkz4y00010ctdh2t28q98" class="article-share-link">Share</a>
       
       
     </footer>
@@ -264,7 +311,7 @@ private String htmlurl;//展示页面地址
       <ul>
         
           <li>
-            <a href="/2019/05/31/CMS招聘网站/">CMS练习</a>
+            <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
           </li>
         
           <li>
