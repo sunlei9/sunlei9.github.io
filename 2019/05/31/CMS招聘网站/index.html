@@ -5,17 +5,17 @@
   
   <title>CMS招聘网站 | SUN LEI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
+  <meta name="description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播模块1.建表//id pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMS招聘网站">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/CMS招聘网站/index.html">
 <meta property="og:site_name" content="SUN LEI">
-<meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
+<meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播模块1.建表//id pr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-04T01:03:01.082Z">
+<meta property="og:updated_time" content="2019-06-06T06:05:35.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMS招聘网站">
-<meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播CRUD1.建表//id">
+<meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 项目介绍后台控制前台轮播图的展示 后台操作数据库轮播图后台控制前台职位展示 后台操作数据库职位 二 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 1.导包2.配置文件轮播模块1.建表//id pr">
   
     <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
   
@@ -89,7 +89,7 @@
         <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
 <h2 id="一-项目介绍"><a href="#一-项目介绍" class="headerlink" title="一 项目介绍"></a>一 项目介绍</h2><p>后台控制前台轮播图的展示 后台操作数据库轮播图<br>后台控制前台职位展示 后台操作数据库职位</p>
 <h2 id="二-环境搭建"><a href="#二-环境搭建" class="headerlink" title="二 环境搭建"></a>二 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播CRUD"><a href="#轮播CRUD" class="headerlink" title="轮播CRUD"></a>轮播CRUD</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><pre><code>//id
+<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播模块"><a href="#轮播模块" class="headerlink" title="轮播模块"></a>轮播模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><pre><code>//id
 private Long id;
 //路径
 private String storepath;
@@ -202,12 +202,16 @@ private Integer positiontype;
 private Integer isenabled;//是否启用前台展示
 private Date inputdate=new Date();//发布时间
 private String htmlurl;//展示页面地址
-</code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="静态化页面"><a href="#静态化页面" class="headerlink" title="静态化页面"></a>静态化页面</h4><p>把动态页面转为静态页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker和velocity</p>
-
+</code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="新增职位产生静态化页面"><a href="#新增职位产生静态化页面" class="headerlink" title="新增职位产生静态化页面"></a>新增职位产生静态化页面</h4><p>新增职位根据模板生成职位详情页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker</p>
+<p>1.创建模板detail.ftl</p>
+<h4 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h4><p>高级查询：多个条件组合起来进行查询<br>高级查询核心：根据条件拼接成不同的SQL进行查询</p>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
+<p>写一个缓存工具类</p>
+<h4 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwefkz4s00000ctd92vyse2p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwk9r3z2000008tdwmz2r3ch" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,6 +219,15 @@ private String htmlurl;//展示页面地址
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/06/04/freemaker入门demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          freemaker入门demo
+        
+      </div>
+    </a>
   
   
     <a href="/2019/05/28/Hexo部署github博客/" id="article-nav-older" class="article-nav-link-wrap">
@@ -243,7 +256,7 @@ private String htmlurl;//展示页面地址
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -254,6 +267,14 @@ private String htmlurl;//展示页面地址
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/06/06/缓存/">缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/freemaker入门demo/">freemaker入门demo</a>
+          </li>
         
           <li>
             <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>

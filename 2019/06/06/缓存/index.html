@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>缓存 | SUN LEI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.缓存(cache)：缓存是指可以进行高数数据交换的存储器,也就是一个容器，底层是Map，存在内存里面,不是存在磁盘里面，内存数据肯定要比磁盘数据快,有些缓存可以存储在内存，也可以存储在磁盘里面2.缓存有什么用:提高查询的效率，减轻服务器压力用空间换时间概念 3.缓存雪崩：缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机解决方案：1.缓存数据的过期时间设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="缓存">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/缓存/index.html">
+<meta property="og:site_name" content="SUN LEI">
+<meta property="og:description" content="1.缓存(cache)：缓存是指可以进行高数数据交换的存储器,也就是一个容器，底层是Map，存在内存里面,不是存在磁盘里面，内存数据肯定要比磁盘数据快,有些缓存可以存储在内存，也可以存储在磁盘里面2.缓存有什么用:提高查询的效率，减轻服务器压力用空间换时间概念 3.缓存雪崩：缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机解决方案：1.缓存数据的过期时间设">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-06T06:16:45.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="缓存">
+<meta name="twitter:description" content="1.缓存(cache)：缓存是指可以进行高数数据交换的存储器,也就是一个容器，底层是Map，存在内存里面,不是存在磁盘里面，内存数据肯定要比磁盘数据快,有些缓存可以存储在内存，也可以存储在磁盘里面2.缓存有什么用:提高查询的效率，减轻服务器压力用空间换时间概念 3.缓存雪崩：缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机解决方案：1.缓存数据的过期时间设">
+  
+    <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SUN LEI</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/缓存/" class="article-date">
+  <time datetime="2019-06-06T06:05:03.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      缓存
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.缓存(cache)：缓存是指可以进行高数数据交换的存储器,也就是一个容器，底层是Map，存在内存里面,不是存在磁盘里面，内存数据肯定要比磁盘数据快,有些缓存可以存储在内存，也可以存储在磁盘里面<br>2.缓存有什么用:提高查询的效率，减轻服务器压力<br>用空间换时间概念</p>
+<p>3.缓存雪崩：<br>缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机<br>解决方案：1.缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。<br>2.如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。<br>3.设置热点数据永远不过期。</p>
+<p>4.缓存穿透：<br>缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起为id为“-1”的数据或id为特别大不存在的数据。这时的用户很可能是攻击者，攻击会导致数据库压力过大。<br>解决方案：1.接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；<br>2.从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击</p>
+<hr>
+<p>作者：每天进步一点点yes<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/kongtiao5/article/details/82771694" target="_blank" rel="noopener">https://blog.csdn.net/kongtiao5/article/details/82771694</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+<p>5.缓存击穿：<br> 缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力<br>解决方案：1.设置热点数据永远不过期。<br>2.加互斥锁</p>
+<p>缓存框架：EhCache<br>    Memcached：只支持简单的key/value数据结构</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjwk9r3za000308tds22qpg6q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/04/freemaker入门demo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">freemaker入门demo</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/06/06/缓存/">缓存</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/04/freemaker入门demo/">freemaker入门demo</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 sunlei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
