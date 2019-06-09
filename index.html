@@ -89,8 +89,10 @@
 <h2 id="3-缓存雪崩"><a href="#3-缓存雪崩" class="headerlink" title="3.缓存雪崩"></a>3.缓存雪崩</h2><p>缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机<br>解决方案：<br>         1.缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。<br>         2.如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。<br>         3.设置热点数据永远不过期。</p>
 <h2 id="4-缓存穿透"><a href="#4-缓存穿透" class="headerlink" title="4.缓存穿透"></a>4.缓存穿透</h2><p>缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起为id为“-1”的数据或id为特别大不存在的数据。这时的用户很可能是攻击者，攻击会导致数据库压力过大。<br>解决方案：<br>         1.接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；<br>         2.从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击</p>
 <h2 id="5-缓存击穿"><a href="#5-缓存击穿" class="headerlink" title="5.缓存击穿"></a>5.缓存击穿</h2><p> 缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力<br>解决方案：<br>         1.设置热点数据永远不过期。<br>         2.加互斥锁</p>
-<p>缓存框架：EhCache<br>    Memcached：只支持简单的key/value数据结构</p>
-<h2 id="6-缓存的操作"><a href="#6-缓存的操作" class="headerlink" title="6.缓存的操作"></a>6.缓存的操作</h2><pre><code>CacheManager 缓存对象
+<p>缓存框架：<br>    EhCache：<br>        特点:1.快速<br>             2.简单</p>
+<pre><code>         3.    
+Memcached：只支持简单的key/value数据结构
+</code></pre><h2 id="6-缓存的操作"><a href="#6-缓存的操作" class="headerlink" title="6.缓存的操作"></a>6.缓存的操作</h2><pre><code>CacheManager 缓存对象
 </code></pre>
       
     </div>
@@ -170,9 +172,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
-<h2 id="一-项目介绍"><a href="#一-项目介绍" class="headerlink" title="一 项目介绍"></a>一 项目介绍</h2><p>后台控制前台轮播图的展示 后台操作数据库轮播图<br>后台控制前台职位展示 后台操作数据库职位</p>
-<h2 id="二-环境搭建"><a href="#二-环境搭建" class="headerlink" title="二 环境搭建"></a>二 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
-<h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="轮播模块"><a href="#轮播模块" class="headerlink" title="轮播模块"></a>轮播模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><pre><code>//id
+<h2 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一 环境搭建"></a>一 环境搭建</h2><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
+<h4 id="创建maven项目"><a href="#创建maven项目" class="headerlink" title="创建maven项目"></a>创建maven项目</h4><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><h4 id="1-导包"><a href="#1-导包" class="headerlink" title="1.导包"></a>1.导包</h4><h4 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h4><h2 id="二-轮播模块"><a href="#二-轮播模块" class="headerlink" title="二 轮播模块"></a>二 轮播模块</h2><h4 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h4><pre><code>//id
 private Long id;
 //路径
 private String storepath;
@@ -182,7 +183,7 @@ private String intro;
 private boolean isenabled;
 //时间
 private Date inputdate = new Date();
-</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><p>富文本框回显：加到div标签里面</p>
+</code></pre><h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><p>富文本框回显：<code>&lt;c:out value=&quot;${jobOne.describes}&quot; escapeXml=&quot;false&quot;/&gt;</code>加到div标签里面</p>
 <pre><code>&lt;c:out value=&quot;${picOne.intro}&quot; escapeXml=&quot;false&quot;/&gt;
 </code></pre><h3 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h3><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：</p>
 <pre><code>private int currentPage;//当前页
