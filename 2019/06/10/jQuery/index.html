@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="SUN LEI">
 <meta property="og:description" content="jQuery——write less do morejQuery:优秀的js框架 jQuery的使用 引入jquery文件 &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 页面加载事件 页面加载完之后再执行代码，先于window.onload执行  jq">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-10T02:50:34.484Z">
+<meta property="og:updated_time" content="2019-06-10T02:53:43.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery">
 <meta name="twitter:description" content="jQuery——write less do morejQuery:优秀的js框架 jQuery的使用 引入jquery文件 &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 页面加载事件 页面加载完之后再执行代码，先于window.onload执行  jq">
@@ -94,20 +94,20 @@
 <li><p>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</p>
 </li>
 <li><p>DOM对象和jquery对象的转换</p>
-<p> `$(function(){</p>
-<pre><code>//dom对象
-var domObj = document.getElementById(&quot;mySpan&quot;);
+<pre><code>$(function(){
+    //dom对象
+    var domObj = document.getElementById(&quot;mySpan&quot;);
 
-//jquery对象
-var jqueryObj = $(&quot;#mySpan&quot;);
+    //jquery对象
+    var jqueryObj = $(&quot;#mySpan&quot;);
 
-//有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
-var domToJquery = $(domObj);
+    //有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+    var domToJquery = $(domObj);
 
-//有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
-var jqueryToDom = jqueryObj[0];
-</code></pre><p> })`</p>
-</li>
+    //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+    var jqueryToDom = jqueryObj[0];
+})
+</code></pre></li>
 </ol>
 
       
