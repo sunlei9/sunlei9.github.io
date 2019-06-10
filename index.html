@@ -62,6 +62,154 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/10/jQuery/" class="article-date">
+  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/10/jQuery/">jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
+<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
+<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>页面加载事件<br> 页面加载完之后再执行代码，先于window.onload执行</p>
+</li>
+<li><p>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</p>
+</li>
+<li><p>DOM对象和jquery对象的转换</p>
+<p> $(function(){</p>
+<pre><code>//dom对象
+var domObj = document.getElementById(&quot;mySpan&quot;);
+
+//jquery对象
+var jqueryObj = $(&quot;#mySpan&quot;);
+
+//有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+var domToJquery = $(domObj);
+
+//有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+var jqueryToDom = jqueryObj[0];
+</code></pre><p> })</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjwps066o0002mctdvzh8mcsy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/AJAX/" class="article-date">
+  <time datetime="2019-06-09T01:12:45.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/AJAX/">AJAX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js的引入方式"><a href="#js的引入方式" class="headerlink" title="js的引入方式"></a>js的引入方式</h3><ol>
+<li>直接在行内标签内使用</li>
+<li>在<script>标签内使用</li>
+<li>外部js引入<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3></li>
+<li>如果引入外部js文件，就不要再这个标签内写内容</li>
+<li><script>标签引入文件不能使用单标签</li>
+<li>js加载顺序是从上往下</li>
+<li><p><a herf="#">点击</a>存在锚点效果</p>
+<h3 id="js里面的函数"><a href="#js里面的函数" class="headerlink" title="js里面的函数"></a>js里面的函数</h3><p>什么是函数：函数就是方法，function<br>函数的定义<br> function say(name,food){</p>
+<p> }<br>函数调用<br> 调用方法，参数可以多，如果参数传少了，默认值是undefined666<br> say();<br> window.say();<br>动态调用<br> window<a href="">“say”</a>;<br>js中一切皆对象，函数也是对象</p>
+</li>
+</ol>
+<p>函数返回值<br>    如果方法没有返回值，返回undefined</p>
+<p>java 方法重载：方法名相同，参数列表不同，和返回值无关<br>js没有重载一说，方法名相同，后面的方法会覆盖前面的方法</p>
+<h3 id="js引擎执行过程"><a href="#js引擎执行过程" class="headerlink" title="js引擎执行过程"></a>js引擎执行过程</h3><p>js变量提升</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>ajax即Asynchronous JavaScript And XML<br>异步JavaScript和XML，是指一种创建交互式网页应用的网页开发技术<br>异步JavaScript：浏览器处理事情，如果没有处理完，可以做其他事情<br>XML：可拓展性标记语言<br>局部刷新技术，是前端技术，属于js里面的内容</p>
+<h3 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json:JavaScript Object Notation<br>一种轻量级的数据交换格式</p>
+</script></li></ol>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjwps066g0000mctd57j9ay1v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/JavaScript/" class="article-date">
+  <time datetime="2019-06-09T01:12:33.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/JavaScript/">JavaScript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjwps066q0004mctdxiq8d6xq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-缓存" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/06/缓存/" class="article-date">
@@ -97,7 +245,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjwk9r3za000308tds22qpg6q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjwps066t0006mctdvsyjso08" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +287,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjwk9r3z9000208tdbgavt80a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjwps066s0005mctdzik0i14d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,13 +437,14 @@ private String htmlurl;//展示页面地址
 </code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="新增职位产生静态化页面"><a href="#新增职位产生静态化页面" class="headerlink" title="新增职位产生静态化页面"></a>新增职位产生静态化页面</h4><p>新增职位根据模板生成职位详情页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker</p>
 <p>1.创建模板detail.ftl</p>
 <h4 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h4><p>高级查询：多个条件组合起来进行查询<br>高级查询核心：根据条件拼接成不同的SQL进行查询</p>
-<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>ehcache：快速精干的java级别的缓存框架<br>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
 <p>写一个缓存工具类</p>
-<h4 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h4>
+<h4 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h4><p>访问controller时拦截器拦截处理</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwk9r3z2000008tdwmz2r3ch" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwps066p0003mctdboup8oyy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +512,7 @@ private String htmlurl;//展示页面地址
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwk9r3z7000108tdxy8xq0jq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwps066m0001mctdzvao5lxd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,19 +552,23 @@ private String htmlurl;//展示页面地址
       <ul>
         
           <li>
+            <a href="/2019/06/10/jQuery/">jQuery</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/09/AJAX/">AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/09/JavaScript/">JavaScript</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/06/缓存/">缓存</a>
           </li>
         
           <li>
             <a href="/2019/06/04/freemaker入门demo/">freemaker入门demo</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
           </li>
         
       </ul>

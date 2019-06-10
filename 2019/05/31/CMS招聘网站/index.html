@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="SUN LEI">
 <meta property="og:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 创建maven项目创建数据库1.导包2.配置文件二 轮播模块1.建表//id private Long id; //路径 private String">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-06T08:21:48.732Z">
+<meta property="og:updated_time" content="2019-06-09T01:54:22.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMS招聘网站">
 <meta name="twitter:description" content="CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。 一 环境搭建Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery 创建maven项目创建数据库1.导包2.配置文件二 轮播模块1.建表//id private Long id; //路径 private String">
@@ -204,13 +204,14 @@ private String htmlurl;//展示页面地址
 </code></pre><h4 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h4><h4 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h4><h4 id="新增职位产生静态化页面"><a href="#新增职位产生静态化页面" class="headerlink" title="新增职位产生静态化页面"></a>新增职位产生静态化页面</h4><p>新增职位根据模板生成职位详情页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker</p>
 <p>1.创建模板detail.ftl</p>
 <h4 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h4><p>高级查询：多个条件组合起来进行查询<br>高级查询核心：根据条件拼接成不同的SQL进行查询</p>
-<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><p>ehcache：快速精干的java级别的缓存框架<br>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
 <p>写一个缓存工具类</p>
-<h4 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h4>
+<h4 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h4><p>访问controller时拦截器拦截处理</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwk9r3z2000008tdwmz2r3ch" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwps066p0003mctdboup8oyy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,19 +269,23 @@ private String htmlurl;//展示页面地址
       <ul>
         
           <li>
+            <a href="/2019/06/10/jQuery/">jQuery</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/09/AJAX/">AJAX</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/09/JavaScript/">JavaScript</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/06/缓存/">缓存</a>
           </li>
         
           <li>
             <a href="/2019/06/04/freemaker入门demo/">freemaker入门demo</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
           </li>
         
       </ul>

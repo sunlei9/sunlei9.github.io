@@ -3,15 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Archives: 2019/5 | SUN LEI</title>
+  <title>jQuery | SUN LEI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="SUN LEI">
-<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
+  <meta name="description" content="jQuery——write less do morejQuery:优秀的js框架 jQuery的使用 引入jquery文件 &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 页面加载事件 页面加载完之后再执行代码，先于window.onload执行  jq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/jQuery/index.html">
 <meta property="og:site_name" content="SUN LEI">
+<meta property="og:description" content="jQuery——write less do morejQuery:优秀的js框架 jQuery的使用 引入jquery文件 &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 页面加载事件 页面加载完之后再执行代码，先于window.onload执行  jq">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-10T02:45:54.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SUN LEI">
+<meta name="twitter:title" content="jQuery">
+<meta name="twitter:description" content="jQuery——write less do morejQuery:优秀的js框架 jQuery的使用 引入jquery文件 &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 页面加载事件 页面加载完之后再执行代码，先于window.onload执行  jq">
   
     <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
   
@@ -60,58 +64,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/31/CMS招聘网站/" class="archive-article-date">
-  <time datetime="2019-05-31T01:13:21.000Z" itemprop="datePublished">May 31</time>
+        <section id="main"><article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/10/jQuery/" class="article-date">
+  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
+    <h1 class="article-title" itemprop="name">
+      jQuery
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/28/Hexo部署github博客/" class="archive-article-date">
-  <time datetime="2019-05-28T11:42:29.000Z" itemprop="datePublished">May 28</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
-    </h1>
-  
+        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
+<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
+<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>页面加载事件<br> 页面加载完之后再执行代码，先于window.onload执行</p>
+</li>
+<li><p>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</p>
+</li>
+<li><p>DOM对象和jquery对象的转换</p>
+<p> $(function(){</p>
+<pre><code>//dom对象
+var domObj = document.getElementById(&quot;mySpan&quot;);
 
-    </header>
+//jquery对象
+var jqueryObj = $(&quot;#mySpan&quot;);
+
+//有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+var domToJquery = $(domObj);
+
+//有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+var jqueryToDom = jqueryObj[0];
+</code></pre><p> })</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjwps066o0002mctdvzh8mcsy" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/09/AJAX/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AJAX</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
