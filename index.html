@@ -92,7 +92,7 @@
 <li><p>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</p>
 </li>
 <li><p>DOM对象和jquery对象的转换</p>
-<p> $(function(){</p>
+<p> `$(function(){</p>
 <pre><code>//dom对象
 var domObj = document.getElementById(&quot;mySpan&quot;);
 
@@ -104,7 +104,7 @@ var domToJquery = $(domObj);
 
 //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
 var jqueryToDom = jqueryObj[0];
-</code></pre><p> })</p>
+</code></pre><p> })`</p>
 </li>
 </ol>
 
