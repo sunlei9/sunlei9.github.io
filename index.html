@@ -3,17 +3,17 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>SUN LEI</title>
+  <title>java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="SUN LEI">
+<meta property="og:title" content="java学习笔记">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="SUN LEI">
+<meta property="og:site_name" content="java学习笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SUN LEI">
+<meta name="twitter:title" content="java学习笔记">
   
-    <link rel="alternate" href="/atom.xml" title="SUN LEI" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,7 +34,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">SUN LEI</a>
+        <a href="/" id="logo">java学习笔记</a>
       </h1>
       
     </div>
@@ -61,6 +61,107 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-EasyUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/13/EasyUI/" class="article-date">
+  <time datetime="2019-06-13T01:17:12.000Z" itemprop="datePublished">2019-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/EasyUI/">EasyUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EasyUI的认识"><a href="#EasyUI的认识" class="headerlink" title="EasyUI的认识"></a>EasyUI的认识</h2><ol>
+<li>是基于JQuery的ui(界面)插件集合</li>
+<li>不需要编写复杂的JavaScript，也不需要对css样式有深入了解，开发者只需要了解一些简单的html标签</li>
+<li>学习方式copy+edit<h2 id="EasyUI使用"><a href="#EasyUI使用" class="headerlink" title="EasyUI使用"></a>EasyUI使用</h2></li>
+</ol>
+<ol>
+<li>下载导入easyui文件</li>
+<li>在对应页面引入easyui的js文件和css文件<br> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt; <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+ <%--引入easyui的js文件--%>
+ <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+ <%--国际化--%>
+ <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script></%--国际化--%></%--引入easyui的js文件--%></li>
+<li><p>使用easyui里面的组件</p>
+<ol>
+<li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
+<p> `&lt;div id=”p” class=”easyui-panel” title=”My Panel”</p>
+<pre><code>style=&quot;width:500px;height:150px;padding:10px;background:#fafafa;&quot;
+data-options=&quot;iconCls:&apos;icon-save&apos;,closable:true,
+collapsible:true,minimizable:true,maximizable:true&quot;&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+</code></pre><p> `</p>
+</li>
+<li><p>通过js创建组件<br><code>&lt;div id=&quot;p&quot; style=&quot;padding:10px;&quot;&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+&lt;/div&gt;
+$(&#39;#p&#39;).panel({
+ width:500,
+ height:150,
+ title:&#39;My Panel&#39;,
+ tools:[{
+ iconCls:&#39;icon-add&#39;,
+ handler:function(){alert(&#39;new&#39;)}
+ },{
+ iconCls:&#39;icon-save&#39;,
+ handler:function(){alert(&#39;save&#39;)}
+ }]
+});</code></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2></li>
+<li>一般在创建组件的时候，就应该指定好对应属性，不然，如果创建完之后，在修改对应属性，就没有效果</li>
+<li>指定属性 在 标签里面指定 ，在js代码在创建的时候，也可以指定；<h2 id="组件三要素"><a href="#组件三要素" class="headerlink" title="组件三要素"></a>组件三要素</h2></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>属性:通过标签里面属性，可以让组件展示不同的效果，完成不同的功能<ol>
+<li>在组建创建时都有默认属性</li>
+<li>属性只能在创建(初始化)组件有效，组件创建完毕后，对某个属性修改无效</li>
+<li>属性定义方式<ol>
+<li>方式一:直接在标签里面写 属性=属性值</li>
+<li>方式二:data-options<br> 注意一:如果在标签里面定义一个属性和在data-options里面定义同一属性，标签里面有效果<br> 注意二:有些属性只能写到data-options里面 想tools这种属性，有多个值，不能放到外面</li>
+<li>方式三:直接在js中写</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>方法:<ol>
+<li>调用方法：<br> $(“selector”).组件名(methodName,[params])</li>
+<li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
+</ol>
+</li>
+<li>事件<br> //点击事件<br> onClick: function(node){<pre><code>alert(node.text);  // 在用户点击的时候提示
+</code></pre> },</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjwve0sef0002t0tdlk1nkm8e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -286,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjwty3oga0006w0td1i5eovi4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjwve0sem0008t0tdmyp9kwvt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +482,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjwty3og80004w0td4mrrw8t7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjwve0sek0006t0tdetm08tph" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +535,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjwty3ofz0001w0tdnvl2myd8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjwve0se60000t0td1qmc3jxv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +571,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjwty3ofs0000w0tdd2be53uv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjwve0seh0004t0td6wgdwq63" class="article-share-link">Share</a>
       
       
     </footer>
@@ -515,7 +616,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjwty3ogc0007w0tdfmphj5qs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjwve0sel0007t0td9nnr4ls0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,7 +658,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjwty3og50003w0td6n9egg7e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjwve0seg0003t0tdrr3pacfe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -769,7 +870,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwty3og20002w0td53c1yfql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjwve0sec0001t0tdj3qcfj8b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -837,7 +938,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwty3og90005w0tdrsnmxudh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjwve0sej0005t0tdu0gq8uai" class="article-share-link">Share</a>
       
       
     </footer>
@@ -877,6 +978,10 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
+            <a href="/2019/06/13/EasyUI/">EasyUI</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/11/js高级/">js高级</a>
           </li>
         
@@ -890,10 +995,6 @@ public PageBean getPageBean(Condition condition) {
         
           <li>
             <a href="/2019/06/09/JavaScript/">JavaScript</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/06/缓存/">缓存</a>
           </li>
         
       </ul>
