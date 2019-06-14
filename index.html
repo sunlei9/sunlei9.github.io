@@ -91,11 +91,14 @@
 </ol>
 <ol>
 <li>下载导入easyui文件</li>
-<li>在对应页面引入easyui的js文件和css文件<br> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt; <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+<li><p>在对应页面引入easyui的js文件和css文件</p>
+<p> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt;</p>
+ <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
  <%--引入easyui的js文件--%>
  <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
  <%--国际化--%>
- <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script></%--国际化--%></%--引入easyui的js文件--%></li>
+ <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</%--国际化--%></%--引入easyui的js文件--%></li>
 <li><p>使用easyui里面的组件</p>
 <ol>
 <li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
@@ -146,8 +149,11 @@ $(&#39;#p&#39;).panel({
 <li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
 </ol>
 </li>
-<li>事件<br> //点击事件<br> onClick: function(node){<pre><code>alert(node.text);  // 在用户点击的时候提示
-</code></pre> },</li>
+<li><p>事件</p>
+<p> //点击事件<br> onClick: function(node){</p>
+<pre><code>alert(node.text);  // 在用户点击的时候提示
+</code></pre><p> },</p>
+</li>
 </ol>
 
       
