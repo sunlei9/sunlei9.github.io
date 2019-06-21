@@ -101,11 +101,11 @@
     1. 不能干预sql语句的生成，性能不好控制 
     2. 如果一个项目对sql比较高，不适合用jpa
     3. 如果一个表中有上亿级别的数据量，不适合用jpa，也不适合用jdbc(架构使用数据库读写分离，分库分表方案解决)
-</code></pre><h2 id="连接数据库的配置"><a href="#连接数据库的配置" class="headerlink" title="连接数据库的配置"></a>连接数据库的配置</h2><pre><code>四个基本配置
-配置方言
-shou_sql
+</code></pre><h2 id="连接数据库的配置"><a href="#连接数据库的配置" class="headerlink" title="连接数据库的配置"></a>连接数据库的配置</h2><pre><code>1. 四个基本配置
+2. 配置方言
+3. shou_sql
     是否显示sql语句
-让jpa自动创建相应的表
+4. 让jpa自动创建相应的表
     hbm2ddl.auto
 </code></pre><h2 id="自动建表"><a href="#自动建表" class="headerlink" title="自动建表"></a>自动建表</h2><pre><code>添加注解
     类上
@@ -184,10 +184,10 @@ shou_sql
         没有表就创建，有表就修改
     validate
         验证你的domin和表是否对应上
-</code></pre><h2 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h2><pre><code>Persistence
-    持久化类
+</code></pre><h2 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h2><pre><code>1. Persistence
+    持久化对象
     创建EntityManagerFactory对象
-EntityManagerFactory
+2. EntityManagerFactory
     EntityManager工厂对象
     创建EntityManager对象
     特点
@@ -211,13 +211,12 @@ EntityManagerFactory
             1:1:1--&gt;一个项目：1个EntityManagerFacttory：一个数据库
         这个对象线程安全
             线程安全影响性能
-EntityManager
+3. EntityManager
     操作数据库（CRUD）
         增删改必须提交事务
     方法
         merge
             添加或者修改
-
     特点
         轻
             连接对象
@@ -231,36 +230,34 @@ EntityManager
 EntityTransaction
     事务对象（一组操作，要不都成功，要不都失败）
     JPA 增删改一定要有事务
-</code></pre><h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><pre><code>四个状态
-    临时状态（瞬时状态）
+    多个数据库：JTA
+</code></pre><h2 id="对象的状态"><a href="#对象的状态" class="headerlink" title="对象的状态"></a>对象的状态</h2><pre><code>1. 四个状态
+    1. 临时状态（瞬时状态）
         对象刚刚创建出来还没有与entityManager发生关系
-    持久化状态（托管状态）
+    2. 持久化状态（托管状态）
         对象与entityManager发生关系了
             对象就存在一级缓存中，在一级缓存中的对象也就是持久化对象
         持久化的对象会不会被修改和merge方法没有关系
         只能删除持久化状态的对象
         不能修改OID
-    游离状态（脱管状态）
+    3. 游离状态（脱管状态）
         对象与entityManager解除了关系
             从一级缓存中移除了
-    子主题 1
-    删除状态
+    4. 删除状态
         hibernate中没有删除状态
         只要调用了remove方法，这个对象就变成删除状态，JPA就要计划把他删除了
         删除状态是一种特殊的持久化状态
             还在一级缓存中
-脏数据更新
+2. 脏数据更新
     提交数据的时候进行脏数据更新
-报错
-    n-to-n
-        持久化对象的OID不能修改
-    no session
-        会话关闭后去拿取数据（懒加载）
-</code></pre><h2 id="域对象-domain对象-关系"><a href="#域对象-domain对象-关系" class="headerlink" title="域对象(domain对象)关系"></a>域对象(domain对象)关系</h2><pre><code>依赖关系
+3. 报错
+    n-to-n:持久化对象的OID不能修改
+    no session:会话关闭后去拿取数据（懒加载）
+</code></pre><h2 id="域对象-domain对象-的关系"><a href="#域对象-domain对象-的关系" class="headerlink" title="域对象(domain对象)的关系"></a>域对象(domain对象)的关系</h2><pre><code>1. 依赖关系
     javabean之间的依赖关系
     分层:表现层,业务层,持久层(依赖关系)
     Controller表现层依赖于Service业务层，Service依赖于Dao持久层
-关联关系
+2. 关联关系
     类之间的引用关系，以属性定义的关系表现
     多重性
         一对一
@@ -291,7 +288,7 @@ EntityTransaction
                 必须保存表名和列名都是一致的
             子主题 4
     导航性
-聚合关系
+3. 聚合关系
     双向的多对一，一对多
         让一方放弃关系维护
             两边都在维护
@@ -313,7 +310,7 @@ EntityTransaction
             组合关系一定要用级联
                 用最强级联
             凡是单据都是组合关系
-组合关系
+4. 组合关系
     强聚合(整体和部分不可分割)
 </code></pre><h2 id="hibernate"><a href="#hibernate" class="headerlink" title="hibernate"></a>hibernate</h2><pre><code>操作数据库的框架
     ORM框架
