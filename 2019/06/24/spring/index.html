@@ -3,16 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>JavaScript | java学习笔记</title>
+  <title>java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript">
-<meta property="og:url" content="http://yoursite.com/2019/06/09/JavaScript/index.html">
+  <meta name="description" content="title: springdate: 2019-06-24 09:26:23 tags:spring的核心1. IOC/DI：IOC指的是控制反转，所谓控制反转指的就是把所有的bean对象，交给spring容器进行管理，由spring统一来创建bean对象，这种创建对象的权利反转就叫做控制反转 2. AOP：面向切面编程，在你指定的service层，执行前或者执行后切一刀，然后织入自己的业务逻辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/06/24/spring/index.html">
 <meta property="og:site_name" content="java学习笔记">
+<meta property="og:description" content="title: springdate: 2019-06-24 09:26:23 tags:spring的核心1. IOC/DI：IOC指的是控制反转，所谓控制反转指的就是把所有的bean对象，交给spring容器进行管理，由spring统一来创建bean对象，这种创建对象的权利反转就叫做控制反转 2. AOP：面向切面编程，在你指定的service层，执行前或者执行后切一刀，然后织入自己的业务逻辑">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-09T01:12:33.370Z">
+<meta property="og:updated_time" content="2019-06-24T11:59:44.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript">
+<meta name="twitter:title" content="java学习笔记">
+<meta name="twitter:description" content="title: springdate: 2019-06-24 09:26:23 tags:spring的核心1. IOC/DI：IOC指的是控制反转，所谓控制反转指的就是把所有的bean对象，交给spring容器进行管理，由spring统一来创建bean对象，这种创建对象的权利反转就叫做控制反转 2. AOP：面向切面编程，在你指定的service层，执行前或者执行后切一刀，然后织入自己的业务逻辑">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -61,33 +64,41 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/09/JavaScript/" class="article-date">
-  <time datetime="2019-06-09T01:12:33.000Z" itemprop="datePublished">2019-06-09</time>
+    <a href="/2019/06/24/spring/" class="article-date">
+  <time datetime="2019-06-24T01:26:23.757Z" itemprop="datePublished">2019-06-24</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JavaScript
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <hr>
+<p>title: spring<br>date: 2019-06-24 09:26:23</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h1 id="spring的核心"><a href="#spring的核心" class="headerlink" title="spring的核心"></a>spring的核心</h1><pre><code>1. IOC/DI：IOC指的是控制反转，所谓控制反转指的就是把所有的bean对象，交给spring容器进行管理，由spring统一来创建bean对象，这种创建对象的权利反转就叫做控制反转
+2. AOP：面向切面编程，在你指定的service层，执行前或者执行后切一刀，然后织入自己的业务逻辑，能有效的进行解耦
+3. AOP有什么作用：
+    1. 抽取公共的业务逻辑代码
+    2. 扩展功能
+    3. 权限
+    4. 日志
+
+AOP底层是基于代理模式实现的：
+    1. JDK动态代理：前提，你的目标类必须提供了一个接口，否则不能代理
+    2. CGLIB动态代理：他可以代理的类，有实现接口，也可以没有实现接口
+</code></pre><h1 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h1><h1 id="XML自动注入"><a href="#XML自动注入" class="headerlink" title="XML自动注入"></a>XML自动注入</h1><h1 id="全注解配置"><a href="#全注解配置" class="headerlink" title="全注解配置"></a>全注解配置</h1><p>@Autowired与@Resource的区别</p>
+<pre><code>1. 都是注入bean对象
+2. @Autowired是spring提供的注解，@Resource是sun公司提供的注解
+3. @Autowired注入bean的时候，是先根据类型注入，再根据名字注入
+4. 推荐使用@Autowired，@Autowired是spring公司的，与spring无缝衔接
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjxb3n94o0002s4tdj0wohw2s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="cjxb3n95b000ds4tdp9lq2m34" class="article-share-link">Share</a>
       
       
     </footer>
@@ -96,19 +107,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/09/AJAX/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/24/spr/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          AJAX
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2019/06/06/缓存/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/21/phaser入门/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">缓存</div>
+      <div class="article-nav-title">phaser入门</div>
     </a>
   
 </nav>
