@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>freemaker入门demo | java学习笔记</title>
+  <title>面试题 | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具FreeMarker是免费的，基于Apache许可证2.0版本发布。FreeMarker原理：模板+数据==&amp;gt;数据 入门1.pom文件添加jar包&amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.freem">
+  <meta name="description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
 <meta property="og:type" content="article">
-<meta property="og:title" content="freemaker入门demo">
-<meta property="og:url" content="http://yoursite.com/2019/06/04/freemaker入门demo/index.html">
+<meta property="og:title" content="面试题">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/面试题/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="简介FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具FreeMarker是免费的，基于Apache许可证2.0版本发布。FreeMarker原理：模板+数据==&amp;gt;数据 入门1.pom文件添加jar包&amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.freem">
+<meta property="og:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-04T03:02:12.124Z">
+<meta property="og:updated_time" content="2019-07-14T06:04:55.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="freemaker入门demo">
-<meta name="twitter:description" content="简介FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具FreeMarker是免费的，基于Apache许可证2.0版本发布。FreeMarker原理：模板+数据==&amp;gt;数据 入门1.pom文件添加jar包&amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.freem">
+<meta name="twitter:title" content="面试题">
+<meta name="twitter:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-freemaker入门demo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/04/freemaker入门demo/" class="article-date">
-  <time datetime="2019-06-04T01:29:07.000Z" itemprop="datePublished">2019-06-04</time>
+    <a href="/2019/07/14/面试题/" class="article-date">
+  <time datetime="2019-07-14T01:02:57.000Z" itemprop="datePublished">2019-07-14</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      freemaker入门demo
+      面试题
     </h1>
   
 
@@ -86,17 +86,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具<br>FreeMarker是免费的，基于Apache许可证2.0版本发布。<br>FreeMarker原理：模板+数据==&gt;数据</p>
-<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="1-pom文件添加jar包"><a href="#1-pom文件添加jar包" class="headerlink" title="1.pom文件添加jar包"></a>1.pom文件添加jar包</h3><pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.freemarker&lt;/groupId&gt;
-    &lt;artifactId&gt;freemarker&lt;/artifactId&gt;
-    &lt;version&gt;2.3.28&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><h3 id="2-创建数据对象"><a href="#2-创建数据对象" class="headerlink" title="2.创建数据对象"></a>2.创建数据对象</h3><h3 id="2-创建模板"><a href="#2-创建模板" class="headerlink" title="2.创建模板"></a>2.创建模板</h3>
+        <ol>
+<li>forword和redirect的区别以及各自的应用场景<br> forword请求转发，redirect重定向<br> 区别：<pre><code>1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request
+2. forward地址栏不发生变化，redirect地址栏发生变化
+3. forward是发送一次请求，redirect是发送两次请求
+4. forward不能跨域访问，redirect能跨域访问
+5. forward请求能访问WEB-inf下main的资源
+</code></pre> 应用场景<br> forward一般用于用户登录的时候，根据角色转发到相应的模块<br> redirect一般用于用户注销登录时返回主页面和跳转到其他的网站等</li>
+<li>为什么要进行事务管理,Spring是如何进行事务管理支持的<br> 防止出现脏数据，防止数据库数据出现问题<br> spring是通过“声明式事务(基于AOP)”的方式对事务进行管理，即在配置文件中进行声明</li>
+<li>解释一下DI依赖注入和IOC控制反转，Spring中是如何做的</li>
+<li>Spring中的BeanFactory与ApplicationContext的区别</li>
+<li>什么是aop，aop的作用是什么</li>
+<li>GET与POST的区别，分别用在什么场景合适？</li>
+<li>什么是单例模式，有哪些实现方式，写出其中两种</li>
+<li>数据库储存引擎myisam / innodb的区别</li>
+<li>模糊查询可以使用索引吗？</li>
+<li>索引的优缺点</li>
+<li>介绍一下hibernate的缓存机制</li>
+<li>请描述一下springMvc执行流程<ol>
+<li>客户端发送请求通过springMVC的核心控制器</li>
+</ol>
+</li>
+<li>Servlet的生命周期</li>
+<li>Jsp九大内置对象</li>
+<li>自我介绍</li>
+<li>请谈谈你最近做的一个项目</li>
+<li>你主要负责的模块有哪些</li>
+<li>Sleep与wait的区别</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjy2m1lnh000658td27ewde9a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjy2m1lnl000958td75z7g2b5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -105,19 +127,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/06/缓存/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          缓存
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/31/CMS招聘网站/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">CMS招聘网站</div>
+      <div class="article-nav-title">(Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸</div>
     </a>
   
 </nav>
