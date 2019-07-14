@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="java学习笔记">
 <meta property="og:description" content="项目介绍 这个项目是干什么的 项目用到哪些技术 spring+springMVC+springDataJpa+shiro+easypoi+maven+hightchart+idea 模块  基础模块(用户管理，产品模块，数据字典，客户管理…) 权限模块(shiro) 登录模块(第三方登录，自动登录，限制登录人数，手机登录，忘记密码…) 采购模块 报表模块(多张表进行连表查询最终做的统计) 库存模块">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-14T07:00:35.484Z">
+<meta property="og:updated_time" content="2019-07-14T07:11:15.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸">
 <meta name="twitter:description" content="项目介绍 这个项目是干什么的 项目用到哪些技术 spring+springMVC+springDataJpa+shiro+easypoi+maven+hightchart+idea 模块  基础模块(用户管理，产品模块，数据字典，客户管理…) 权限模块(shiro) 登录模块(第三方登录，自动登录，限制登录人数，手机登录，忘记密码…) 采购模块 报表模块(多张表进行连表查询最终做的统计) 库存模块">
@@ -275,6 +275,15 @@ if ($.cookie(&quot;password&quot;)){
 
 4. 提示---display，opacity属性
 </code></pre><h2 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h2><pre><code>1. 显示登录用户圆形头像
+    .loginUser img{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
 2. 拖动标签页
 3. 标签页右键菜单
 </code></pre><h2 id="标签页面"><a href="#标签页面" class="headerlink" title="标签页面"></a>标签页面</h2><pre><code>1. 添加数据完成时跳到添加数据位置
@@ -283,7 +292,7 @@ if ($.cookie(&quot;password&quot;)){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjy2m1lny000e58tdkpc8esde" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjy2n9fpm000ehwtda2r8fr1c" class="article-share-link">Share</a>
       
       
     </footer>
