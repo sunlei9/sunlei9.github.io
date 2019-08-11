@@ -5,14 +5,17 @@
   
   <title>VUE | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Vue.js 是什么Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。 holle word!&amp;lt;script src=&amp;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="VUE">
 <meta property="og:url" content="http://yoursite.com/2019/07/16/VUE/index.html">
 <meta property="og:site_name" content="java学习笔记">
+<meta property="og:description" content="Vue.js 是什么Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。 holle word!&amp;lt;script src=&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-16T01:00:35.209Z">
+<meta property="og:updated_time" content="2019-07-19T01:12:45.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VUE">
+<meta name="twitter:description" content="Vue.js 是什么Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。 holle word!&amp;lt;script src=&amp;">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -83,11 +86,48 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Vue-js-是什么"><a href="#Vue-js-是什么" class="headerlink" title="Vue.js 是什么"></a>Vue.js 是什么</h1><p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="holle-word"><a href="#holle-word" class="headerlink" title="holle word!"></a>holle word!</h1><pre><code>&lt;script src=&quot;js/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;div id=&quot;app&quot; &gt;
+    &lt;!--hello vue!--&gt;
+    {{message}}&lt;br/&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    new Vue({
+            el:&quot;#app&quot;,
+            data:{
+                message:&quot;hello vue!&quot;
+            }
+    })
+&lt;/script&gt;
+</code></pre><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ol>
+<li>创建组件方式一<br> //创建全局组件<br> Vue.component(“mycomponent”,{<pre><code>template:&quot;&lt;h1&gt;全局组件&lt;/h1&gt;&quot;
+</code></pre> })<br> new Vue({<pre><code>el:&quot;#app&quot;,
+components:{
+    innercomponent:{
+        template:&quot;&lt;h2&gt;局部组件&lt;/h2&gt;&quot;
+    }
+}
+</code></pre> }) <div id="app"><br>     <mycomponent></mycomponent><br>     <innercomponent></innercomponent><br> </div></li>
+<li>创建组件方式二 <template id="template"><br>     <h1>全局组件创建</h1><br> </template></li>
+<li>创建组件方式三<br> <script type="text/template" id="template"><pre><code>&lt;h1&gt;全局组件创建&lt;/h1&gt;
+</code></pre> </script><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1></li>
+<li>什么是路由<br> 路由是负责将进入的浏览器请求映射到特定的组件代码中，即决定了由谁去响应客户端请求</li>
+<li>使用路由的步骤<ol>
+<li>导入路由的js库</li>
+<li>准备路径</li>
+<li>准备组件</li>
+<li>做一个路径映射到组件的配置</li>
+<li>告诉vue我要使用路由</li>
+<li>最终组件展示的位置<h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1></li>
+</ol>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjy6j3j7v00053ktd3jaba5yy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjz697rwn000a24tdv3657obc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -95,6 +135,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/07/19/MyBatis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MyBatis
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/14/面试题/" id="article-nav-older" class="article-nav-link-wrap">
@@ -123,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -136,23 +185,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/10/Redis/">Redis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/liunx/">liunx</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/19/MyBatis/">MyBatis</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/16/VUE/">VUE</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/14/面试题/">面试题</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/">智能商贸——进销存系统</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/24/spring/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/21/phaser入门/">phaser入门</a>
           </li>
         
       </ul>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>MyBatis | java学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ORM概述流行的ORM框架1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现 JDBC操作数据库缺陷MyBatis使用 导包&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/MyBatis/index.html">
+<meta property="og:site_name" content="java学习笔记">
+<meta property="og:description" content="ORM概述流行的ORM框架1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现 JDBC操作数据库缺陷MyBatis使用 导包&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-21T08:32:41.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MyBatis">
+<meta name="twitter:description" content="ORM概述流行的ORM框架1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现 JDBC操作数据库缺陷MyBatis使用 导包&amp;lt;dependency&amp;gt;       &amp;lt;groupId&amp;gt;org.mybatis&amp;lt;/groupId&amp;gt;       &amp;lt;artifactId&amp;gt;mybatis&amp;lt;/artifactId&amp;gt;">
+  
+    <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">java学习笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/19/MyBatis/" class="article-date">
+  <time datetime="2019-07-19T01:04:27.000Z" itemprop="datePublished">2019-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MyBatis
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ORM概述"><a href="#ORM概述" class="headerlink" title="ORM概述"></a>ORM概述</h1><h2 id="流行的ORM框架"><a href="#流行的ORM框架" class="headerlink" title="流行的ORM框架"></a>流行的ORM框架</h2><pre><code>1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现
+</code></pre><h2 id="JDBC操作数据库缺陷"><a href="#JDBC操作数据库缺陷" class="headerlink" title="JDBC操作数据库缺陷"></a>JDBC操作数据库缺陷</h2><h1 id="MyBatis使用"><a href="#MyBatis使用" class="headerlink" title="MyBatis使用"></a>MyBatis使用</h1><ol>
+<li>导包<pre><code>&lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+      &lt;version&gt;x.x.x&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>XML配置文件<br> 创建一个XML配置文件，XML配置文件中包含了对MyBatis系统的核心设置，包含：</p>
+<pre><code>1. 数据库连接实例的数据源(DataSource)
+2. 决定事物作用域和控制方式的事务管理器(TransactionManager)
+</code></pre><p> 当然，XML 配置文件还可以配置很多。<br> 下面给出一个示例：<br>&lt;?xml version=”1.0” encoding=”UTF-8” ?&gt;<br>`    &lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN”</p>
+<pre><code>&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+</code></pre><!--mybatis的根元素-->
+<p><configuration><br> <properties resource="jdbc.properties"></properties></configuration></p>
+ <!--给类型取别名-->
+<p> <typealiases></typealiases></p>
+<pre><code>&lt;!--
+方式1:给每个类型取一个别名
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Product&quot; alias=&quot;Product&quot;/&gt;
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Customer&quot; alias=&quot;Customer&quot;/&gt;
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Order&quot; alias=&quot;Order&quot;/&gt;
+--&gt;
+&lt;!--方式2: 所有的domain都得放在同一个地方--&gt;
+&lt;package name=&quot;cn.itsource.domain&quot;/&gt;
+</code></pre><p> </p>
+ <!--配置环境(操作数据库的环境)-->
+ <environments default="mysql"><br>     <environment id="mysql"><br>         <!--事务管理器,凡是用框架都有事务--><br>         <transactionmanager type="JDBC"><br>         <!--配置数据源(连接池)--><br>         <datasource type="POOLED"><br>             <property name="username" value="${jdbc.username}"><br>             <property name="password" value="${jdbc.password}"><br>             <property name="driver" value="${jdbc.driverClassName}"><br>             <property name="url" value="${jdbc.url}"><br>         </property></property></property></property></datasource><br>     </transactionmanager></environment><br> </environments>
+
+ <!--引入多个mapper对象-->
+<p> <mappers></mappers></p>
+<pre><code>&lt;mapper resource=&quot;cn/itsource/dao/impl/ProductDaoImpl.xml&quot;/&gt;
+</code></pre><p> <br>`</p>
+</li>
+</ol>
+<p>mybatis提供的三大核心对象：</p>
+<pre><code>1. SqlSessionFactoryBuilder主要用来创建SQLSessionFactory对象
+2. SQLSessionFactory他是一个重量级对象，它是线程安全的所以在使用SQLSessionFactory时，不能随意销毁，因为创建它一次很不容易
+</code></pre><h2 id="mapper映射器的使用"><a href="#mapper映射器的使用" class="headerlink" title="mapper映射器的使用"></a>mapper映射器的使用</h2><h1 id="MyBatis代码生成器"><a href="#MyBatis代码生成器" class="headerlink" title="MyBatis代码生成器"></a>MyBatis代码生成器</h1><h1 id="MyBatis拦截器"><a href="#MyBatis拦截器" class="headerlink" title="MyBatis拦截器"></a>MyBatis拦截器</h1><p>拦截器作用：拦截请求，织入自己额外的业务逻辑，增强功能<br>mybatis作为一个orm框架，它也给我们提供了一个拦截器，该拦截器主要是拦截你操作数据库的那一刻(操作数据库之前，之后，获取到结果值)<br>mybatis分页插件：底层基于拦截器实现</p>
+<h1 id="SSM集成"><a href="#SSM集成" class="headerlink" title="SSM集成"></a>SSM集成</h1><ol>
+<li>创建web项目</li>
+<li>导入jar包</li>
+<li>配置核心配置文件<ol>
+<li>applicationContext.xml</li>
+<li>jdbc.properties</li>
+<li>dataSource</li>
+<li>sqlSessionFactory</li>
+<li>dao</li>
+<li>service</li>
+<li>controller</li>
+<li></li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="cjz697rwg000524tdpt10h2el" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/23/maven-ssm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          maven+ssm
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/16/VUE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VUE</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/10/Redis/">Redis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/liunx/">liunx</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/19/MyBatis/">MyBatis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/16/VUE/">VUE</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 sunlei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

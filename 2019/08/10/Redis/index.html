@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>面试题 | java学习笔记</title>
+  <title>Redis | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+  <meta name="description" content="Nosql1. Nosql的概念NoSql指非关系型数据库，性能高，解决高并发问题 2. Nosql的分类 key-value键值对数据库 列式存储数据库 文档型结构数据库 图形结构数据库Redis介绍1. Redis的概念Redis是属于Key-Value键值对数据库，是Nosql的一种2. Redis的特点 数据存储到内存 支持数据持久 支持Redis集群 支持事务 支持订阅发布3. Redi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试题">
-<meta property="og:url" content="http://yoursite.com/2019/07/14/面试题/index.html">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/Redis/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+<meta property="og:description" content="Nosql1. Nosql的概念NoSql指非关系型数据库，性能高，解决高并发问题 2. Nosql的分类 key-value键值对数据库 列式存储数据库 文档型结构数据库 图形结构数据库Redis介绍1. Redis的概念Redis是属于Key-Value键值对数据库，是Nosql的一种2. Redis的特点 数据存储到内存 支持数据持久 支持Redis集群 支持事务 支持订阅发布3. Redi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-14T06:04:55.808Z">
+<meta property="og:updated_time" content="2019-08-11T00:49:22.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试题">
-<meta name="twitter:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+<meta name="twitter:title" content="Redis">
+<meta name="twitter:description" content="Nosql1. Nosql的概念NoSql指非关系型数据库，性能高，解决高并发问题 2. Nosql的分类 key-value键值对数据库 列式存储数据库 文档型结构数据库 图形结构数据库Redis介绍1. Redis的概念Redis是属于Key-Value键值对数据库，是Nosql的一种2. Redis的特点 数据存储到内存 支持数据持久 支持Redis集群 支持事务 支持订阅发布3. Redi">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Redis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/14/面试题/" class="article-date">
-  <time datetime="2019-07-14T01:02:57.000Z" itemprop="datePublished">2019-07-14</time>
+    <a href="/2019/08/10/Redis/" class="article-date">
+  <time datetime="2019-08-10T01:18:25.000Z" itemprop="datePublished">2019-08-10</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      面试题
+      Redis
     </h1>
   
 
@@ -86,39 +86,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>forword和redirect的区别以及各自的应用场景<br> forword请求转发，redirect重定向<br> 区别：<pre><code>1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request
-2. forward地址栏不发生变化，redirect地址栏发生变化
-3. forward是发送一次请求，redirect是发送两次请求
-4. forward不能跨域访问，redirect能跨域访问
-5. forward请求能访问WEB-inf下main的资源
-</code></pre> 应用场景<br> forward一般用于用户登录的时候，根据角色转发到相应的模块<br> redirect一般用于用户注销登录时返回主页面和跳转到其他的网站等</li>
-<li>为什么要进行事务管理,Spring是如何进行事务管理支持的<br> 防止出现脏数据，防止数据库数据出现问题<br> spring是通过“声明式事务(基于AOP)”的方式对事务进行管理，即在配置文件中进行声明</li>
-<li>解释一下DI依赖注入和IOC控制反转，Spring中是如何做的</li>
-<li>Spring中的BeanFactory与ApplicationContext的区别</li>
-<li>什么是aop，aop的作用是什么</li>
-<li>GET与POST的区别，分别用在什么场景合适？</li>
-<li>什么是单例模式，有哪些实现方式，写出其中两种</li>
-<li>数据库储存引擎myisam / innodb的区别</li>
-<li>模糊查询可以使用索引吗？</li>
-<li>索引的优缺点</li>
-<li>介绍一下hibernate的缓存机制</li>
-<li>请描述一下springMvc执行流程<ol>
-<li>客户端发送请求通过springMVC的核心控制器</li>
-</ol>
-</li>
-<li>Servlet的生命周期</li>
-<li>Jsp九大内置对象</li>
-<li>自我介绍</li>
-<li>请谈谈你最近做的一个项目</li>
-<li>你主要负责的模块有哪些</li>
-<li>Sleep与wait的区别</li>
-</ol>
-
+        <h2 id="Nosql"><a href="#Nosql" class="headerlink" title="Nosql"></a>Nosql</h2><h3 id="1-Nosql的概念"><a href="#1-Nosql的概念" class="headerlink" title="1. Nosql的概念"></a>1. Nosql的概念</h3><p>NoSql指非关系型数据库，性能高，解决高并发问题</p>
+<h3 id="2-Nosql的分类"><a href="#2-Nosql的分类" class="headerlink" title="2. Nosql的分类"></a>2. Nosql的分类</h3><ul>
+<li>key-value键值对数据库</li>
+<li>列式存储数据库</li>
+<li>文档型结构数据库</li>
+<li>图形结构数据库<h2 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h2><h3 id="1-Redis的概念"><a href="#1-Redis的概念" class="headerlink" title="1. Redis的概念"></a>1. Redis的概念</h3>Redis是属于Key-Value键值对数据库，是Nosql的一种<h3 id="2-Redis的特点"><a href="#2-Redis的特点" class="headerlink" title="2. Redis的特点"></a>2. Redis的特点</h3></li>
+<li>数据存储到内存</li>
+<li>支持数据持久</li>
+<li>支持Redis集群</li>
+<li>支持事务</li>
+<li>支持订阅发布<h3 id="3-Redis的使用场景"><a href="#3-Redis的使用场景" class="headerlink" title="3. Redis的使用场景"></a>3. Redis的使用场景</h3></li>
+<li>中央缓存</li>
+<li>计数器</li>
+<li>实时防攻防系统</li>
+<li>排行榜</li>
+<li>有效时间</li>
+<li>去重</li>
+<li>队列</li>
+<li>发布订阅<h2 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h2><h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><h3 id="1-String的基本操作"><a href="#1-String的基本操作" class="headerlink" title="1. String的基本操作"></a>1. String的基本操作</h3>设置值：set key value<br>取值：get key</li>
+</ul>
+<h3 id="2-Key的命令"><a href="#2-Key的命令" class="headerlink" title="2. Key的命令"></a>2. Key的命令</h3><h3 id="3-List的命令"><a href="#3-List的命令" class="headerlink" title="3. List的命令"></a>3. List的命令</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjz697rx5000i24tdzgr9uzpv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjz697rw9000124tdjywojzir" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,19 +119,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/16/VUE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          VUE
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/07/liunx/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">智能商贸——进销存系统</div>
+      <div class="article-nav-title">liunx</div>
     </a>
   
 </nav>

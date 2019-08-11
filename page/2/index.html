@@ -62,6 +62,492 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/16/maven-idea-uml/" class="article-date">
+  <time datetime="2019-06-16T01:15:41.000Z" itemprop="datePublished">2019-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/16/maven-idea-uml/">maven&amp;idea&amp;uml</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Maven——一个优秀的项目构建工具"><a href="#Maven——一个优秀的项目构建工具" class="headerlink" title="Maven——一个优秀的项目构建工具"></a>Maven——一个优秀的项目构建工具</h1><p>Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><pre><code>1. 自动构建(mvn jetty:run 清理,编译,测试,部署)
+2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库
+3. 契约编程(代码更加规范)
+</code></pre><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><pre><code>1. 在需要安装的路径下解压maven
+2. 配置MAVEN_HOME环境
+3. 执行mvn命令 生成一个
+</code></pre><h2 id="修改默认本地仓库"><a href="#修改默认本地仓库" class="headerlink" title="修改默认本地仓库"></a>修改默认本地仓库</h2><h2 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h2><p>mvn compile：编译(有点像javac)<br>mvn clean:清理<br>mvn clean compile:先清理，后编译<br>mvn test:测试(运行几个，失败几个，错误几个)<br>mvn package:打包<br>mvc source:jar:打源码包<br>mvn site：生成一个网站(文档)<br>mvn install:把jar包打好放到本地仓库<br>mvn eclipse:eclipse -&gt; 变成eclipse的结构<br>mvn package -Dmaven.test.skip=true -&gt; 打包的时候跳过测试</p>
+<h1 id="IDEA——最好的java开发环境之一"><a href="#IDEA——最好的java开发环境之一" class="headerlink" title="IDEA——最好的java开发环境之一"></a>IDEA——最好的java开发环境之一</h1><h1 id="UML-统一建模语言"><a href="#UML-统一建模语言" class="headerlink" title="UML :统一建模语言"></a>UML :统一建模语言</h1><p>用例图:看权限的图<br>类图:类的关系(继承,多对一，一对多等，组合与聚合关系)<br>流程图:请假流程，开会流程</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjz697rwv000e24td7iinife2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-EasyUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/13/EasyUI/" class="article-date">
+  <time datetime="2019-06-13T01:17:12.000Z" itemprop="datePublished">2019-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/EasyUI/">EasyUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EasyUI的认识"><a href="#EasyUI的认识" class="headerlink" title="EasyUI的认识"></a>EasyUI的认识</h2><ol>
+<li>是基于JQuery的ui(界面)插件集合</li>
+<li>不需要编写复杂的JavaScript，也不需要对css样式有深入了解，开发者只需要了解一些简单的html标签</li>
+<li>学习方式copy+edit<h2 id="EasyUI使用"><a href="#EasyUI使用" class="headerlink" title="EasyUI使用"></a>EasyUI使用</h2></li>
+</ol>
+<ol>
+<li>下载导入easyui文件</li>
+<li><p>在对应页面引入easyui的js文件和css文件</p>
+<p> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt;</p>
+ <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+ <%--引入easyui的js文件--%>
+ <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+ <%--国际化--%>
+ <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</%--国际化--%></%--引入easyui的js文件--%></li>
+<li><p>使用easyui里面的组件</p>
+<ol>
+<li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
+<p> `&lt;div id=”p” class=”easyui-panel” title=”My Panel”</p>
+<pre><code>style=&quot;width:500px;height:150px;padding:10px;background:#fafafa;&quot;
+data-options=&quot;iconCls:&apos;icon-save&apos;,closable:true,
+collapsible:true,minimizable:true,maximizable:true&quot;&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+</code></pre><p> `</p>
+</li>
+<li><p>通过js创建组件<br><code>&lt;div id=&quot;p&quot; style=&quot;padding:10px;&quot;&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+&lt;/div&gt;
+$(&#39;#p&#39;).panel({
+ width:500,
+ height:150,
+ title:&#39;My Panel&#39;,
+ tools:[{
+ iconCls:&#39;icon-add&#39;,
+ handler:function(){alert(&#39;new&#39;)}
+ },{
+ iconCls:&#39;icon-save&#39;,
+ handler:function(){alert(&#39;save&#39;)}
+ }]
+});</code></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2></li>
+<li>一般在创建组件的时候，就应该指定好对应属性，不然，如果创建完之后，在修改对应属性，就没有效果</li>
+<li>指定属性 在 标签里面指定 ，在js代码在创建的时候，也可以指定；<h2 id="组件三要素"><a href="#组件三要素" class="headerlink" title="组件三要素"></a>组件三要素</h2></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>属性:通过标签里面属性，可以让组件展示不同的效果，完成不同的功能<ol>
+<li>在组建创建时都有默认属性</li>
+<li>属性只能在创建(初始化)组件有效，组件创建完毕后，对某个属性修改无效</li>
+<li>属性定义方式<ol>
+<li>方式一:直接在标签里面写 属性=属性值</li>
+<li>方式二:data-options<br> 注意一:如果在标签里面定义一个属性和在data-options里面定义同一属性，标签里面有效果<br> 注意二:有些属性只能写到data-options里面 想tools这种属性，有多个值，不能放到外面</li>
+<li>方式三:直接在js中写</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>方法:<ol>
+<li>调用方法：<br> $(“selector”).组件名(methodName,[params])</li>
+<li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
+</ol>
+</li>
+<li><p>事件</p>
+<p> //点击事件<br> onClick: function(node){</p>
+<pre><code>alert(node.text);  // 在用户点击的时候提示
+</code></pre><p> },</p>
+</li>
+</ol>
+<h2 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h2><ol>
+<li>Tabs选项卡</li>
+<li>message消息提示框</li>
+<li>Form表单</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjz697rwe000424tdn2br661i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/11/js高级/" class="article-date">
+  <time datetime="2019-06-11T01:15:53.000Z" itemprop="datePublished">2019-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/11/js高级/">js高级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js对象"><a href="#js对象" class="headerlink" title="js对象"></a>js对象</h2><pre><code>&lt;script&gt;
+    //js是一个基于对象和事件驱动编程语言
+    //1.js一切皆是对象，你可以把基本类型，引用类型，函数都可以看做对象
+    var num = 2.134141;
+    console.debug(num.toFixed(2));//保留两位小数
+
+    //2.js中的true和false
+    var boo = false;
+     if (boo){
+        console.debug(&quot;不能进入&quot;)
+    }
+    var boo2 = new Boolean(false);
+     if (boo2){
+         console.debug(&quot;可以进入&quot;)
+     }
+     if(NaN){
+         console.debug(&quot;不能进入&quot;)
+     }
+
+    //3.对象的操作
+    //创建对象的方式
+    var obj1 = new Object();
+    var obj2 = {};
+    var obj3 = new user();
+    function user() {
+
+    }
+    console.debug(obj1)
+    console.debug(obj2)
+    console.debug(obj3)
+    //给对象添加属性和方法
+    obj3.name=&quot;小c&quot;;
+    obj3[&quot;age&quot;]=&quot;22&quot;;
+    obj3.play=function (game) {
+        console.debug(this.name+&quot;玩&quot;+game)
+    }
+    //调用方法
+    obj3.play(&quot;lol&quot;)
+
+    //遍历对象
+    for (var key in obj3){
+        console.debug(key)
+
+        //如果是方法就调用方法
+        if (typeof obj3[key] == &quot;function&quot;){
+            obj3[key](&quot;lol&quot;);
+        }else {//是属性直接取值
+            console.debug(obj3[key])
+        }
+    }
+&lt;/script&gt;
+</code></pre><h2 id="json对象和json字符串"><a href="#json对象和json字符串" class="headerlink" title="json对象和json字符串"></a>json对象和json字符串</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //json字符串
+    var jsonStr = &quot;{&apos;id&apos;:1,&apos;name&apos;:&apos;霸哥&apos;}&quot;;
+    //json对象转换
+    var jsonObj = eval(&quot;(&quot;+jsonStr+&quot;)&quot;);
+    console.debug(jsonObj)
+
+    //Json.parse()--必须是json标准格式
+    //var obj=$.parseJSON(jsonStr)
+    var jsonStr2 = &apos;{&quot;id&quot;:1,&quot;name&quot;:&quot;霸哥&quot;}&apos;;
+    var obj=$.parseJSON(jsonStr2)
+    console.debug(obj)
+&lt;/script&gt;
+</code></pre><h2 id="js类"><a href="#js类" class="headerlink" title="js类"></a>js类</h2><pre><code>&lt;script&gt;
+    //类构造方法在写的时候，如果方法首字母是大写，一般认为是构造方法
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+
+    //属性拷贝
+    //方式2 一个一个拷贝
+    var obj1 = {
+        name:&quot;gg&quot;,
+        age:&quot;18&quot;
+    }
+    var obj2 = {
+    }
+    obj2.name=obj1.name;
+    obj2.age=obj1.age;
+    console.debug(obj2)
+    //方式3 循环对象
+    for (var key in obj1){
+        if (!obj2.hasOwnProperty(key)){//判断里面是否有属性
+            obj2[key]=obj1[key];
+        }
+    }
+    console.debug(obj2)
+&lt;/script&gt;
+</code></pre><h2 id="js的prototype"><a href="#js的prototype" class="headerlink" title="js的prototype"></a>js的prototype</h2><pre><code>&lt;script&gt;
+    //prototype:原型的意思--js对象都有prototype属性，使你可以向对象添加属性和方法
+    //使用
+    /**
+     * 对象组成 ：自定义属性
+     *             原型属性
+     *      先从自定义属性对象中找，找不到到原型里面找
+     */
+    function User(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    var user1=new User(&quot;彩旗&quot;,23)
+    var user2=new User(&quot;天霸&quot;,23)
+    //展示目录结构
+    console.dir(user1)
+    console.dir(user2)
+    //对象里面的原型属性__proto__ ，对象里面原型属性是相同或者共享
+    console.debug(user1.__proto__ === user2.__proto__)
+    //原型上面定义方法
+    User.prototype.eat=function (food) {
+        console.debug(this.name+&quot;吃&quot;+food)
+    }
+&lt;/script&gt;
+</code></pre><h2 id="js中的回调函数"><a href="#js中的回调函数" class="headerlink" title="js中的回调函数"></a>js中的回调函数</h2><pre><code>&lt;script&gt;
+    //函数：方法 实现一块逻辑，一堆代码打包成一个方法
+    //普通函数:function user(){}
+    //构造函数:function User(){}
+    //回调函数:函数作为一个参数，传递给另一个函数，重新回调这个函数
+    setTimeout(test,3000);//异步
+    function test() {
+        console.debug(111)
+    }
+    console.debug(222)
+    //匿名函数:没有名字的函数
+    // 作用：1,如果变量只用一次的时候 可以放到匿名函数中  解决作用域污染问题
+    //       2，作为参数传递
+    (function (a,b) {
+        var result=a+b;
+        //window.result=result;暴露到window中
+    })(7,7);
+&lt;/script&gt;
+</code></pre><h2 id="jquery事件委托"><a href="#jquery事件委托" class="headerlink" title="jquery事件委托"></a>jquery事件委托</h2><pre><code>&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //事件委托:给动态元素添加事件
+
+    //绑定事件
+    $(function () {
+        $(&quot;#add&quot;).click(function () {
+            var content = &quot;&lt;div&gt;\n&quot; +
+                &quot;        附件:&lt;input type=\&quot;file\&quot; name=\&quot;file\&quot;&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;delete\&quot; href=\&quot;javascript:;\&quot;&gt;删除&lt;/a&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;examine\&quot; href=\&quot;javascript:;\&quot;&gt;查看&lt;/a&gt;\n&quot; +
+                &quot;    &lt;/div&gt;&quot;;
+            $(&quot;#userForm&quot;).append(content);
+        })
+        //事件委托
+        $(&quot;#userForm&quot;).on(&apos;click&apos;,&apos;.delete&apos;,function () {
+            console.debug(&quot;删除&quot;)
+        })
+    })
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a id=&quot;add&quot; href=&quot;javascript:;&quot;&gt;添加&lt;/a&gt;
+&lt;form id=&quot;userForm&quot;&gt;
+&lt;div&gt;
+    附件:&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="js的闭包"><a href="#js的闭包" class="headerlink" title="js的闭包"></a>js的闭包</h2><pre><code>&lt;script&gt;
+    //闭包：函数内使用函数外的变量
+    var a=10;
+    function b() {
+        alert(a)
+    }
+    //闭包案例--计数案例
+    var  result=0;
+    function getSum() {
+        return result++;
+    }
+    console.debug(getSum());
+    console.debug(getSum());
+    result=0;
+    console.debug(getSum())
+
+    //使用闭包和匿名函数结合起来使用
+    (function () {
+        var result1=0;
+        window.getSum1=function () {
+            result1++;
+            return result1;
+        }
+    })();
+    console.debug(getSum1());
+    console.debug(getSum1());
+    //result1=10;
+    console.debug(getSum1());
+&lt;/script&gt;
+</code></pre><h2 id="js里面的this用法"><a href="#js里面的this用法" class="headerlink" title="js里面的this用法"></a>js里面的this用法</h2><p>this的指向的改变</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjz697rwt000d24td4amtbj0y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/10/jQuery/" class="article-date">
+  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/10/jQuery/">jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
+<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
+<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>页面加载事件</p>
+<pre><code>//页面加载完之后再执行代码，先于window.onload执行
+$(function(){
+
+})
+</code></pre></li>
+<li>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</li>
+<li><p>DOM对象和jquery对象的转换</p>
+<pre><code>$(function(){
+    //dom对象
+    var domObj = document.getElementById(&quot;mySpan&quot;);
+
+    //jquery对象
+    var jqueryObj = $(&quot;#mySpan&quot;);
+
+    //有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+    var domToJquery = $(domObj);
+
+    //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+    var jqueryToDom = jqueryObj[0];
+})
+</code></pre></li>
+<li><p>选择器</p>
+<pre><code>//id选择器 id一般不重复
+$(&quot;#id&quot;);
+
+//class选择器
+$(&quot;.class&quot;);
+
+//标签选择器 页面上的所有标签都有效果
+$(&quot;div&quot;);
+
+//获取所有元素--没什么用
+$(&quot;*&quot;);
+
+//多元素选择器
+$(&quot;div,span&quot;)
+
+//层次选择器
+//祖先后代
+$(&quot;div span&quot;)
+//父亲儿子
+$(&quot;div &gt; span&quot;)
+//相邻选择器
+$(&quot;input + input&quot;)
+//同级选择器
+$(&quot;form ~ input&quot;)
+
+//属性选择器
+</code></pre></li>
+<li><p>jquery注册事件方式<br> //方式一注册事件<br> $(“#id”).click(function(){<br> })</p>
+<p> //方式二注册事件<br> $(“#id”).on(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).off(‘click’)</p>
+<p> //方式三注册事件<br> $(“#id”).bind(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).unbind(‘click’);</p>
+</li>
+<li>jquery常用方法</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjz697rwp000b24tdzzd1xiq1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/09/AJAX/" class="article-date">
@@ -105,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjy6j3j7k00003ktd91p3c3la" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjz697rvr000024tdrsw7onpl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjy6j3j7u00043ktddp3rnetl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjz697rwj000724tddp9ib9us" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +672,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjy6j3j87000d3ktdxcdyfgxg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjz697rx3000h24td44ztdm96" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +714,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjy6j3j7w00063ktd2t4r2tfs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjz697rwi000624tdfa3qli5l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -440,7 +926,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjy6j3j7p00013ktdrpgey4fr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjz697rwd000324tdh4wbfgg6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,7 +994,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjy6j3j7t00033ktdnyylceyb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjz697rwb000224tdcex16vjd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -539,7 +1025,7 @@ public PageBean getPageBean(Condition condition) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -552,23 +1038,23 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
+            <a href="/2019/08/10/Redis/">Redis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/liunx/">liunx</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/19/MyBatis/">MyBatis</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/16/VUE/">VUE</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/14/面试题/">面试题</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/">智能商贸——进销存系统</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/24/spring/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/21/phaser入门/">phaser入门</a>
           </li>
         
       </ul>

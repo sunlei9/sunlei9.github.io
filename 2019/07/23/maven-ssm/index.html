@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>面试题 | java学习笔记</title>
+  <title>maven+ssm | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+  <meta name="description" content="maven多模块开发多模块：把当前的项目拆分成多个模块 idea集成svn持续集成Lucene全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索对纯文本进行检索全文搜索特点： 1. 搜索非常快 2. 只关注文本，不关注语义 3. 对于查询最终结果值进行高亮展示 4. 对一部分关键字进行截取 5. 相关度最高的排在最前面，官网中相关的网页排在最前面 62//3/35/85//33数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试题">
-<meta property="og:url" content="http://yoursite.com/2019/07/14/面试题/index.html">
+<meta property="og:title" content="maven+ssm">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/maven-ssm/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+<meta property="og:description" content="maven多模块开发多模块：把当前的项目拆分成多个模块 idea集成svn持续集成Lucene全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索对纯文本进行检索全文搜索特点： 1. 搜索非常快 2. 只关注文本，不关注语义 3. 对于查询最终结果值进行高亮展示 4. 对一部分关键字进行截取 5. 相关度最高的排在最前面，官网中相关的网页排在最前面 62//3/35/85//33数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-14T06:04:55.808Z">
+<meta property="og:updated_time" content="2019-08-02T01:17:28.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试题">
-<meta name="twitter:description" content="forword和redirect的区别以及各自的应用场景 forword请求转发，redirect重定向 区别：1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request 2. forward地址栏不发生变化，redirect地址栏发生变化 3. forward是发送一次请求，redirect是发送两次请求 4. forward">
+<meta name="twitter:title" content="maven+ssm">
+<meta name="twitter:description" content="maven多模块开发多模块：把当前的项目拆分成多个模块 idea集成svn持续集成Lucene全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索对纯文本进行检索全文搜索特点： 1. 搜索非常快 2. 只关注文本，不关注语义 3. 对于查询最终结果值进行高亮展示 4. 对一部分关键字进行截取 5. 相关度最高的排在最前面，官网中相关的网页排在最前面 62//3/35/85//33数据">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-maven-ssm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/07/14/面试题/" class="article-date">
-  <time datetime="2019-07-14T01:02:57.000Z" itemprop="datePublished">2019-07-14</time>
+    <a href="/2019/07/23/maven-ssm/" class="article-date">
+  <time datetime="2019-07-23T01:02:16.000Z" itemprop="datePublished">2019-07-23</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      面试题
+      maven+ssm
     </h1>
   
 
@@ -86,39 +86,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>forword和redirect的区别以及各自的应用场景<br> forword请求转发，redirect重定向<br> 区别：<pre><code>1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request
-2. forward地址栏不发生变化，redirect地址栏发生变化
-3. forward是发送一次请求，redirect是发送两次请求
-4. forward不能跨域访问，redirect能跨域访问
-5. forward请求能访问WEB-inf下main的资源
-</code></pre> 应用场景<br> forward一般用于用户登录的时候，根据角色转发到相应的模块<br> redirect一般用于用户注销登录时返回主页面和跳转到其他的网站等</li>
-<li>为什么要进行事务管理,Spring是如何进行事务管理支持的<br> 防止出现脏数据，防止数据库数据出现问题<br> spring是通过“声明式事务(基于AOP)”的方式对事务进行管理，即在配置文件中进行声明</li>
-<li>解释一下DI依赖注入和IOC控制反转，Spring中是如何做的</li>
-<li>Spring中的BeanFactory与ApplicationContext的区别</li>
-<li>什么是aop，aop的作用是什么</li>
-<li>GET与POST的区别，分别用在什么场景合适？</li>
-<li>什么是单例模式，有哪些实现方式，写出其中两种</li>
-<li>数据库储存引擎myisam / innodb的区别</li>
-<li>模糊查询可以使用索引吗？</li>
-<li>索引的优缺点</li>
-<li>介绍一下hibernate的缓存机制</li>
-<li>请描述一下springMvc执行流程<ol>
-<li>客户端发送请求通过springMVC的核心控制器</li>
-</ol>
-</li>
-<li>Servlet的生命周期</li>
-<li>Jsp九大内置对象</li>
-<li>自我介绍</li>
-<li>请谈谈你最近做的一个项目</li>
-<li>你主要负责的模块有哪些</li>
-<li>Sleep与wait的区别</li>
-</ol>
-
+        <h1 id="maven多模块开发"><a href="#maven多模块开发" class="headerlink" title="maven多模块开发"></a>maven多模块开发</h1><p>多模块：把当前的项目拆分成多个模块</p>
+<h1 id="idea集成svn"><a href="#idea集成svn" class="headerlink" title="idea集成svn"></a>idea集成svn</h1><h2 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h2><h1 id="Lucene"><a href="#Lucene" class="headerlink" title="Lucene"></a>Lucene</h1><p>全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索<br>对纯文本进行检索<br>全文搜索特点：</p>
+<pre><code>1. 搜索非常快
+2. 只关注文本，不关注语义
+3. 对于查询最终结果值进行高亮展示
+4. 对一部分关键字进行截取
+5. 相关度最高的排在最前面，官网中相关的网页排在最前面
+</code></pre><p>62//3/35/85//33<br>数据结构：</p>
+<pre><code>1. 结构化数据：就是数据库中对应的表
+2. 非结构化数据：word，pdf，txt
+3. 半结构化数据：xml，html 
+</code></pre><h1 id="异构系统"><a href="#异构系统" class="headerlink" title="异构系统"></a>异构系统</h1><p>用不同语言搭建的架构就叫做异构系统<br>CXF：webservice提供的框架</p>
+<h1 id="第三方登录"><a href="#第三方登录" class="headerlink" title="第三方登录"></a>第三方登录</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjz697rx5000i24tdzgr9uzpv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="cjz697rx0000g24tdhh7kr76z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,19 +111,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/07/16/VUE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/07/liunx/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          VUE
+          liunx
         
       </div>
     </a>
   
   
-    <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/19/MyBatis/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">智能商贸——进销存系统</div>
+      <div class="article-nav-title">MyBatis</div>
     </a>
   
 </nav>
