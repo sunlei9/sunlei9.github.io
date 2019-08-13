@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="java学习笔记">
 <meta property="og:description" content="Nosql1. Nosql的概念NoSql指非关系型数据库，性能高，解决高并发问题 2. Nosql的分类 key-value键值对数据库 列式存储数据库 文档型结构数据库 图形结构数据库Redis介绍1. Redis的概念Redis是属于Key-Value键值对数据库，是Nosql的一种2. Redis的特点 数据存储到内存 支持数据持久 支持Redis集群 支持事务 支持订阅发布3. Redi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T00:49:22.316Z">
+<meta property="og:updated_time" content="2019-08-11T01:09:05.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
 <meta name="twitter:description" content="Nosql1. Nosql的概念NoSql指非关系型数据库，性能高，解决高并发问题 2. Nosql的分类 key-value键值对数据库 列式存储数据库 文档型结构数据库 图形结构数据库Redis介绍1. Redis的概念Redis是属于Key-Value键值对数据库，是Nosql的一种2. Redis的特点 数据存储到内存 支持数据持久 支持Redis集群 支持事务 支持订阅发布3. Redi">
@@ -104,13 +104,13 @@
 <li>有效时间</li>
 <li>去重</li>
 <li>队列</li>
-<li>发布订阅<h2 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h2><h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><h3 id="1-String的基本操作"><a href="#1-String的基本操作" class="headerlink" title="1. String的基本操作"></a>1. String的基本操作</h3>设置值：set key value<br>取值：get key</li>
+<li>发布订阅<h2 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h2><h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><h3 id="1-String的基本操作"><a href="#1-String的基本操作" class="headerlink" title="1. String的基本操作"></a>1. String的基本操作</h3>设置值：set key value<br>取值：get key<br>同时设置一个或多个 key-value 对：mset<br>返回所有(一个或多个)给定 key 的值：mget<br>将 key 中储存的数字值增1(key不存在,则初始化为0,再加1)：incr key<br>将 key 中储存的数字值减1(key不存在,则初始化为0,再减1)：decr key<br>自增多少：incrBy key num<br>自减多少：decrBy key num<h3 id="2-Key的命令"><a href="#2-Key的命令" class="headerlink" title="2. Key的命令"></a>2. Key的命令</h3>获取所有key列表：key *<br>删除key：del key<br>设置key的过期时间：expire key xx<br>查看key的过期时间：ttl key<br>选择库  默认16个数据库：select 0-15<br>清空整个redis服务器数据，所有的数据库全部清空：flushall<br>清除当前库，redis中默认有16个数据库，名称分别为0,1,2.。。15：flushdb<h3 id="3-List的命令"><a href="#3-List的命令" class="headerlink" title="3. List的命令"></a>3. List的命令</h3></li>
 </ul>
-<h3 id="2-Key的命令"><a href="#2-Key的命令" class="headerlink" title="2. Key的命令"></a>2. Key的命令</h3><h3 id="3-List的命令"><a href="#3-List的命令" class="headerlink" title="3. List的命令"></a>3. List的命令</h3>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjz697rw9000124tdjywojzir" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjz96v1vl0008hktdcfobv4tv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,6 +118,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/08/11/Elasticsearch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ElasticSearch
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/07/liunx/" id="article-nav-older" class="article-nav-link-wrap">
@@ -159,6 +168,14 @@
       <ul>
         
           <li>
+            <a href="/2019/08/13/springboot/">springboot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/10/Redis/">Redis</a>
           </li>
         
@@ -168,14 +185,6 @@
         
           <li>
             <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/19/MyBatis/">MyBatis</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/VUE/">VUE</a>
           </li>
         
       </ul>

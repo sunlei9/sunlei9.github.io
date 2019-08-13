@@ -62,6 +62,331 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-phaser入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/21/phaser入门/" class="article-date">
+  <time datetime="2019-06-21T11:46:02.000Z" itemprop="datePublished">2019-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/21/phaser入门/">phaser入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="phaser介绍"><a href="#phaser介绍" class="headerlink" title="phaser介绍"></a>phaser介绍</h1><p>phaser是一个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/21/phaser入门/" data-id="cjz96v1vu000dhktdg71tg48b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JPA" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/17/JPA/" class="article-date">
+  <time datetime="2019-06-17T01:40:25.000Z" itemprop="datePublished">2019-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/17/JPA/">JPA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JPA入门"><a href="#JPA入门" class="headerlink" title="JPA入门"></a>JPA入门</h1><p>ORM规范<br>    ORM：对象关系映射<br>作用:操作数据库<br>JPA是持久化规范，hibernate是其中一个实现</p>
+<h2 id="JPA对比JDBC的优缺点"><a href="#JPA对比JDBC的优缺点" class="headerlink" title="JPA对比JDBC的优缺点"></a>JPA对比JDBC的优缺点</h2><p>JDBC:优点:</p>
+<pre><code>   1. 操作数据库最底层，性能好控制
+缺点:
+   1. 使用复杂(重复代码太多)
+   2. 移植数据库比较麻烦
+   3. 如果要实现缓存，要自己手动去实现，性能上面没有相应的控制
+   4. JDBC操作sql，jpa操作对象 
+</code></pre><p>JPA:优点:</p>
+<pre><code>    1. 操作简单
+    2. 操作对象就相当于操作数据库
+    3. 自带缓存提供
+    4. 移植性比较好，只需要换一个方言
+缺点:
+    1. 不能干预sql语句的生成，性能不好控制 
+    2. 如果一个项目对sql比较高，不适合用jpa
+    3. 如果一个表中有上亿级别的数据量，不适合用jpa，也不适合用jdbc(架构使用数据库读写分离，分库分表方案解决)
+</code></pre><h2 id="连接数据库的配置"><a href="#连接数据库的配置" class="headerlink" title="连接数据库的配置"></a>连接数据库的配置</h2><pre><code>1. 四个基本配置
+2. 配置方言
+3. shou_sql
+    是否显示sql语句
+4. 让jpa自动创建相应的表
+    hbm2ddl.auto
+</code></pre><h2 id="自动建表"><a href="#自动建表" class="headerlink" title="自动建表"></a>自动建表</h2><pre><code>添加注解
+    类上
+        @Entity
+            JPA就知道这里有个对象
+        @Table(name=&quot;表名&quot;)
+            代表对象与那张表建立关系
+            可以不写，表名就是类名
+    属性上
+        @Id
+            主键
+            JPA中必须有主键
+            JPA要求主键必须是serializable类型
+            @GeneratedValue
+                主键生成策略
+                    主键
+                        确定一条数据的唯一性
+                            非空且唯一
+                    自然主键
+                        主键是有意义的
+                    用代理主键
+                        主键是没有意义的
+                            没有意义的数据我们不需要自动填写，自动生成就行了
+                                保持唯一性
+                IDENTITY
+                    自增策略
+                        要求
+                            主键必需是数字
+                            数据库必需支持这个策略
+                        性能高
+                SEQUENCE
+                    序列
+                        序列对象
+                        看起来还是自增
+                        要求
+                            主键必需是数字
+                            数据库必需支持这个策略
+                        性能更高
+                AUTO
+                    自动区分用的数据库，自动选择使用IDENTITY还是SEQUENCE
+                    默认策略
+                TABLE
+                    表策略
+                        兼容所有数据库
+                        模拟序列
+                        性能稍差
+        @ManyToOne
+            外键
+                告诉JPA这里是个多对一
+            fetch：抓取策略
+                FetchType.EAGER
+                    及时加载
+                        默认
+                FetchType.LAZY
+                    懒(延时)加载，要用时才进行数据加载
+            @JoinColum(name=&quot;外键名称&quot;)
+                设置外键的名称
+                子主题 2
+        @Colimn（属性名=别名，length=20，unique=true，nullable=false）
+            改别名
+            长度改为20
+            唯一
+            不能为空
+        @Transient
+            临时属性
+                数据库中不要加上
+        @Lob
+            longtext
+        @Temporary
+建表策略
+    create-drop    
+        删除-创建
+    create
+        删除-创建
+    update
+        没有表就创建，有表就修改
+    validate
+        验证你的domin和表是否对应上
+</code></pre><h2 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h2><pre><code>1. Persistence
+    持久化对象
+    创建EntityManagerFactory对象
+2. EntityManagerFactory
+    EntityManager工厂对象
+    创建EntityManager对象
+    特点
+        重量级对象
+            重
+                数据源【连接池】
+                二级缓存
+                    导jar包
+                    配置信息Second-level Cache
+                    添加persistence.xml配置信息
+                    二级缓存命中
+                        同一个EntityManagerFactory，不同EntityManager同一个OID
+                    使用场景
+                        读取大于配置
+                        独享控制权
+                        允许出现无效数据
+                        数据量不能过大
+                所有jpa的配置
+                预编译的SQL/JPQL
+        这个对象不能随意销毁
+            1:1:1--&gt;一个项目：1个EntityManagerFacttory：一个数据库
+        这个对象线程安全
+            线程安全影响性能
+3. EntityManager
+    操作数据库（CRUD）
+        增删改必须提交事务
+    方法
+        merge
+            添加或者修改
+    特点
+        轻
+            连接对象
+            一级缓存
+                提高了查询速度
+                默认提供
+                一级缓存命中
+                    同一个EntityManagerFactory，同一个EntityManager同一个OID
+        一般来说，一个线程/一次请求 用一次EntityManager
+        线程不安全
+EntityTransaction
+    事务对象（一组操作，要不都成功，要不都失败）
+    JPA 增删改一定要有事务
+    多个数据库：JTA
+</code></pre><h2 id="对象的状态"><a href="#对象的状态" class="headerlink" title="对象的状态"></a>对象的状态</h2><pre><code>1. 四个状态
+    1. 临时状态（瞬时状态）
+        对象刚刚创建出来还没有与entityManager发生关系
+    2. 持久化状态（托管状态）
+        对象与entityManager发生关系了
+            对象就存在一级缓存中，在一级缓存中的对象也就是持久化对象
+        持久化的对象会不会被修改和merge方法没有关系
+        只能删除持久化状态的对象
+        不能修改OID
+    3. 游离状态（脱管状态）
+        对象与entityManager解除了关系
+            从一级缓存中移除了
+    4. 删除状态
+        hibernate中没有删除状态
+        只要调用了remove方法，这个对象就变成删除状态，JPA就要计划把他删除了
+        删除状态是一种特殊的持久化状态
+            还在一级缓存中
+2. 脏数据更新
+    提交数据的时候进行脏数据更新
+3. 报错
+    n-to-n:持久化对象的OID不能修改
+    no session:会话关闭后去拿取数据（懒加载）
+</code></pre><h2 id="域对象-domain对象-的关系"><a href="#域对象-domain对象-的关系" class="headerlink" title="域对象(domain对象)的关系"></a>域对象(domain对象)的关系</h2><pre><code>1. 依赖关系
+    javabean之间的依赖关系
+    分层:表现层,业务层,持久层(依赖关系)
+    Controller表现层依赖于Service业务层，Service依赖于Dao持久层
+2. 关联关系
+    类之间的引用关系，以属性定义的关系表现
+    多重性
+        一对一
+            共享主键
+            唯一外键（建议）
+            默认迫切加载
+        多对一
+            有外键关系，外键在哪边，哪边就是多方
+            先保存一方在保存多方
+                性能高
+            默认迫切加载
+                改为懒加载
+        一对多
+            默认懒加载
+                集合默认懒加载
+        多对多
+            中间表
+                JoinTable
+                    name
+                        自定义中间表名字
+                    JoinColumns
+                        当前类对应的列名
+                    inverseJoinColumns
+                        对应关系表列名
+            集合
+                默认懒加载
+            双向的多对多
+                必须保存表名和列名都是一致的
+            子主题 4
+    导航性
+3. 聚合关系
+    双向的多对一，一对多
+        让一方放弃关系维护
+            两边都在维护
+            mappedBy=&quot;多方维护的字段名&quot;
+        级联
+            cascade=
+                CascadeType.PERSIST
+                    级联添加
+                CascadeType.REMOVE
+                    级联删除
+                CascadeType.MERGE
+                    级联修改
+                CascadeType.ALL
+                    包含级联增删改
+            非常危险的操作，请慎用
+                特别是级联删除
+            orpherRemove
+                孤儿删除
+            组合关系一定要用级联
+                用最强级联
+            凡是单据都是组合关系
+4. 组合关系
+    强聚合(整体和部分不可分割)
+</code></pre><h2 id="hibernate"><a href="#hibernate" class="headerlink" title="hibernate"></a>hibernate</h2><pre><code>操作数据库的框架
+    ORM框架
+数据库
+    关系型数据库
+java语言
+    面向对象的语言
+是jpa的完美实现
+</code></pre><h2 id="JPQL"><a href="#JPQL" class="headerlink" title="JPQL"></a>JPQL</h2><pre><code>JPA的查询语言
+    面向对象
+兼容各种数据库
+底层是SQL
+使用
+    查询结果过滤
+        select o from 表名 o where 
+    查询排序
+        子主题 1
+    使用关联对象属性排序
+    去重
+        distinct
+    size
+    连接
+    jpql关联    黄金法则
+            不需要消灭笛卡尔积
+            关联的是前面的对象的别名，属性
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/17/JPA/" data-id="cjz96v1vg0004hktdocft82sn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/16/maven-idea-uml/" class="article-date">
@@ -97,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjz697rwv000e24td7iinife2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjz96v1vz000ghktdlywb3u3i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +534,7 @@ $(&#39;#p&#39;).panel({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjz697rwe000424tdn2br661i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjz96v1vf0003hktd1hxtv26z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +768,7 @@ $(&#39;#p&#39;).panel({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjz697rwt000d24td4amtbj0y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjz96v1vt000chktdc4hk3n5l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,7 +863,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjz697rwp000b24tdzzd1xiq1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjz96v1vq000bhktdm85sc2rh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -591,7 +916,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjz697rvr000024tdrsw7onpl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjz96v1v40001hktdujzacf4p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -627,7 +952,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjz697rwj000724tddp9ib9us" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjz96v1vj0006hktdyrpzz7wf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -672,7 +997,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjz697rx3000h24td44ztdm96" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjz96v1w1000ihktdpilkxoou" class="article-share-link">Share</a>
       
       
     </footer>
@@ -714,287 +1039,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjz697rwi000624tdfa3qli5l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CMS招聘网站" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/31/CMS招聘网站/" class="article-date">
-  <time datetime="2019-05-31T01:13:21.000Z" itemprop="datePublished">2019-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/31/CMS招聘网站/">CMS招聘网站</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CMS：CMS是”Content Management System”的缩写，意为”内容管理系统”。</p>
-<h1 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一 环境搭建"></a>一 环境搭建</h1><p>Maven+spring+springMVC+springJDBC+mysql+Tomcat+bootstrap+jsp+jQuery</p>
-<h2 id="1-创建maven项目"><a href="#1-创建maven项目" class="headerlink" title="1.创建maven项目"></a>1.创建maven项目</h2><h2 id="2-创建数据库"><a href="#2-创建数据库" class="headerlink" title="2.创建数据库"></a>2.创建数据库</h2><h2 id="3-导包"><a href="#3-导包" class="headerlink" title="3.导包"></a>3.导包</h2><h2 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h2><h1 id="二-轮播模块"><a href="#二-轮播模块" class="headerlink" title="二 轮播模块"></a>二 轮播模块</h1><h2 id="1-建表"><a href="#1-建表" class="headerlink" title="1.建表"></a>1.建表</h2><pre><code>//id
-private Long id;
-//路径
-private String storepath;
-//简述
-private String intro;
-//是否启用
-private boolean isenabled;
-//时间
-private Date inputdate = new Date();
-</code></pre><h2 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h2><p>富文本框回显：<code>&lt;c:out value=&quot;${jobOne.describes}&quot; escapeXml=&quot;false&quot;/&gt;</code>加到div标签里面</p>
-<pre><code>&lt;c:out value=&quot;${picOne.intro}&quot; escapeXml=&quot;false&quot;/&gt;
-</code></pre><h2 id="真分页-后端分页"><a href="#真分页-后端分页" class="headerlink" title="真分页(后端分页)"></a>真分页(后端分页)</h2><p>好处：占用内存小<br>劣势：翻页慢<br>它查询数据是匀速的<br>代码实现：<br>domain：</p>
-<pre><code>private int currentPage;//当前页
-private int pageSize;//每页显示多少条
-private int recordCount;//总记录数
-private List recordList;//本页的数据列表
-private int pageCount;//总页数
-private int prePage;//上一页
-private int nextPage;//下一页
-private int firstPage;//首页
-private int endPage;//尾页
-/**
- * 只接受前4个必要的属性，会自动计算出其他3个属性的值
- * @param currentPage
- * @param pageSize
- * @param recordCount
- * @param recordList
- */
-public PageBean(int currentPage, int pageSize, int recordCount,List recordList) {
-    this.firstPage=1;
-    this.currentPage = currentPage;
-    this.pageSize = pageSize;
-    this.recordCount = recordCount;
-    this.recordList = recordList;
-    //计算总页码
-    pageCount = (recordCount + pageSize - 1) / pageSize;
-    this.endPage=pageCount;
-    this.prePage=currentPage==1?1:currentPage-1;
-    this.nextPage=currentPage==endPage?endPage:currentPage+1;
-}
-</code></pre><p>Condition：</p>
-<pre><code>private int pageNum = 1;// 当前页
-private int pageSize = 5;// 每页显示多少条记录
-</code></pre><p>Dao：</p>
-<pre><code>//分页查询
-public PageBean getPageBean(Condition condition) {
-    int pageNum = condition.getPageNum();
-    int pageSize = condition.getPageSize();
-    // 查询列表
-    String sql=&quot;SELECT * FROM pic limit ?,?&quot;;
-    List&lt;Pic&gt; list = jdbcTemplate.query(sql, new BeanPropertyRowMapper&lt;&gt;(Pic.class), (pageNum - 1) * pageSize, pageNum * pageSize);
-    // 查询总记录数量
-    String sql2=&quot;SELECT COUNT(*) FROM pic t&quot;;
-    int aLong = jdbcTemplate.queryForObject(sql2, int.class);
-    return new PageBean(pageNum, pageSize,aLong, list);
-}
-</code></pre><p>controller:</p>
-<pre><code>//分页查询
-@RequestMapping(&quot;/list&quot;)
-public String list(Model model,Condition condition) {
-    PageBean pageBean = picService.getPageBean(condition);
-    model.addAttribute(&quot;pageList&quot;,pageBean );
-    return &quot;main&quot;;
-}
-</code></pre><p>前端JSP页面:</p>
-<pre><code>&lt;!--分页--&gt;
-&lt;nav class=&quot;navbar-right&quot;&gt;
-&lt;ul class=&quot;pagination&quot; id=&quot;paging&quot;&gt;
-    &lt;li&gt;
-        &lt;span&gt;当前第${pageList.currentPage}页&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a href=&quot;/pic/list?pageNum=${pageList.firstPage}&quot;&gt;
-            &lt;span aria-hidden=&quot;true&quot;&gt;首页&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a href=&quot;/pic/list?pageNum=${pageList.prePage}&quot; aria-label=&quot;上一页&quot;&gt;
-            &lt;span aria-hidden=&quot;true&quot;&gt;上一页&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a href=&quot;/pic/list?pageNum=${pageList.nextPage}&quot; aria-label=&quot;下一页&quot;&gt;
-            &lt;span aria-hidden=&quot;true&quot;&gt;下一页&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-
-    &lt;li&gt;
-        &lt;a href=&quot;/pic/list?pageNum=${pageList.endPage}&quot; aria-label=&quot;尾页&quot;&gt;
-            &lt;span aria-hidden=&quot;true&quot;&gt;尾页&lt;/span&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;span&gt;总页数：共${pageList.pageCount}页&lt;/span&gt;
-        &lt;span&gt;总数据：共${pageList.recordCount}条&lt;/span&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-</code></pre><p></p>
-<h1 id="职位模块"><a href="#职位模块" class="headerlink" title="职位模块"></a>职位模块</h1><h2 id="1-建表-1"><a href="#1-建表-1" class="headerlink" title="1.建表"></a>1.建表</h2><p>职位表</p>
-<pre><code>private Long id;//id
-private String title;//工作职位
-private Integer addrId;//地点
-private Integer jobnum;//招聘人数
-private Integer treatment;//薪水
-private String describes;//职位描述
-private String requires;//职位要求
-private Integer positiontype;
-private Integer isenabled;//是否启用前台展示
-private Date inputdate=new Date();//发布时间
-private String htmlurl;//展示页面地址
-</code></pre><h2 id="职位的查询展示"><a href="#职位的查询展示" class="headerlink" title="职位的查询展示"></a>职位的查询展示</h2><h2 id="职位的新增操作"><a href="#职位的新增操作" class="headerlink" title="职位的新增操作"></a>职位的新增操作</h2><h2 id="新增职位产生静态化页面"><a href="#新增职位产生静态化页面" class="headerlink" title="新增职位产生静态化页面"></a>新增职位产生静态化页面</h2><p>新增职位根据模板生成职位详情页面<br>目的:提高运行速度,减轻服务器负担。<br>模板技术：freemaker</p>
-<p>1.创建模板detail.ftl</p>
-<h2 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h2><p>高级查询：多个条件组合起来进行查询<br>高级查询核心：根据条件拼接成不同的SQL进行查询</p>
-<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>ehcache：快速精干的java级别的缓存框架<br>思路：<br>查询的时候先到缓存中查询数据，如果有，直接返回，如果没有，在查询数据库，再放入缓存<br>新增、修改数据缓存里面的数据需要同步修改<br>删除数据时删除缓存中的数据</p>
-<h3 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h3><p><code>&lt;!--缓存--&gt;
-    &lt;!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache --&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
-      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;2.6.11&lt;/version&gt;
-      &lt;type&gt;pom&lt;/type&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-         &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-       &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;
-       &lt;version&gt;1.7.2&lt;/version&gt;
-    &lt;/dependency&gt;</code></p>
-<h3 id="写一个缓存工具类"><a href="#写一个缓存工具类" class="headerlink" title="写一个缓存工具类"></a>写一个缓存工具类</h3><p>`public class CacheUtils {<br>    /**</p>
-<pre><code> * 缓存存放方法
- * @param key
- * @param value
- * @param cacheManager 操作缓存的对象
- * @param cacheName 缓存名称
- */
-public static void putCache(Object key, Object value, CacheManager cacheManager, String cacheName){
-    //获取缓存对象
-    Cache cache = cacheManager.getCache(cacheName);
-    //往缓存对象存值
-    Element element = new Element(key,value);
-    //把element放入缓存
-    cache.put(element);
-}
-//从缓存里面取值
-public static Element getCache(Object key,CacheManager cacheManager, String cacheName){
-    Cache cache = cacheManager.getCache(cacheName);
-    Element element = cache.get(key);
-    return element;
-}
-//删除缓存
-public static void delCache(CacheManager cacheManager, String cacheName){
-    Cache cache = cacheManager.getCache(cacheName);
-    cache.removeAll();
-}
-</code></pre><p>}`</p>
-<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><pre><code>//查询
-@Override
-public PageBean getPageBean(Condition condition) {
-    PageBean pageBean = null;
-    String key= &quot;pageKey&quot;+condition.getPageNum();
-    //获取缓存数据
-    Element element = CacheUtils.getCache(key, cacheManager, Constants.CACHE_NAME);
-    if (element==null){//如果数据为空从数据库查询数据存入缓存中
-        pageBean= JobDao.getPageBean(condition);
-        CacheUtils.putCache(key,pageBean ,cacheManager , Constants.CACHE_NAME);
-        System.out.println(CacheUtils.getCache(key,cacheManager ,Constants.CACHE_NAME ));
-    }else {//数据不为空直接返回缓存中的数据
-        pageBean= (PageBean) element.getObjectValue();
-    }
-    return pageBean;
-}
-</code></pre><h2 id="springMVC拦截器"><a href="#springMVC拦截器" class="headerlink" title="springMVC拦截器"></a>springMVC拦截器</h2><p>访问controller时拦截器拦截处理<br>定义一个拦截器，实现HandlerInterceptor接口</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjz697rwd000324tdh4wbfgg6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo部署github博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/28/Hexo部署github博客/" class="article-date">
-  <time datetime="2019-05-28T11:42:29.000Z" itemprop="datePublished">2019-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hexo部署github博客"><a href="#Hexo部署github博客" class="headerlink" title="Hexo部署github博客"></a>Hexo部署github博客</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到github.io仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
-<h2 id="二、安装清单（Win-10）"><a href="#二、安装清单（Win-10）" class="headerlink" title="二、安装清单（Win 10）"></a>二、安装清单（Win 10）</h2><p>安装环境    安装原因<br>git    给github上传文章<br>Node.js    Hexo基于Node.js开发<br>Hexo    生成博客静态页面</p>
-<h2 id="三、创建github-io网站"><a href="#三、创建github-io网站" class="headerlink" title="三、创建github.io网站"></a>三、创建github.io网站</h2><p>1）点击New repository</p>
-<p>2）输入Repository name，必需为username.github.io格式。username替换为用户名</p>
-<p>3）点击按钮Create repository</p>
-<p>4）进入仓库username.github.io,点击setting,找到GitHub Pages模块</p>
-<p>5）点击choose a theme选择一个页面主题</p>
-<p>6）访问<a href="https://username.github.io就可以访问博客网站了" target="_blank" rel="noopener">https://username.github.io就可以访问博客网站了</a></p>
-<h2 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h2><p>下载安装：<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">http://sourceforge.net/projects/git-osx-installer/</a></p>
-<p>验证是否安装成功：</p>
-<p>➜  ~ git version<br>git version 2.15.0</p>
-<h2 id="五、安装Node-js"><a href="#五、安装Node-js" class="headerlink" title="五、安装Node.js"></a>五、安装Node.js</h2><p>下载安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
-<p>验证是否安装成功：</p>
-<p>➜  ~ node -v<br>v8.9.4</p>
-<h2 id="六、安装Hexo"><a href="#六、安装Hexo" class="headerlink" title="六、安装Hexo"></a>六、安装Hexo</h2><p>安装命令: npm install -g hexo-cli</p>
-<p>验证是否安装成功：</p>
-<p>➜  ~ hexo -v<br>hexo-cli: 1.1.0<br>os: Darwin 17.3.0 darwin x64<br>http_parser: 2.7.0<br>node: 8.9.4<br>v8: 6.1.534.50<br>uv: 1.15.0<br>zlib: 1.2.11<br>ares: 1.10.1-DEV<br>modules: 57<br>nghttp2: 1.25.0<br>openssl: 1.0.2n<br>icu: 59.1<br>unicode: 9.0<br>cldr: 31.0.1<br>tz: 2017b</p>
-<h2 id="七、创建本地博文服务"><a href="#七、创建本地博文服务" class="headerlink" title="七、创建本地博文服务"></a>七、创建本地博文服务</h2><p>然后创建一个空文件夹, 比如：hexo-blog<br>进入hexo-blog目录<br>执行hexo init初始化博客站点，如果最后一行显示Start blogging with Hexo!，代表创建成功<br>执行hexo server 启动博文站点<br>访问<a href="http://localhost:4000就能打开博文了" target="_blank" rel="noopener">http://localhost:4000就能打开博文了</a><br>Ctrl+C关闭服务器<br>➜  ~ mkdir hexo-blog<br>➜  ~ cd hexo-blog<br>➜  hexo-blog hexo init<br>INFO  Cloning hexo-starter to ~/hexo-blog<br>Cloning into ‘/Users/zhengyong/hexo-blog’…<br>remote: Counting objects: 68, done.<br>remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67<br>Unpacking objects: 100% (68/68), done.<br>Submodule ‘themes/landscape’ (<a href="https://github.com/hexojs/hexo-theme-landscape.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-theme-landscape.git</a>) registered for path ‘themes/landscape’<br>Cloning into ‘/Users/zhengyong/hexo-blog/themes/landscape’…<br>remote: Counting objects: 838, done.<br>remote: Compressing objects: 100% (6/6), done.<br>remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832<br>Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.<br>Resolving deltas: 100% (441/441), done.<br>Submodule path ‘themes/landscape’: checked out ‘73a23c51f8487cfcd7c6deec96ccc7543960d350’<br>INFO  Install dependencies<br>npm WARN deprecated <a href="mailto:titlecase@1.1.2" target="_blank" rel="noopener">titlecase@1.1.2</a>: no longer maintained<br>npm WARN deprecated <a href="mailto:postinstall-build@5.0.3" target="_blank" rel="noopener">postinstall-build@5.0.3</a>: postinstall-build’s behavior is now built into npm! You should migrate off of postinstall-build and use the new <code>prepare</code> lifecycle script with npm 5.0.0 or greater.<br><a href="mailto:fsevents@1.2.4" target="_blank" rel="noopener">fsevents@1.2.4</a> install /Users/zhengyong/hexo-blog/node_modules/fsevents<br>node install<br>[fsevents] Success: “/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node” already installed<br>Pass –update-binary to reinstall or –build-from-source to recompile<br><a href="mailto:nunjucks@3.1.3" target="_blank" rel="noopener">nunjucks@3.1.3</a> postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks<br>node postinstall-build.js src<br>npm notice created a lockfile as package-lock.json. You should commit this file.<br>added 464 packages in 28.659s<br>INFO  Start blogging with Hexo!<br>➜  hexo-blog hexo server<br>INFO  Start processing<br>INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.<br>^CINFO  Good bye</p>
-<h2 id="七、Hexo关联github"><a href="#七、Hexo关联github" class="headerlink" title="七、Hexo关联github"></a>七、Hexo关联github</h2><p>1）进入hexo-blog根目录</p>
-<p>2）安装npm install hexo-deployer-git –save，用Hexo发布博文</p>
-<p>3）打开hexo-blog根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：</p>
-<p> Deployment<br> Docs: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">http://hexo.io/docs/deployment.html</a><br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/username/username.github.io" target="_blank" rel="noopener">https://github.com/username/username.github.io</a><br>  branch: master</p>
-<p>4）进入hexo-blog根目录执行如下命令（参考：<a href="https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码</a></p>
-<p>hexo clean<br>hexo generate<br>hexo deploy</p>
-<p>5）如果成功，就可以打开 <a href="http://username.github.io,username替换成自己用户名" target="_blank" rel="noopener">http://username.github.io,username替换成自己用户名</a></p>
-<h2 id="八、使用Hexo创建和发布文章"><a href="#八、使用Hexo创建和发布文章" class="headerlink" title="八、使用Hexo创建和发布文章"></a>八、使用Hexo创建和发布文章</h2><p>1) 进入hexo-blog根目录</p>
-<p>2) 创建文章命令：hexo new “文章标题”</p>
-<p>➜  blog hexo new “Hexo部署github博客”<br>INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md</p>
-<p>3) 打开编辑Hexo部署github博客.md文件进行Markdown编辑</p>
-<p>open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</p>
-<p>4）发布文章：hexo d -g</p>
-<p>➜  blog hexo d -g<br>INFO  Start processing<br>INFO  Files loaded in 342 ms<br>INFO  Generated: index.html<br>INFO  Generated: 2019/05/28/Hexo部署github博客/index.html<br>INFO  2 files generated in 142 ms<br>INFO  Deploying: git<br>INFO  Clearing .deploy_git folder…<br>INFO  Copying files from public folder…<br>INFO  Copying files from extend dirs…<br>[master 3ede1d6] Site updated: 2019-05-31 13:41:54<br> 2 files changed, 273 insertions(+), 271 deletions(-)<br> rewrite “2019/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html” (60%)<br>Enumerating objects: 15, done.<br>Counting objects: 100% (15/15), done.<br>Delta compression using up to 8 threads<br>Compressing objects: 100% (6/6), done.<br>Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.<br>Total 8 (delta 2), reused 0 (delta 0)<br>remote: Resolving deltas: 100% (2/2), completed with 1 local object.<br>To <a href="https://github.com/sunlei9/sunlei9.github.io" target="_blank" rel="noopener">https://github.com/sunlei9/sunlei9.github.io</a><br>   55a9310..3ede1d6  HEAD -&gt; master<br>Branch ‘master’ set up to track remote branch ‘master’ from ‘<a href="https://github.com/sunlei9/sunlei9.github.io&#39;" target="_blank" rel="noopener">https://github.com/sunlei9/sunlei9.github.io&#39;</a>.<br>[32mINFO [39m Deploy done: [35mgit[39m</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjz697rwb000224tdcex16vjd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjz96v1vo000ahktdhwiycgd9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1007,7 +1052,7 @@ public PageBean getPageBean(Condition condition) {
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1038,6 +1083,14 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
+            <a href="/2019/08/13/springboot/">springboot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/10/Redis/">Redis</a>
           </li>
         
@@ -1047,14 +1100,6 @@ public PageBean getPageBean(Condition condition) {
         
           <li>
             <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/19/MyBatis/">MyBatis</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/16/VUE/">VUE</a>
           </li>
         
       </ul>

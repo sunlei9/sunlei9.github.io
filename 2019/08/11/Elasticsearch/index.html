@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>ElasticSearch | java学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/Elasticsearch/index.html">
+<meta property="og:site_name" content="java学习笔记">
+<meta property="og:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-13T02:09:44.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ElasticSearch">
+<meta name="twitter:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
+  
+    <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">java学习笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Elasticsearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/11/Elasticsearch/" class="article-date">
+  <time datetime="2019-08-11T01:11:00.000Z" itemprop="datePublished">2019-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ElasticSearch
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-ElasticSearch的基本概念"><a href="#1-ElasticSearch的基本概念" class="headerlink" title="1. ElasticSearch的基本概念"></a>1. ElasticSearch的基本概念</h3><p>ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。</p>
+<h3 id="2-ES的特点"><a href="#2-ES的特点" class="headerlink" title="2. ES的特点"></a>2. ES的特点</h3><ul>
+<li>Es 全文检索框架 使用比lucene更简单</li>
+<li>ES支持集群 支持分布式</li>
+<li>支持json操作</li>
+<li>一般大型全文检索都用ES</li>
+<li><p>通过Restfull风格操作ES</p>
+<h3 id="3-Es和Lucene的区别"><a href="#3-Es和Lucene的区别" class="headerlink" title="3. Es和Lucene的区别"></a>3. Es和Lucene的区别</h3><p>Lucene：</p>
+</li>
+<li><p>使用起来很复杂</p>
+</li>
+<li>Lucene不支持集群</li>
+<li>扩展麻烦</li>
+<li>必须使用Java<h3 id="4-安装ES"><a href="#4-安装ES" class="headerlink" title="4. 安装ES"></a>4. 安装ES</h3></li>
+</ul>
+<ol>
+<li>解压ES文件</li>
+<li><p>安装Kinaba</p>
+<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3><p>//获取客户端<br> public static TransportClient getClient() throws Exception {</p>
+<pre><code>TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
+        addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
+                9300));
+return client;
+</code></pre><p> }</p>
+<p> //保存一条记录<br> @Test<br> public void createEsIndex() throws Exception {</p>
+<pre><code>TransportClient client = getClient();
+//创建索引库
+IndexRequestBuilder indexRequestBuilder = client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;);
+Map map = new HashMap();
+map.put(&quot;id&quot;, 1);
+map.put(&quot;name&quot;, &quot;huahua&quot;);
+map.put(&quot;age&quot;, 18);
+IndexResponse indexResponse = indexRequestBuilder.setSource(map).get();
+System.out.println(indexResponse);
+</code></pre><p> }</p>
+<p> //获取数据<br> @Test<br> public void testGet() throws Exception {</p>
+<pre><code>//获取client对象
+TransportClient client = getClient();
+//取到值
+GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+//获取source部分数据
+System.out.println(response.getSource());
+</code></pre><p> }</p>
+<p> @Test<br> public void testUpdate() throws Exception {</p>
+<pre><code>//获取client对象
+TransportClient client = getClient();
+Map mp = new HashMap();
+mp.put(&quot;id&quot;, 1);
+mp.put(&quot;name&quot;, &quot;jojo&quot;);
+mp.put(&quot;age&quot;, 22);
+//取到值
+UpdateResponse updateResponse = client.prepareUpdate(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).setDoc(mp).get();
+GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+//获取source部分数据
+System.out.println(response.getSource());
+</code></pre><p> }</p>
+<p> @Test<br> public void testDelete() throws Exception {</p>
+<pre><code>//获取client对象
+TransportClient client = getClient();
+
+//取到值
+DeleteResponse deleteResponse = client.prepareDelete(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+
+//获取source部分数据
+System.out.println(deleteResponse);
+</code></pre><p> }<br> //批量操作<br> @Test<br> public  void testGetBulk()throws Exception{<br> //获取客户端</p>
+<pre><code>TransportClient client = getClient();
+//获取批量请求对象
+BulkRequestBuilder bulk = client.prepareBulk();
+for (int i = 0; i &lt; 10; i++) {
+    Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+    map.put(&quot;id&quot;, i);
+    map.put(&quot;name&quot;, &quot;sl&quot; + i);
+    map.put(&quot;age&quot;, 18 + i);
+    map.put(&quot;class&quot;,1);
+    BulkRequestBuilder builder = bulk.add(client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, i + &quot;&quot;).setSource(map));
+}
+//提交请求
+BulkResponse bulkResponse = bulk.get();
+if (bulkResponse.hasFailures()) {
+    System.out.println(&quot;error!!!!&quot;);
+}
+//关闭资源
+client.close();
+</code></pre><p> }<br> //搜索<br> @Test<br> public  void test()throws Exception{</p>
+<pre><code>//获取客户端
+TransportClient client = getClient();
+//创建boolQuery对象
+BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+// 匹配 class =1
+List&lt;QueryBuilder&gt; must = boolQuery.must();
+must.add(QueryBuilders.termQuery(&quot;class&quot;,&quot;1&quot;));
+//搜索年龄范围在18-23的班级在1班的，并且按照id降序，展示第一页，三条数据
+List&lt;QueryBuilder&gt; filter = boolQuery.filter();
+filter.add(QueryBuilders.rangeQuery(&quot;age&quot;).gte(18).lte(23));
+SearchResponse searchResponse = client.prepareSearch(&quot;crm&quot;)
+        .setFrom(0).setSize(3)
+        .setQuery(boolQuery)
+        .addSort(&quot;id&quot;, SortOrder.DESC).get();
+
+System.out.println(&quot;总条数:&quot;+searchResponse.getHits().getTotalHits());
+SearchHit[] hits = searchResponse.getHits().getHits();
+// 循环数据结构
+for (SearchHit hit : hits) {
+    System.out.println(hit.getSource());
+}
+// 关闭资源
+client.close();
+</code></pre><p> }</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="cjz96v1uy0000hktd96w4p5mz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/13/springboot/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          springboot
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/10/Redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/13/springboot/">springboot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/10/Redis/">Redis</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/07/liunx/">liunx</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 sunlei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
