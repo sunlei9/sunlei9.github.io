@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="java学习笔记">
 <meta property="og:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T02:09:44.398Z">
+<meta property="og:updated_time" content="2019-08-13T03:16:20.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElasticSearch">
 <meta name="twitter:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
@@ -104,7 +104,7 @@
 <ol>
 <li>解压ES文件</li>
 <li><p>安装Kinaba</p>
-<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3><p>//获取客户端<br> public static TransportClient getClient() throws Exception {</p>
+<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3><p> //获取客户端<br> public static TransportClient getClient() throws Exception {</p>
 <pre><code>TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
         addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
                 9300));
