@@ -62,6 +62,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/06/缓存/" class="article-date">
+  <time datetime="2019-06-06T06:05:03.000Z" itemprop="datePublished">2019-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/06/缓存/">缓存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-缓存-cache"><a href="#1-缓存-cache" class="headerlink" title="1.缓存(cache)"></a>1.缓存(cache)</h2><p>缓存是指可以进行高数数据交换的存储器,也就是一个容器，底层是Map，存在内存里面,不是存在磁盘里面，内存数据肯定要比磁盘数据快,有些缓存可以存储在内存，也可以存储在磁盘里面</p>
+<h2 id="2-缓存有什么用"><a href="#2-缓存有什么用" class="headerlink" title="2.缓存有什么用"></a>2.缓存有什么用</h2><p>提高查询的效率，减轻服务器压力<br>用空间换时间概念</p>
+<h2 id="3-缓存雪崩"><a href="#3-缓存雪崩" class="headerlink" title="3.缓存雪崩"></a>3.缓存雪崩</h2><p>缓存雪崩是指缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机<br>解决方案：<br>         1.缓存数据的过期时间设置随机，防止同一时间大量数据过期现象发生。<br>         2.如果缓存数据库是分布式部署，将热点数据均匀分布在不同搞得缓存数据库中。<br>         3.设置热点数据永远不过期。</p>
+<h2 id="4-缓存穿透"><a href="#4-缓存穿透" class="headerlink" title="4.缓存穿透"></a>4.缓存穿透</h2><p>缓存穿透是指缓存和数据库中都没有的数据，而用户不断发起请求，如发起为id为“-1”的数据或id为特别大不存在的数据。这时的用户很可能是攻击者，攻击会导致数据库压力过大。<br>解决方案：<br>         1.接口层增加校验，如用户鉴权校验，id做基础校验，id&lt;=0的直接拦截；<br>         2.从缓存取不到的数据，在数据库中也没有取到，这时也可以将key-value对写为key-null，缓存有效时间可以设置短点，如30秒（设置太长会导致正常情况也没法使用）。这样可以防止攻击用户反复用同一个id暴力攻击</p>
+<h2 id="5-缓存击穿"><a href="#5-缓存击穿" class="headerlink" title="5.缓存击穿"></a>5.缓存击穿</h2><p> 缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力<br>解决方案：<br>         1.设置热点数据永远不过期。<br>         2.加互斥锁</p>
+<p>缓存框架：<br>    EhCache：<br>        特点:1.快速<br>             2.简单</p>
+<pre><code>         3.    
+Memcached：只支持简单的key/value数据结构
+</code></pre><h2 id="6-缓存的操作"><a href="#6-缓存的操作" class="headerlink" title="6.缓存的操作"></a>6.缓存的操作</h2><pre><code>CacheManager 缓存对象
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjzhoyjbx000l48tdg8wj834v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-freemaker入门demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/freemaker入门demo/" class="article-date">
+  <time datetime="2019-06-04T01:29:07.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/freemaker入门demo/">freemaker入门demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具<br>FreeMarker是免费的，基于Apache许可证2.0版本发布。<br>FreeMarker原理：模板+数据==&gt;数据</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="1-pom文件添加jar包"><a href="#1-pom文件添加jar包" class="headerlink" title="1.pom文件添加jar包"></a>1.pom文件添加jar包</h3><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.freemarker&lt;/groupId&gt;
+    &lt;artifactId&gt;freemarker&lt;/artifactId&gt;
+    &lt;version&gt;2.3.28&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="2-创建数据对象"><a href="#2-创建数据对象" class="headerlink" title="2.创建数据对象"></a>2.创建数据对象</h3><h3 id="2-创建模板"><a href="#2-创建模板" class="headerlink" title="2.创建模板"></a>2.创建模板</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjzhoyjb7000a48tdfce2rrbi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CMS招聘网站" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/31/CMS招聘网站/" class="article-date">
@@ -264,7 +351,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjz96v1vd0002hktdohdb3ojz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjzhoyjay000348tdorz3wrxq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,7 +419,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjz96v1vk0007hktdji5n7sy0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjzhoyjb2000748tdkka2zkhf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,6 +463,14 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
+            <a href="/2019/08/18/B2C商城/">B2C商城</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/14/SpringCloud/">SpringCloud</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/13/springboot/">springboot</a>
           </li>
         
@@ -385,14 +480,6 @@ public PageBean getPageBean(Condition condition) {
         
           <li>
             <a href="/2019/08/10/Redis/">Redis</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/07/liunx/">liunx</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
           </li>
         
       </ul>

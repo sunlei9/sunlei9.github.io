@@ -62,6 +62,183 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-B2C商城" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/18/B2C商城/" class="article-date">
+  <time datetime="2019-08-18T01:34:04.000Z" itemprop="datePublished">2019-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/18/B2C商城/">B2C商城</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="商城的介绍"><a href="#商城的介绍" class="headerlink" title="商城的介绍"></a>商城的介绍</h2><ol>
+<li><p>商城的发展</p>
+</li>
+<li><p>商城的分类</p>
+</li>
+<li><p>商城的业务模块</p>
+</li>
+<li><p>项目的业务流程</p>
+</li>
+</ol>
+<h2 id="后台项目架构"><a href="#后台项目架构" class="headerlink" title="后台项目架构"></a>后台项目架构</h2><ol>
+<li><p>商城的业务架构-前后端分离</p>
+</li>
+<li><p>商城技术架构分析-springcloud</p>
+</li>
+<li><p>搭建后台架构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aigou-parent</span><br><span class="line">	aigou-eureka-server</span><br><span class="line">	aigou-gateway-zuul</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+<li>Postmain的使用</li>
+<li>平台服务集成Swagger</li>
+<li>zuul集成swagger</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/18/B2C商城/" data-id="cjzhoyjaw000248tdc126o31y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SpringCloud" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/14/SpringCloud/" class="article-date">
+  <time datetime="2019-08-14T01:47:00.000Z" itemprop="datePublished">2019-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/14/SpringCloud/">SpringCloud</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h3><ol>
+<li><p>什么是单体应用</p>
+<p> 所有的功能都在一个包里面</p>
+</li>
+<li><p>单体应用的缺点：</p>
+<ul>
+<li>单节点问题</li>
+<li>项目会越来越大，编译，维护麻烦，责任不分离</li>
+<li>性能问题，局部拓展不方便</li>
+<li>重启，全部都要重启</li>
+<li>技术选型单一</li>
+<li>数据库选型单一</li>
+</ul>
+</li>
+</ol>
+<h3 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h3><ol>
+<li><p>什么是微服务</p>
+<p>就是把一个项目拆分成多个小的服务(应用)，每个服务都有自己独立的tomcat，有自己独立的进程，有自己独立的数据库，一个服务只关注一个功能，服务与服务之间使用网络协议进行通信</p>
+</li>
+<li><p>微服务的特点：</p>
+<ul>
+<li><p>微服务架构由多个小的服务注册</p>
+</li>
+<li><p>每个服务都有自己的进程</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="SpringCloud简介"><a href="#SpringCloud简介" class="headerlink" title="SpringCloud简介"></a>SpringCloud简介</h3><ol>
+<li><p>什么是springcloud</p>
+<p>Spring Cloud是一个含概多个子项目的开发工具集,集合了众多的开源框架,他利用了Spring Boot开发的便利性实现了很多功能,如服务注册,服务注册发现,负载均衡等.Spring Cloud在整合过程中主要是针对Netflix(耐非)开源组件的封装.</p>
+</li>
+<li><p>常见的组件</p>
+<ul>
+<li>服务发现——Netflix Eureka</li>
+<li>客服端负载均衡——Netflix Ribbon</li>
+<li>断路器——Netflix Hystrix</li>
+<li>服务网关——Netflix Zuul</li>
+<li>分布式配置——Spring Cloud Config</li>
+</ul>
+</li>
+<li><p>springcloud和dubbo的区别</p>
+<p>dubbo只解决网络通信问题</p>
+<p>springcloud是微服务框架解决一系列问题，基于springboot，使用起来简单</p>
+</li>
+</ol>
+<h3 id="注册中心EurekaServer"><a href="#注册中心EurekaServer" class="headerlink" title="注册中心EurekaServer"></a>注册中心EurekaServer</h3><ol>
+<li><p>什么是注册中心</p>
+<h3 id="提供者服务-dept-Provider"><a href="#提供者服务-dept-Provider" class="headerlink" title="提供者服务- dept-Provider"></a>提供者服务- dept-Provider</h3></li>
+<li><p>创建工程</p>
+</li>
+<li>导入eureka-client等依赖</li>
+</ol>
+<h3 id="服务消费者-user-consumer"><a href="#服务消费者-user-consumer" class="headerlink" title="服务消费者 - user-consumer"></a>服务消费者 - user-consumer</h3><h3 id="注册中心EurekaServer集群"><a href="#注册中心EurekaServer集群" class="headerlink" title="注册中心EurekaServer集群"></a>注册中心EurekaServer集群</h3><h3 id="ribbon"><a href="#ribbon" class="headerlink" title="ribbon"></a>ribbon</h3><h3 id="feign"><a href="#feign" class="headerlink" title="feign"></a>feign</h3><h3 id="Hystrix-断路器"><a href="#Hystrix-断路器" class="headerlink" title="Hystrix 断路器"></a>Hystrix 断路器</h3><ol>
+<li><p>项目中的问题</p>
+</li>
+<li><p>Hystrix的介绍</p>
+<ul>
+<li><p>Hystrix的作用</p>
+<p>​    Hystrix是一个能够解决分布式框架中打造高可用服务器面临的一系列问题</p>
+<p>​    Hystrix具有自我保护的能力</p>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Ribbon+Hystrix</p>
+<ul>
+<li>导入依赖</li>
+<li></li>
+</ul>
+</li>
+</ol>
+<p>资源隔离：包括线程池隔离和信号量隔离，限制</p>
+<p>熔断：熔断在消费方做</p>
+<p>降级机制</p>
+<p>缓存</p>
+<h3 id="Zuul路由网关"><a href="#Zuul路由网关" class="headerlink" title="Zuul路由网关"></a>Zuul路由网关</h3><ol>
+<li>项目中的问题</li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="cjzhoyjbi000d48tdpdven3gl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-springboot" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/13/springboot/" class="article-date">
@@ -84,12 +261,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HelloWorld</p>
+        <ol>
+<li>springboot的概念</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="cjz96v1vy000fhktd8cc3t3b5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="cjzhoyjbt000i48td92ux0bcr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +415,7 @@ client.close();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="cjz96v1uy0000hktd96w4p5mz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="cjzhoyjaz000448td9sg0itna" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +471,7 @@ client.close();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjz96v1vl0008hktdcfobv4tv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjzhoyjb1000648td1qjfgzca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +508,7 @@ client.close();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/liunx/" data-id="cjz96v1vw000ehktdkotekxv3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/07/liunx/" data-id="cjzhoyjbd000b48tdstvz517e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +556,7 @@ client.close();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="cjz96v1w0000hhktdnfm2uusf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="cjzhoyjbw000k48td6105260c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +646,7 @@ client.close();
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="cjz96v1vh0005hktdpfsyo398" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="cjzhoyjb3000848tdroahv9q7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +719,7 @@ components:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjz96v1vm0009hktdili6n337" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjzhoyjbj000e48tdj71ggj8f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -604,318 +783,7 @@ components:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjz96v1w2000jhktd6z44ku04" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" class="article-date">
-  <time datetime="2019-06-27T01:21:28.000Z" itemprop="datePublished">2019-06-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/">智能商贸——进销存系统</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h1><ol>
-<li>这个项目是干什么的<br> 对企业生产经营中进货、出货、批发销售、付款等进行全程进行（从接获订单合同开始，进入物料采购、入库、领用到产品完工入库、交货、回收货款、支付原材料款等）跟踪（每一步都提供详尽准确的数据）、管理（有效辅助企业解决业务管理、分销管理、存货管理、营销计划的执行和监控、统计信息的收集等方面的业务问题）而设计的整套方案</li>
-<li>项目用到哪些技术<br> spring+springMVC+springDataJpa+shiro+easyui+easypoi+maven+hightchart+idea</li>
-<li><p>模块</p>
-<ol>
-<li>基础模块(用户管理，产品模块，数据字典，客户管理…)</li>
-<li>权限模块(shiro)</li>
-<li>登录模块(第三方登录，自动登录，限制登录人数，手机登录，忘记密码…)</li>
-<li>采购模块</li>
-<li>报表模块(多张表进行连表查询最终做的统计)</li>
-<li>库存模块<h1 id="SpringDataJpa"><a href="#SpringDataJpa" class="headerlink" title="SpringDataJpa"></a>SpringDataJpa</h1>spring在jpa基础上又做了一层封装让你做crud更加简单<h1 id="sssdj的集成步骤"><a href="#sssdj的集成步骤" class="headerlink" title="sssdj的集成步骤"></a>sssdj的集成步骤</h1></li>
-<li>创建web项目</li>
-<li>导入相应的jar包</li>
-<li>配置ApplicationContext.xml文件<ol>
-<li>编写jdbc.properties</li>
-<li>DataSource</li>
-<li>EntityManagerFactory<ol>
-<li>依赖dataSource</li>
-<li>扫描domain包</li>
-<li>具体实现的框架<br> 方言<br> 是否显示sql<br> 建表策略</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>springMvc的核心配置<ol>
-<li>扫描controller包</li>
-<li>开启springMvc注解支持</li>
-<li>静态资源放行</li>
-<li>视图解析器</li>
-</ol>
-</li>
-<li>web.xml<ol>
-<li>启动spring容器</li>
-<li>启动springMvc容器</li>
-<li>解决post提交乱码问题<h1 id="完成domain层"><a href="#完成domain层" class="headerlink" title="完成domain层"></a>完成domain层</h1><h1 id="Velocity模板技术"><a href="#Velocity模板技术" class="headerlink" title="Velocity模板技术"></a>Velocity模板技术</h1><h2 id="EasyCode"><a href="#EasyCode" class="headerlink" title="EasyCode"></a>EasyCode</h2>EasyCode是基于IntelliJ IDEA Ultimate版开发的一个代码生成插件，主要通过自定义模板（基于velocity）来生成各种你想要的代码。通常用于生成Entity、Dao、Service、Controller。如果你动手能力强还可以用于生成HTML、JS、PHP等代码。理论上来说只要是与数据有关的代码都是可以生成的。<h1 id="shiro"><a href="#shiro" class="headerlink" title="shiro"></a>shiro</h1>shiro：shiro是一个强大易用的java安全框架<br>常见的权限框架</li>
-</ol>
-</li>
-<li>spring security<ol>
-<li>是spring公司的产品，它功能非常强大，属于重量级框架，提供的API文档非常丰富</li>
-</ol>
-</li>
-<li>shiro<ol>
-<li>是Apache公司的产品，属于轻量级框架<br>shiro四大核心</li>
-</ol>
-</li>
-<li>身份认证：登录</li>
-<li>授权：给当前登录人，授予角色和权限</li>
-<li>密码学：指的就是对你的密码进行加密</li>
-<li>session管理：shiro提供的session功能非常强大，不仅可以用于Bs架构还可以用于Cs架构，如果你把数据存储到shiro的session中它会自动同步到你的HttpSession中，shiro还可以对session进行crud<br>使用shiro</li>
-<li>导入jar包<!-- shiro的支持包 -->
-<dependency><br><groupid>org.apache.shiro</groupid><br><artifactid>shiro-all</artifactid><br><version>1.4.0</version><br><type>pom</type><br></dependency><br><!-- shiro与Spring的集成包 --><br><dependency><br><groupid>org.apache.shiro</groupid><br><artifactid>shiro-spring</artifactid><br><version>1.4.0</version><br></dependency></li>
-<li><p>创建shiro配置<br> &lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"><br><!--shiro的核心对象--><br><bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"><br> <property name="realm" ref="itsourceRealm"><br></property></bean><br><!--自定义realm--><br><bean id="itsourceRealm" class="com.sunlei.aisell.realm.ItsourceRealm"><br> <property name="credentialsMatcher"><br>     <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher"><br>         <property name="hashAlgorithmName" value="MD5"><br>         <property name="hashIterations" value="10"><br>     </property></property></bean><br> </property><br></bean><br><!--
- 处理    代理过滤器拦截的所有请求
- 注意事项:该bean的id必须要和代理过滤器的name一致,否则报错
---><br><bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"><br> <property name="securityManager" ref="securityManager"><br> <!-- 如果你的请求,没有认证或者没有认证通过,或者注销之后,都跳转到loginUrl对应的请求中--><br> <property name="loginUrl" value="/s/login.jsp"><br> <!--登录成功之后,跳转到successUrl对应的路径中--><br> <property name="successUrl" value="/s/index"><br><br> <!--没有权限都跳转到unauthorizedUrl对应的路径中--><br> <property name="unauthorizedUrl" value="/s/unauthorized.jsp"><br><br> <!--过滤器链的定义--><br> <property name="filterChainDefinitions"><br>     <value><br>         <!--直接放行不进行拦截--><br>         /s/login.jsp = anon<br>         /login=anon<br>         /logout=logout<br>         /dept/index=perms[“dept:index”]<br>         /dept/save=perms[“dept:save”]<br>         /dept/delete=perms[“dept:delete”]<br>         /dept/update=perms[“dept:update”]<br>         /permission/index=perms[“permission:index”]<br>         <!--
-         /*与/**的区别:
-                  /* 表示拦截所有的请求,你的请求只能拦截一级,多级无法拦截
-                  /**:表示拦截所有的请求,你的请求1级或者多级都可以正常拦截
-                authc:认证通过之后才能放行
-                anon:匿名过滤器,直接放行
-                logout:注销
-          --><br>         /** = authc<br>     </value><br> </property><br></property></property></property></property></bean><br></beans></li>
-<li>自定义realm</li>
-<li>创建MD5工具类</li>
-</ol>
-</li>
-</ol>
-<pre><code>3. 集成spring
-
-shiroMD5加密        
-
-    登录时用密码匹配器
-</code></pre><h1 id="java操作办公软件：word-ppt-excel-pdf"><a href="#java操作办公软件：word-ppt-excel-pdf" class="headerlink" title="java操作办公软件：word ppt excel pdf"></a>java操作办公软件：word ppt excel pdf</h1><p>easypoi</p>
-<h1 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h1><p>简单理解就是对表的抽取<br>在真实开发项目中，我们会遇到很多基础表，这些基础表都有一个公共的特性：</p>
-<pre><code>1. 字段非常少
-2. 数据也非常少
-</code></pre><p>使用数据字典的注意事项：</p>
-<pre><code>1. 字段必须得少，最多三个字段
-2. 如果该表存在，上下级关系也是不能用数据字典
-3. 数据量不能过大，最多不超过20个以上
-</code></pre><h1 id="图形化界面报表"><a href="#图形化界面报表" class="headerlink" title="图形化界面报表"></a>图形化界面报表</h1><ol>
-<li>html5<ol>
-<li>优点：占用带宽小，稳定</li>
-<li>缺点：兼容性差(IE8以下是不能使用html5)</li>
-</ol>
-</li>
-<li>flash<ol>
-<li>优点：市面上基本上所有的浏览器都兼容</li>
-<li>缺点：占用带宽大，不稳定<br>专门做图形化界面的插件：</li>
-<li>ECharts</li>
-<li>HightCharts<h1 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h1><h1 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h1></li>
-</ol>
-</li>
-</ol>
-<h1 id="问题汇总"><a href="#问题汇总" class="headerlink" title="问题汇总"></a>问题汇总</h1><h2 id="easyUi分页数据只展示第一页"><a href="#easyUi分页数据只展示第一页" class="headerlink" title="easyUi分页数据只展示第一页"></a>easyUi分页数据只展示第一页</h2><p>query里面加两个方法<br>    public void setPage(Integer page){<br>        this.currentPage=page;<br>    }<br>    public void  setRows(Integer rows){<br>        this.pageSize=rows;<br>    }</p>
-<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><h2 id="登录页面"><a href="#登录页面" class="headerlink" title="登录页面"></a>登录页面</h2><pre><code>1. 登录页面
-2. 根据用户名动态显示头像 类似QQ登陆
-
-//实时展示头像
-$(function ($) {
-    //1.校验用户输入的是正则表达式 先定义正则
-    var emailFormat = /^[a-zA-Z0-9]/;
-    // var flag = &apos;true&apos;;
-    //2.当失去用户焦点的时候校验用户名
-    var lastvalue = null;
-    $(&apos;#user&apos;).on(&apos;blur&apos;, function () {
-        //获取用户输入内容
-        var value = $(this).val();
-        if (!value || !emailFormat.test(value)) return;
-        if (value !== lastvalue) {
-            // 接下来需要通过用户名找到对应的头像地址，然后将头像地址改到img的src上
-            $.get(&apos;/headImage&apos;, {name: value}, function (res) {
-                if (!res) {
-                    $(&apos;.avatar&apos;).fadeOut(function () {
-                        $(this).on(&apos;load&apos;, function () {
-                            $(this).fadeIn()
-                        }).attr(&apos;src&apos;, &quot;&quot;);
-                    })
-                    $(&quot;#spanshow1&quot;).show()
-                    $(&quot;#spanshow2&quot;).show()
-                    return;
-                }
-hideSpan()
-                $(&apos;.avatar&apos;).fadeOut(function () {
-                    $(this).on(&apos;load&apos;, function () {
-                        $(this).fadeIn()
-                    }).attr(&apos;src&apos;, res);
-                })
-
-                // flag = false;
-                // $(&apos;.avatar&apos;).fadeOut(function () {
-                //   $(this).on(&apos;load&apos;,function () {
-                //     $this.fadeIn();
-                //   }).attr(&apos;src&apos;, res);
-                // })
-            })
-        }
-        lastvalue = value;
-    })
-
-})
-
-3. 记住密码cookie
-
- saveCookie(){ //设置cookie
-    var username = $(&quot;#user&quot;).val(); //获取用户名信息
-    var password = $(&quot;#passwd&quot;).val(); //获取登陆密码信息
-    var  img = $(&quot;#head&quot;).attr(&apos;src&apos;);
-    console.debug(111)
-    var checked = $(&apos;#brand1&apos;).val()//获取“是否记住密码”复选框
-    if(checked==1){ //判断是否选中了“记住密码”复选框
-        $.cookie(&quot;username&quot;,username);//调用jquery.cookie.js中的方法设置cookie中的用户名    
-        $.cookie(&quot;password&quot;,$.base64.encode(password));//调用jquery.cookie.js中的方法设置cookie中的登陆密码，并使用base64（jquery.base64.js）进行加密    
-        $.cookie(&quot;img&quot;,img);//调用jquery.cookie.js中的方法设置cookie中的登陆密码，并使用base64（jquery.base64.js）进行加密    
-    }else{
-        //$.cookie(&quot;password&quot;, null);
-    }
-}
-function getCookie(){ //获取cookie    
-    var username = $.cookie(&quot;username&quot;); //获取cookie中的用户名    
-    var password =  $.cookie(&quot;password&quot;); //获取cookie中的登陆密码
-    var  img = $.cookie(&quot;img&quot;);
-    console.debug(img)
-    if(password){//密码存在的话把“记住用户名和密码”复选框勾选住   
-        $(&quot;#remberme&quot;).click();
-    }
-    if(username){//用户名存在的话把用户名填充到用户名文本框    
-        $(&quot;#user&quot;).val(username);
-    }
-    if(password){//密码存在的话把密码填充到密码文本框    
-        $(&quot;#passwd&quot;).val($.base64.decode(password));
-    }
-    if(img){//密码存在的话把密码填充到密码文本框    
-        hideSpan()
-        $(&quot;#head&quot;).attr(&quot;src&quot;,img)
-    }
-}
-//清除cookie
-function clearCookie(name) {
-    $.cookie(name, &quot;&quot;, -1);
-}
-if ($.cookie(&quot;password&quot;)){
-    getCookie()
-}
-
-4. 提示---display，opacity属性
-</code></pre><h2 id="主页"><a href="#主页" class="headerlink" title="主页"></a>主页</h2><pre><code>1. 显示登录用户圆形头像
-    .loginUser img{
-        width: 50px;
-        height: 50px;
-        display: flex;
-        border-radius: 50%;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-2. 拖动标签页
-3. 标签页右键菜单
-</code></pre><h2 id="标签页面"><a href="#标签页面" class="headerlink" title="标签页面"></a>标签页面</h2><pre><code>1. 添加数据完成时跳到添加数据位置
-2. 右键菜单
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjz96v1wb000lhktd1079jknt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-spring" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/24/spring/" class="article-date">
-  <time datetime="2019-06-24T01:26:23.757Z" itemprop="datePublished">2019-06-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: spring<br>date: 2019-06-24 09:26:23</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><h1 id="spring的核心"><a href="#spring的核心" class="headerlink" title="spring的核心"></a>spring的核心</h1><pre><code>1. IOC/DI：IOC指的是控制反转，所谓控制反转指的就是把所有的bean对象，交给spring容器进行管理，由spring统一来创建bean对象，这种创建对象的权利反转就叫做控制反转
-2. AOP：面向切面编程，在你指定的service层，执行前或者执行后切一刀，然后织入自己的业务逻辑，能有效的进行解耦
-3. AOP有什么作用：
-    1. 抽取公共的业务逻辑代码
-    2. 扩展功能
-    3. 权限
-    4. 日志
-
-AOP底层是基于代理模式实现的：
-    1. JDK动态代理：前提，你的目标类必须提供了一个接口，否则不能代理
-    2. CGLIB动态代理：他可以代理的类，有实现接口，也可以没有实现接口
-</code></pre><h1 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h1><h1 id="XML自动注入"><a href="#XML自动注入" class="headerlink" title="XML自动注入"></a>XML自动注入</h1><h1 id="全注解配置"><a href="#全注解配置" class="headerlink" title="全注解配置"></a>全注解配置</h1><p>@Autowired与@Resource的区别</p>
-<pre><code>1. 都是注入bean对象
-2. @Autowired是spring提供的注解，@Resource是sun公司提供的注解
-3. @Autowired注入bean的时候，是先根据类型注入，再根据名字注入
-4. 推荐使用@Autowired，@Autowired是spring公司的，与spring无缝衔接
-</code></pre><h2 id="spring创建Bean的4中方式"><a href="#spring创建Bean的4中方式" class="headerlink" title="spring创建Bean的4中方式"></a>spring创建Bean的4中方式</h2><pre><code>1. &lt;bean class=&quot;类的全限定名&quot;/&gt;相当于java中的new 类名();
-2. 使用FactoryBean来创建 FactoryBean专门创建复杂的对象
-    1. 自定义类实现FactoryBean
-    2. 复写3个抽象方法
-        1. 是否单例
-</code></pre><h3 id="BeanFactory和ApplicationContext的区别"><a href="#BeanFactory和ApplicationContext的区别" class="headerlink" title="BeanFactory和ApplicationContext的区别"></a>BeanFactory和ApplicationContext的区别</h3><pre><code>1. BeanFactory它是一个bean工厂，专门负责创建与管理所有的bean对象
-2. BeanFactory它是要运行的时候才会去创建Bean对象，而ApplicationContext是BeanFactory的子接口
-3. 而ApplicationContext是加载配置文件的时候，就会去创建对应的bean对象，所以以后我们都用ApplicationContext
-</code></pre><h1 id="ssj的集成步骤"><a href="#ssj的集成步骤" class="headerlink" title="ssj的集成步骤"></a>ssj的集成步骤</h1><pre><code>1. 创建web项目
-2. 导入相应的jar包
-3. 配置ApplicationContext.xml文件
-    1. 编写jdbc.properties
-    2. DataSource
-    3. EntityManagerFactory
-        1. 依赖dataSource
-        2. 扫描domain包
-        3. 具体实现的框架
-            方言
-            是否显示sql
-            建表策略
-4. springMvc的核心配置
-    1. 扫描controller包
-    2. 开启springMvc注解支持
-    3. 静态资源放行
-    4. 视图解析器
-5. web.xml
-    1. 启动spring容器
-    2. 启动springMvc容器
-    3. 解决post提交乱码问题
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="cjz96v1w3000khktdx6qswms0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjzhoyjby000m48tdkexucosf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -959,6 +827,14 @@ AOP底层是基于代理模式实现的：
       <ul>
         
           <li>
+            <a href="/2019/08/18/B2C商城/">B2C商城</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/14/SpringCloud/">SpringCloud</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/13/springboot/">springboot</a>
           </li>
         
@@ -968,14 +844,6 @@ AOP底层是基于代理模式实现的：
         
           <li>
             <a href="/2019/08/10/Redis/">Redis</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/07/liunx/">liunx</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/23/maven-ssm/">maven+ssm</a>
           </li>
         
       </ul>
