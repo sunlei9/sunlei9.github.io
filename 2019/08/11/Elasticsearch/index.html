@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="java学习笔记">
 <meta property="og:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-13T03:16:20.664Z">
+<meta property="og:updated_time" content="2019-08-19T01:01:46.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ElasticSearch">
 <meta name="twitter:description" content="1. ElasticSearch的基本概念ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户">
@@ -103,101 +103,119 @@
 </ul>
 <ol>
 <li>解压ES文件</li>
-<li><p>安装Kinaba</p>
-<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3><p> //获取客户端<br> public static TransportClient getClient() throws Exception {</p>
-<pre><code>TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
-        addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
-                9300));
-return client;
-</code></pre><p> }</p>
-<p> //保存一条记录<br> @Test<br> public void createEsIndex() throws Exception {</p>
-<pre><code>TransportClient client = getClient();
-//创建索引库
-IndexRequestBuilder indexRequestBuilder = client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;);
-Map map = new HashMap();
-map.put(&quot;id&quot;, 1);
-map.put(&quot;name&quot;, &quot;huahua&quot;);
-map.put(&quot;age&quot;, 18);
-IndexResponse indexResponse = indexRequestBuilder.setSource(map).get();
-System.out.println(indexResponse);
-</code></pre><p> }</p>
-<p> //获取数据<br> @Test<br> public void testGet() throws Exception {</p>
-<pre><code>//获取client对象
-TransportClient client = getClient();
-//取到值
-GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-//获取source部分数据
-System.out.println(response.getSource());
-</code></pre><p> }</p>
-<p> @Test<br> public void testUpdate() throws Exception {</p>
-<pre><code>//获取client对象
-TransportClient client = getClient();
-Map mp = new HashMap();
-mp.put(&quot;id&quot;, 1);
-mp.put(&quot;name&quot;, &quot;jojo&quot;);
-mp.put(&quot;age&quot;, 22);
-//取到值
-UpdateResponse updateResponse = client.prepareUpdate(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).setDoc(mp).get();
-GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-//获取source部分数据
-System.out.println(response.getSource());
-</code></pre><p> }</p>
-<p> @Test<br> public void testDelete() throws Exception {</p>
-<pre><code>//获取client对象
-TransportClient client = getClient();
-
-//取到值
-DeleteResponse deleteResponse = client.prepareDelete(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-
-//获取source部分数据
-System.out.println(deleteResponse);
-</code></pre><p> }<br> //批量操作<br> @Test<br> public  void testGetBulk()throws Exception{<br> //获取客户端</p>
-<pre><code>TransportClient client = getClient();
-//获取批量请求对象
-BulkRequestBuilder bulk = client.prepareBulk();
-for (int i = 0; i &lt; 10; i++) {
-    Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
-    map.put(&quot;id&quot;, i);
-    map.put(&quot;name&quot;, &quot;sl&quot; + i);
-    map.put(&quot;age&quot;, 18 + i);
-    map.put(&quot;class&quot;,1);
-    BulkRequestBuilder builder = bulk.add(client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, i + &quot;&quot;).setSource(map));
-}
-//提交请求
-BulkResponse bulkResponse = bulk.get();
-if (bulkResponse.hasFailures()) {
-    System.out.println(&quot;error!!!!&quot;);
-}
-//关闭资源
-client.close();
-</code></pre><p> }<br> //搜索<br> @Test<br> public  void test()throws Exception{</p>
-<pre><code>//获取客户端
-TransportClient client = getClient();
-//创建boolQuery对象
-BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-// 匹配 class =1
-List&lt;QueryBuilder&gt; must = boolQuery.must();
-must.add(QueryBuilders.termQuery(&quot;class&quot;,&quot;1&quot;));
-//搜索年龄范围在18-23的班级在1班的，并且按照id降序，展示第一页，三条数据
-List&lt;QueryBuilder&gt; filter = boolQuery.filter();
-filter.add(QueryBuilders.rangeQuery(&quot;age&quot;).gte(18).lte(23));
-SearchResponse searchResponse = client.prepareSearch(&quot;crm&quot;)
-        .setFrom(0).setSize(3)
-        .setQuery(boolQuery)
-        .addSort(&quot;id&quot;, SortOrder.DESC).get();
-
-System.out.println(&quot;总条数:&quot;+searchResponse.getHits().getTotalHits());
-SearchHit[] hits = searchResponse.getHits().getHits();
-// 循环数据结构
-for (SearchHit hit : hits) {
-    System.out.println(hit.getSource());
-}
-// 关闭资源
-client.close();
-</code></pre><p> }</p>
-</li>
+<li>安装Kinaba<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3></li>
 </ol>
+<pre><code>//获取客户端
+public static TransportClient getClient() throws Exception {
+    TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
+            addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
+                    9300));
+    return client;
+}
 
+//保存一条记录
+@Test
+public void createEsIndex() throws Exception {
+    TransportClient client = getClient();
+    //创建索引库
+    IndexRequestBuilder indexRequestBuilder = client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;);
+    Map map = new HashMap();
+    map.put(&quot;id&quot;, 1);
+    map.put(&quot;name&quot;, &quot;huahua&quot;);
+    map.put(&quot;age&quot;, 18);
+    IndexResponse indexResponse = indexRequestBuilder.setSource(map).get();
+    System.out.println(indexResponse);
+
+}
+
+//获取数据
+@Test
+public void testGet() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+    //取到值
+    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+    //获取source部分数据
+    System.out.println(response.getSource());
+}
+
+@Test
+public void testUpdate() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+    Map mp = new HashMap();
+    mp.put(&quot;id&quot;, 1);
+    mp.put(&quot;name&quot;, &quot;jojo&quot;);
+    mp.put(&quot;age&quot;, 22);
+    //取到值
+    UpdateResponse updateResponse = client.prepareUpdate(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).setDoc(mp).get();
+    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+    //获取source部分数据
+    System.out.println(response.getSource());
+}
+
+@Test
+public void testDelete() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+
+    //取到值
+    DeleteResponse deleteResponse = client.prepareDelete(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+
+    //获取source部分数据
+    System.out.println(deleteResponse);
+}
+//批量操作
+@Test
+public  void testGetBulk()throws Exception{
+//获取客户端
+    TransportClient client = getClient();
+    //获取批量请求对象
+    BulkRequestBuilder bulk = client.prepareBulk();
+    for (int i = 0; i &lt; 10; i++) {
+        Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+        map.put(&quot;id&quot;, i);
+        map.put(&quot;name&quot;, &quot;sl&quot; + i);
+        map.put(&quot;age&quot;, 18 + i);
+        map.put(&quot;class&quot;,1);
+        BulkRequestBuilder builder = bulk.add(client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, i + &quot;&quot;).setSource(map));
+    }
+    //提交请求
+    BulkResponse bulkResponse = bulk.get();
+    if (bulkResponse.hasFailures()) {
+        System.out.println(&quot;error!!!!&quot;);
+    }
+    //关闭资源
+    client.close();
+}
+//搜索
+@Test
+public  void test()throws Exception{
+    //获取客户端
+    TransportClient client = getClient();
+    //创建boolQuery对象
+    BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+    // 匹配 class =1
+    List&lt;QueryBuilder&gt; must = boolQuery.must();
+    must.add(QueryBuilders.termQuery(&quot;class&quot;,&quot;1&quot;));
+    //搜索年龄范围在18-23的班级在1班的，并且按照id降序，展示第一页，三条数据
+    List&lt;QueryBuilder&gt; filter = boolQuery.filter();
+    filter.add(QueryBuilders.rangeQuery(&quot;age&quot;).gte(18).lte(23));
+    SearchResponse searchResponse = client.prepareSearch(&quot;crm&quot;)
+            .setFrom(0).setSize(3)
+            .setQuery(boolQuery)
+            .addSort(&quot;id&quot;, SortOrder.DESC).get();
+
+    System.out.println(&quot;总条数:&quot;+searchResponse.getHits().getTotalHits());
+    SearchHit[] hits = searchResponse.getHits().getHits();
+    // 循环数据结构
+    for (SearchHit hit : hits) {
+        System.out.println(hit.getSource());
+    }
+    // 关闭资源
+    client.close();
+}
+</code></pre>
       
     </div>
     <footer class="article-footer">
