@@ -62,6 +62,424 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/11/js高级/" class="article-date">
+  <time datetime="2019-06-11T01:15:53.000Z" itemprop="datePublished">2019-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/11/js高级/">js高级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js对象"><a href="#js对象" class="headerlink" title="js对象"></a>js对象</h2><pre><code>&lt;script&gt;
+    //js是一个基于对象和事件驱动编程语言
+    //1.js一切皆是对象，你可以把基本类型，引用类型，函数都可以看做对象
+    var num = 2.134141;
+    console.debug(num.toFixed(2));//保留两位小数
+
+    //2.js中的true和false
+    var boo = false;
+     if (boo){
+        console.debug(&quot;不能进入&quot;)
+    }
+    var boo2 = new Boolean(false);
+     if (boo2){
+         console.debug(&quot;可以进入&quot;)
+     }
+     if(NaN){
+         console.debug(&quot;不能进入&quot;)
+     }
+
+    //3.对象的操作
+    //创建对象的方式
+    var obj1 = new Object();
+    var obj2 = {};
+    var obj3 = new user();
+    function user() {
+
+    }
+    console.debug(obj1)
+    console.debug(obj2)
+    console.debug(obj3)
+    //给对象添加属性和方法
+    obj3.name=&quot;小c&quot;;
+    obj3[&quot;age&quot;]=&quot;22&quot;;
+    obj3.play=function (game) {
+        console.debug(this.name+&quot;玩&quot;+game)
+    }
+    //调用方法
+    obj3.play(&quot;lol&quot;)
+
+    //遍历对象
+    for (var key in obj3){
+        console.debug(key)
+
+        //如果是方法就调用方法
+        if (typeof obj3[key] == &quot;function&quot;){
+            obj3[key](&quot;lol&quot;);
+        }else {//是属性直接取值
+            console.debug(obj3[key])
+        }
+    }
+&lt;/script&gt;
+</code></pre><h2 id="json对象和json字符串"><a href="#json对象和json字符串" class="headerlink" title="json对象和json字符串"></a>json对象和json字符串</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //json字符串
+    var jsonStr = &quot;{&apos;id&apos;:1,&apos;name&apos;:&apos;霸哥&apos;}&quot;;
+    //json对象转换
+    var jsonObj = eval(&quot;(&quot;+jsonStr+&quot;)&quot;);
+    console.debug(jsonObj)
+
+    //Json.parse()--必须是json标准格式
+    //var obj=$.parseJSON(jsonStr)
+    var jsonStr2 = &apos;{&quot;id&quot;:1,&quot;name&quot;:&quot;霸哥&quot;}&apos;;
+    var obj=$.parseJSON(jsonStr2)
+    console.debug(obj)
+&lt;/script&gt;
+</code></pre><h2 id="js类"><a href="#js类" class="headerlink" title="js类"></a>js类</h2><pre><code>&lt;script&gt;
+    //类构造方法在写的时候，如果方法首字母是大写，一般认为是构造方法
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+
+    //属性拷贝
+    //方式2 一个一个拷贝
+    var obj1 = {
+        name:&quot;gg&quot;,
+        age:&quot;18&quot;
+    }
+    var obj2 = {
+    }
+    obj2.name=obj1.name;
+    obj2.age=obj1.age;
+    console.debug(obj2)
+    //方式3 循环对象
+    for (var key in obj1){
+        if (!obj2.hasOwnProperty(key)){//判断里面是否有属性
+            obj2[key]=obj1[key];
+        }
+    }
+    console.debug(obj2)
+&lt;/script&gt;
+</code></pre><h2 id="js的prototype"><a href="#js的prototype" class="headerlink" title="js的prototype"></a>js的prototype</h2><pre><code>&lt;script&gt;
+    //prototype:原型的意思--js对象都有prototype属性，使你可以向对象添加属性和方法
+    //使用
+    /**
+     * 对象组成 ：自定义属性
+     *             原型属性
+     *      先从自定义属性对象中找，找不到到原型里面找
+     */
+    function User(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    var user1=new User(&quot;彩旗&quot;,23)
+    var user2=new User(&quot;天霸&quot;,23)
+    //展示目录结构
+    console.dir(user1)
+    console.dir(user2)
+    //对象里面的原型属性__proto__ ，对象里面原型属性是相同或者共享
+    console.debug(user1.__proto__ === user2.__proto__)
+    //原型上面定义方法
+    User.prototype.eat=function (food) {
+        console.debug(this.name+&quot;吃&quot;+food)
+    }
+&lt;/script&gt;
+</code></pre><h2 id="js中的回调函数"><a href="#js中的回调函数" class="headerlink" title="js中的回调函数"></a>js中的回调函数</h2><pre><code>&lt;script&gt;
+    //函数：方法 实现一块逻辑，一堆代码打包成一个方法
+    //普通函数:function user(){}
+    //构造函数:function User(){}
+    //回调函数:函数作为一个参数，传递给另一个函数，重新回调这个函数
+    setTimeout(test,3000);//异步
+    function test() {
+        console.debug(111)
+    }
+    console.debug(222)
+    //匿名函数:没有名字的函数
+    // 作用：1,如果变量只用一次的时候 可以放到匿名函数中  解决作用域污染问题
+    //       2，作为参数传递
+    (function (a,b) {
+        var result=a+b;
+        //window.result=result;暴露到window中
+    })(7,7);
+&lt;/script&gt;
+</code></pre><h2 id="jquery事件委托"><a href="#jquery事件委托" class="headerlink" title="jquery事件委托"></a>jquery事件委托</h2><pre><code>&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //事件委托:给动态元素添加事件
+
+    //绑定事件
+    $(function () {
+        $(&quot;#add&quot;).click(function () {
+            var content = &quot;&lt;div&gt;\n&quot; +
+                &quot;        附件:&lt;input type=\&quot;file\&quot; name=\&quot;file\&quot;&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;delete\&quot; href=\&quot;javascript:;\&quot;&gt;删除&lt;/a&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;examine\&quot; href=\&quot;javascript:;\&quot;&gt;查看&lt;/a&gt;\n&quot; +
+                &quot;    &lt;/div&gt;&quot;;
+            $(&quot;#userForm&quot;).append(content);
+        })
+        //事件委托
+        $(&quot;#userForm&quot;).on(&apos;click&apos;,&apos;.delete&apos;,function () {
+            console.debug(&quot;删除&quot;)
+        })
+    })
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a id=&quot;add&quot; href=&quot;javascript:;&quot;&gt;添加&lt;/a&gt;
+&lt;form id=&quot;userForm&quot;&gt;
+&lt;div&gt;
+    附件:&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="js的闭包"><a href="#js的闭包" class="headerlink" title="js的闭包"></a>js的闭包</h2><pre><code>&lt;script&gt;
+    //闭包：函数内使用函数外的变量
+    var a=10;
+    function b() {
+        alert(a)
+    }
+    //闭包案例--计数案例
+    var  result=0;
+    function getSum() {
+        return result++;
+    }
+    console.debug(getSum());
+    console.debug(getSum());
+    result=0;
+    console.debug(getSum())
+
+    //使用闭包和匿名函数结合起来使用
+    (function () {
+        var result1=0;
+        window.getSum1=function () {
+            result1++;
+            return result1;
+        }
+    })();
+    console.debug(getSum1());
+    console.debug(getSum1());
+    //result1=10;
+    console.debug(getSum1());
+&lt;/script&gt;
+</code></pre><h2 id="js里面的this用法"><a href="#js里面的this用法" class="headerlink" title="js里面的this用法"></a>js里面的this用法</h2><p>this的指向的改变</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjzoty7r3000jigtd76g4x8d4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/10/jQuery/" class="article-date">
+  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/10/jQuery/">jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
+<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
+<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>页面加载事件</p>
+<pre><code>//页面加载完之后再执行代码，先于window.onload执行
+$(function(){
+
+})
+</code></pre></li>
+<li>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</li>
+<li><p>DOM对象和jquery对象的转换</p>
+<pre><code>$(function(){
+    //dom对象
+    var domObj = document.getElementById(&quot;mySpan&quot;);
+
+    //jquery对象
+    var jqueryObj = $(&quot;#mySpan&quot;);
+
+    //有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+    var domToJquery = $(domObj);
+
+    //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+    var jqueryToDom = jqueryObj[0];
+})
+</code></pre></li>
+<li><p>选择器</p>
+<pre><code>//id选择器 id一般不重复
+$(&quot;#id&quot;);
+
+//class选择器
+$(&quot;.class&quot;);
+
+//标签选择器 页面上的所有标签都有效果
+$(&quot;div&quot;);
+
+//获取所有元素--没什么用
+$(&quot;*&quot;);
+
+//多元素选择器
+$(&quot;div,span&quot;)
+
+//层次选择器
+//祖先后代
+$(&quot;div span&quot;)
+//父亲儿子
+$(&quot;div &gt; span&quot;)
+//相邻选择器
+$(&quot;input + input&quot;)
+//同级选择器
+$(&quot;form ~ input&quot;)
+
+//属性选择器
+</code></pre></li>
+<li><p>jquery注册事件方式<br> //方式一注册事件<br> $(“#id”).click(function(){<br> })</p>
+<p> //方式二注册事件<br> $(“#id”).on(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).off(‘click’)</p>
+<p> //方式三注册事件<br> $(“#id”).bind(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).unbind(‘click’);</p>
+</li>
+<li>jquery常用方法</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjzoty7r0000gigtdnxneqqfx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/AJAX/" class="article-date">
+  <time datetime="2019-06-09T01:12:45.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/AJAX/">AJAX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js的引入方式"><a href="#js的引入方式" class="headerlink" title="js的引入方式"></a>js的引入方式</h3><ol>
+<li>直接在行内标签内使用</li>
+<li>在<script>标签内使用</li>
+<li>外部js引入<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3></li>
+<li>如果引入外部js文件，就不要再这个标签内写内容</li>
+<li><script>标签引入文件不能使用单标签</li>
+<li>js加载顺序是从上往下</li>
+<li><p><a herf="#">点击</a>存在锚点效果</p>
+<h3 id="js里面的函数"><a href="#js里面的函数" class="headerlink" title="js里面的函数"></a>js里面的函数</h3><p>什么是函数：函数就是方法，function<br>函数的定义<br> function say(name,food){</p>
+<p> }<br>函数调用<br> 调用方法，参数可以多，如果参数传少了，默认值是undefined666<br> say();<br> window.say();<br>动态调用<br> window<a href="">“say”</a>;<br>js中一切皆对象，函数也是对象</p>
+</li>
+</ol>
+<p>函数返回值<br>    如果方法没有返回值，返回undefined</p>
+<p>java 方法重载：方法名相同，参数列表不同，和返回值无关<br>js没有重载一说，方法名相同，后面的方法会覆盖前面的方法</p>
+<h3 id="js引擎执行过程"><a href="#js引擎执行过程" class="headerlink" title="js引擎执行过程"></a>js引擎执行过程</h3><p>js变量提升</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>ajax即Asynchronous JavaScript And XML<br>异步JavaScript和XML，是指一种创建交互式网页应用的网页开发技术<br>异步JavaScript：浏览器处理事情，如果没有处理完，可以做其他事情<br>XML：可拓展性标记语言<br>局部刷新技术，是前端技术，属于js里面的内容</p>
+<h3 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json:JavaScript Object Notation<br>一种轻量级的数据交换格式</p>
+</script></li></ol>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjzoty7qk0004igtdohpz8yun" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/JavaScript/" class="article-date">
+  <time datetime="2019-06-09T01:12:33.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/JavaScript/">JavaScript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjzoty7qm0006igtdrl5j7nuy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-缓存" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/06/缓存/" class="article-date">
@@ -97,7 +515,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjzhoyjbx000l48tdg8wj834v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjzoty7r9000qigtdunvxc4zi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +557,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjzhoyjb7000a48tdfce2rrbi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjzoty7qy000eigtdm3gtm4j9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +769,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjzhoyjay000348tdorz3wrxq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjzoty7ql0005igtdvvquf8wo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,33 +811,34 @@ public PageBean getPageBean(Condition condition) {
 <p>6）访问<a href="https://username.github.io就可以访问博客网站了" target="_blank" rel="noopener">https://username.github.io就可以访问博客网站了</a></p>
 <h2 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h2><p>下载安装：<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">http://sourceforge.net/projects/git-osx-installer/</a></p>
 <p>验证是否安装成功：</p>
-<p>➜  ~ git version<br>git version 2.15.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git version</span><br><span class="line">git version 2.15.0</span><br></pre></td></tr></table></figure>
 <h2 id="五、安装Node-js"><a href="#五、安装Node-js" class="headerlink" title="五、安装Node.js"></a>五、安装Node.js</h2><p>下载安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
 <p>验证是否安装成功：</p>
-<p>➜  ~ node -v<br>v8.9.4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ node -v</span><br><span class="line">v8.9.4</span><br></pre></td></tr></table></figure>
 <h2 id="六、安装Hexo"><a href="#六、安装Hexo" class="headerlink" title="六、安装Hexo"></a>六、安装Hexo</h2><p>安装命令: npm install -g hexo-cli</p>
 <p>验证是否安装成功：</p>
-<p>➜  ~ hexo -v<br>hexo-cli: 1.1.0<br>os: Darwin 17.3.0 darwin x64<br>http_parser: 2.7.0<br>node: 8.9.4<br>v8: 6.1.534.50<br>uv: 1.15.0<br>zlib: 1.2.11<br>ares: 1.10.1-DEV<br>modules: 57<br>nghttp2: 1.25.0<br>openssl: 1.0.2n<br>icu: 59.1<br>unicode: 9.0<br>cldr: 31.0.1<br>tz: 2017b</p>
-<h2 id="七、创建本地博文服务"><a href="#七、创建本地博文服务" class="headerlink" title="七、创建本地博文服务"></a>七、创建本地博文服务</h2><p>然后创建一个空文件夹, 比如：hexo-blog<br>进入hexo-blog目录<br>执行hexo init初始化博客站点，如果最后一行显示Start blogging with Hexo!，代表创建成功<br>执行hexo server 启动博文站点<br>访问<a href="http://localhost:4000就能打开博文了" target="_blank" rel="noopener">http://localhost:4000就能打开博文了</a><br>Ctrl+C关闭服务器<br>➜  ~ mkdir hexo-blog<br>➜  ~ cd hexo-blog<br>➜  hexo-blog hexo init<br>INFO  Cloning hexo-starter to ~/hexo-blog<br>Cloning into ‘/Users/zhengyong/hexo-blog’…<br>remote: Counting objects: 68, done.<br>remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67<br>Unpacking objects: 100% (68/68), done.<br>Submodule ‘themes/landscape’ (<a href="https://github.com/hexojs/hexo-theme-landscape.git" target="_blank" rel="noopener">https://github.com/hexojs/hexo-theme-landscape.git</a>) registered for path ‘themes/landscape’<br>Cloning into ‘/Users/zhengyong/hexo-blog/themes/landscape’…<br>remote: Counting objects: 838, done.<br>remote: Compressing objects: 100% (6/6), done.<br>remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832<br>Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.<br>Resolving deltas: 100% (441/441), done.<br>Submodule path ‘themes/landscape’: checked out ‘73a23c51f8487cfcd7c6deec96ccc7543960d350’<br>INFO  Install dependencies<br>npm WARN deprecated <a href="mailto:titlecase@1.1.2" target="_blank" rel="noopener">titlecase@1.1.2</a>: no longer maintained<br>npm WARN deprecated <a href="mailto:postinstall-build@5.0.3" target="_blank" rel="noopener">postinstall-build@5.0.3</a>: postinstall-build’s behavior is now built into npm! You should migrate off of postinstall-build and use the new <code>prepare</code> lifecycle script with npm 5.0.0 or greater.<br><a href="mailto:fsevents@1.2.4" target="_blank" rel="noopener">fsevents@1.2.4</a> install /Users/zhengyong/hexo-blog/node_modules/fsevents<br>node install<br>[fsevents] Success: “/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node” already installed<br>Pass –update-binary to reinstall or –build-from-source to recompile<br><a href="mailto:nunjucks@3.1.3" target="_blank" rel="noopener">nunjucks@3.1.3</a> postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks<br>node postinstall-build.js src<br>npm notice created a lockfile as package-lock.json. You should commit this file.<br>added 464 packages in 28.659s<br>INFO  Start blogging with Hexo!<br>➜  hexo-blog hexo server<br>INFO  Start processing<br>INFO  Hexo is running at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> . Press Ctrl+C to stop.<br>^CINFO  Good bye</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ hexo -v</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Darwin 17.3.0 darwin x64</span><br><span class="line">http_parser: 2.7.0</span><br><span class="line">node: 8.9.4</span><br><span class="line">v8: 6.1.534.50</span><br><span class="line">uv: 1.15.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.10.1-DEV</span><br><span class="line">modules: 57</span><br><span class="line">nghttp2: 1.25.0</span><br><span class="line">openssl: 1.0.2n</span><br><span class="line">icu: 59.1</span><br><span class="line">unicode: 9.0</span><br><span class="line">cldr: 31.0.1</span><br><span class="line">tz: 2017b</span><br></pre></td></tr></table></figure>
+<h2 id="七、创建本地博文服务"><a href="#七、创建本地博文服务" class="headerlink" title="七、创建本地博文服务"></a>七、创建本地博文服务</h2><p>然后创建一个空文件夹, 比如：hexo-blog<br>进入hexo-blog目录<br>执行hexo init初始化博客站点，如果最后一行显示Start blogging with Hexo!，代表创建成功<br>执行hexo server 启动博文站点<br>访问<a href="http://localhost:4000就能打开博文了" target="_blank" rel="noopener">http://localhost:4000就能打开博文了</a><br>Ctrl+C关闭服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mkdir hexo-blog</span><br><span class="line">➜  ~ cd hexo-blog</span><br><span class="line">➜  hexo-blog hexo init</span><br><span class="line">INFO  Cloning hexo-starter to ~/hexo-blog</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog&apos;...</span><br><span class="line">remote: Counting objects: 68, done.</span><br><span class="line">remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67</span><br><span class="line">Unpacking objects: 100% (68/68), done.</span><br><span class="line">Submodule &apos;themes/landscape&apos; (https://github.com/hexojs/hexo-theme-landscape.git) registered for path &apos;themes/landscape&apos;</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog/themes/landscape&apos;...</span><br><span class="line">remote: Counting objects: 838, done.</span><br><span class="line">remote: Compressing objects: 100% (6/6), done.</span><br><span class="line">remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832</span><br><span class="line">Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (441/441), done.</span><br><span class="line">Submodule path &apos;themes/landscape&apos;: checked out &apos;73a23c51f8487cfcd7c6deec96ccc7543960d350&apos;</span><br><span class="line">INFO  Install dependencies</span><br><span class="line">npm WARN deprecated titlecase@1.1.2: no longer maintained</span><br><span class="line">npm WARN deprecated postinstall-build@5.0.3: postinstall-build&apos;s behavior is now built into npm! You should migrate off of postinstall-build and use the new `prepare` lifecycle script with npm 5.0.0 or greater.</span><br><span class="line">fsevents@1.2.4 install /Users/zhengyong/hexo-blog/node_modules/fsevents</span><br><span class="line">node install</span><br><span class="line">[fsevents] Success: &quot;/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node&quot; already installed</span><br><span class="line">Pass --update-binary to reinstall or --build-from-source to recompile</span><br><span class="line">nunjucks@3.1.3 postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks</span><br><span class="line">node postinstall-build.js src</span><br><span class="line">npm notice created a lockfile as package-lock.json. You should commit this file.</span><br><span class="line">added 464 packages in 28.659s</span><br><span class="line">INFO  Start blogging with Hexo!</span><br><span class="line">➜  hexo-blog hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line">^CINFO  Good bye</span><br></pre></td></tr></table></figure>
 <h2 id="七、Hexo关联github"><a href="#七、Hexo关联github" class="headerlink" title="七、Hexo关联github"></a>七、Hexo关联github</h2><p>1）进入hexo-blog根目录</p>
 <p>2）安装npm install hexo-deployer-git –save，用Hexo发布博文</p>
 <p>3）打开hexo-blog根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：</p>
-<p> Deployment<br> Docs: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">http://hexo.io/docs/deployment.html</a><br>deploy:<br>  type: git<br>  repository: <a href="https://github.com/username/username.github.io" target="_blank" rel="noopener">https://github.com/username/username.github.io</a><br>  branch: master</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Deployment</span><br><span class="line"> Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/username/username.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>4）进入hexo-blog根目录执行如下命令（参考：<a href="https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码</a></p>
-<p>hexo clean<br>hexo generate<br>hexo deploy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <p>5）如果成功，就可以打开 <a href="http://username.github.io,username替换成自己用户名" target="_blank" rel="noopener">http://username.github.io,username替换成自己用户名</a></p>
 <h2 id="八、使用Hexo创建和发布文章"><a href="#八、使用Hexo创建和发布文章" class="headerlink" title="八、使用Hexo创建和发布文章"></a>八、使用Hexo创建和发布文章</h2><p>1) 进入hexo-blog根目录</p>
 <p>2) 创建文章命令：hexo new “文章标题”</p>
-<p>➜  blog hexo new “Hexo部署github博客”<br>INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo new &quot;Hexo部署github博客&quot;</span><br><span class="line">INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md</span><br></pre></td></tr></table></figure>
 <p>3) 打开编辑Hexo部署github博客.md文件进行Markdown编辑</p>
-<p>open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</span><br></pre></td></tr></table></figure>
 <p>4）发布文章：hexo d -g</p>
-<p>➜  blog hexo d -g<br>INFO  Start processing<br>INFO  Files loaded in 342 ms<br>INFO  Generated: index.html<br>INFO  Generated: 2019/05/28/Hexo部署github博客/index.html<br>INFO  2 files generated in 142 ms<br>INFO  Deploying: git<br>INFO  Clearing .deploy_git folder…<br>INFO  Copying files from public folder…<br>INFO  Copying files from extend dirs…<br>[master 3ede1d6] Site updated: 2019-05-31 13:41:54<br> 2 files changed, 273 insertions(+), 271 deletions(-)<br> rewrite “2019/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html” (60%)<br>Enumerating objects: 15, done.<br>Counting objects: 100% (15/15), done.<br>Delta compression using up to 8 threads<br>Compressing objects: 100% (6/6), done.<br>Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.<br>Total 8 (delta 2), reused 0 (delta 0)<br>remote: Resolving deltas: 100% (2/2), completed with 1 local object.<br>To <a href="https://github.com/sunlei9/sunlei9.github.io" target="_blank" rel="noopener">https://github.com/sunlei9/sunlei9.github.io</a><br>   55a9310..3ede1d6  HEAD -&gt; master<br>Branch ‘master’ set up to track remote branch ‘master’ from ‘<a href="https://github.com/sunlei9/sunlei9.github.io&#39;" target="_blank" rel="noopener">https://github.com/sunlei9/sunlei9.github.io&#39;</a>.<br>[32mINFO [39m Deploy done: [35mgit[39m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo d -g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 342 ms</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  Generated: 2019/05/28/Hexo部署github博客/index.html</span><br><span class="line">INFO  2 files generated in 142 ms</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">[master 3ede1d6] Site updated: 2019-05-31 13:41:54</span><br><span class="line"> 2 files changed, 273 insertions(+), 271 deletions(-)</span><br><span class="line"> rewrite &quot;2019/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html&quot; (60%)</span><br><span class="line">Enumerating objects: 15, done.</span><br><span class="line">Counting objects: 100% (15/15), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (6/6), done.</span><br><span class="line">Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.</span><br><span class="line">Total 8 (delta 2), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (2/2), completed with 1 local object.</span><br><span class="line">To https://github.com/sunlei9/sunlei9.github.io</span><br><span class="line">   55a9310..3ede1d6  HEAD -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;https://github.com/sunlei9/sunlei9.github.io&apos;.</span><br><span class="line">[32mINFO [39m Deploy done: [35mgit[39m</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjzhoyjb2000748tdkka2zkhf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjzoty7qq000aigtddsu1rrv6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -463,23 +882,23 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
-            <a href="/2019/08/18/B2C商城/">B2C商城</a>
+            <a href="/2019/08/24/java面试题/">java面试题</a>
           </li>
         
           <li>
-            <a href="/2019/08/14/SpringCloud/">SpringCloud</a>
+            <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
           </li>
         
           <li>
-            <a href="/2019/08/13/springboot/">springboot</a>
+            <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
           </li>
         
           <li>
-            <a href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+            <a href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
           </li>
         
           <li>
-            <a href="/2019/08/10/Redis/">Redis</a>
+            <a href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
           </li>
         
       </ul>

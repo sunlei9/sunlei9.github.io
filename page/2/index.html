@@ -62,6 +62,281 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-maven-ssm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/23/maven-ssm/" class="article-date">
+  <time datetime="2019-07-23T01:02:16.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/23/maven-ssm/">maven+ssm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="maven多模块开发"><a href="#maven多模块开发" class="headerlink" title="maven多模块开发"></a>maven多模块开发</h1><p>多模块：把当前的项目拆分成多个模块</p>
+<h1 id="idea集成svn"><a href="#idea集成svn" class="headerlink" title="idea集成svn"></a>idea集成svn</h1><h2 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h2><h1 id="Lucene"><a href="#Lucene" class="headerlink" title="Lucene"></a>Lucene</h1><p>全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索<br>对纯文本进行检索<br>全文搜索特点：</p>
+<pre><code>1. 搜索非常快
+2. 只关注文本，不关注语义
+3. 对于查询最终结果值进行高亮展示
+4. 对一部分关键字进行截取
+5. 相关度最高的排在最前面，官网中相关的网页排在最前面
+</code></pre><p>62//3/35/85//33<br>数据结构：</p>
+<pre><code>1. 结构化数据：就是数据库中对应的表
+2. 非结构化数据：word，pdf，txt
+3. 半结构化数据：xml，html 
+</code></pre><h1 id="异构系统"><a href="#异构系统" class="headerlink" title="异构系统"></a>异构系统</h1><p>用不同语言搭建的架构就叫做异构系统<br>CXF：webservice提供的框架</p>
+<h1 id="第三方登录"><a href="#第三方登录" class="headerlink" title="第三方登录"></a>第三方登录</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="cjzoty7r6000nigtdc7l2t8rf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/19/MyBatis/" class="article-date">
+  <time datetime="2019-07-19T01:04:27.000Z" itemprop="datePublished">2019-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/19/MyBatis/">MyBatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ORM概述"><a href="#ORM概述" class="headerlink" title="ORM概述"></a>ORM概述</h1><h2 id="流行的ORM框架"><a href="#流行的ORM框架" class="headerlink" title="流行的ORM框架"></a>流行的ORM框架</h2><pre><code>1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现
+</code></pre><h2 id="JDBC操作数据库缺陷"><a href="#JDBC操作数据库缺陷" class="headerlink" title="JDBC操作数据库缺陷"></a>JDBC操作数据库缺陷</h2><h1 id="MyBatis使用"><a href="#MyBatis使用" class="headerlink" title="MyBatis使用"></a>MyBatis使用</h1><ol>
+<li>导包<pre><code>&lt;dependency&gt;
+      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+      &lt;version&gt;x.x.x&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></li>
+<li><p>XML配置文件<br> 创建一个XML配置文件，XML配置文件中包含了对MyBatis系统的核心设置，包含：</p>
+<pre><code>1. 数据库连接实例的数据源(DataSource)
+2. 决定事物作用域和控制方式的事务管理器(TransactionManager)
+</code></pre><p> 当然，XML 配置文件还可以配置很多。<br> 下面给出一个示例：<br>&lt;?xml version=”1.0” encoding=”UTF-8” ?&gt;<br>`    &lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN”</p>
+<pre><code>&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+</code></pre><!--mybatis的根元素-->
+<p><configuration><br> <properties resource="jdbc.properties"></properties></configuration></p>
+ <!--给类型取别名-->
+<p> <typealiases></typealiases></p>
+<pre><code>&lt;!--
+方式1:给每个类型取一个别名
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Product&quot; alias=&quot;Product&quot;/&gt;
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Customer&quot; alias=&quot;Customer&quot;/&gt;
+&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Order&quot; alias=&quot;Order&quot;/&gt;
+--&gt;
+&lt;!--方式2: 所有的domain都得放在同一个地方--&gt;
+&lt;package name=&quot;cn.itsource.domain&quot;/&gt;
+</code></pre><p> </p>
+ <!--配置环境(操作数据库的环境)-->
+ <environments default="mysql"><br>     <environment id="mysql"><br>         <!--事务管理器,凡是用框架都有事务--><br>         <transactionmanager type="JDBC"><br>         <!--配置数据源(连接池)--><br>         <datasource type="POOLED"><br>             <property name="username" value="${jdbc.username}"><br>             <property name="password" value="${jdbc.password}"><br>             <property name="driver" value="${jdbc.driverClassName}"><br>             <property name="url" value="${jdbc.url}"><br>         </property></property></property></property></datasource><br>     </transactionmanager></environment><br> </environments>
+
+ <!--引入多个mapper对象-->
+<p> <mappers></mappers></p>
+<pre><code>&lt;mapper resource=&quot;cn/itsource/dao/impl/ProductDaoImpl.xml&quot;/&gt;
+</code></pre><p> <br>`</p>
+</li>
+</ol>
+<p>mybatis提供的三大核心对象：</p>
+<pre><code>1. SqlSessionFactoryBuilder主要用来创建SQLSessionFactory对象
+2. SQLSessionFactory他是一个重量级对象，它是线程安全的所以在使用SQLSessionFactory时，不能随意销毁，因为创建它一次很不容易
+</code></pre><h2 id="mapper映射器的使用"><a href="#mapper映射器的使用" class="headerlink" title="mapper映射器的使用"></a>mapper映射器的使用</h2><h1 id="MyBatis代码生成器"><a href="#MyBatis代码生成器" class="headerlink" title="MyBatis代码生成器"></a>MyBatis代码生成器</h1><h1 id="MyBatis拦截器"><a href="#MyBatis拦截器" class="headerlink" title="MyBatis拦截器"></a>MyBatis拦截器</h1><p>拦截器作用：拦截请求，织入自己额外的业务逻辑，增强功能<br>mybatis作为一个orm框架，它也给我们提供了一个拦截器，该拦截器主要是拦截你操作数据库的那一刻(操作数据库之前，之后，获取到结果值)<br>mybatis分页插件：底层基于拦截器实现</p>
+<h1 id="SSM集成"><a href="#SSM集成" class="headerlink" title="SSM集成"></a>SSM集成</h1><ol>
+<li>创建web项目</li>
+<li>导入jar包</li>
+<li>配置核心配置文件<ol>
+<li>applicationContext.xml</li>
+<li>jdbc.properties</li>
+<li>dataSource</li>
+<li>sqlSessionFactory</li>
+<li>dao</li>
+<li>service</li>
+<li>controller</li>
+<li></li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="cjzoty7qn0007igtdgf1u1ujt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-VUE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/16/VUE/" class="article-date">
+  <time datetime="2019-07-16T01:00:35.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/16/VUE/">VUE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue-js-是什么"><a href="#Vue-js-是什么" class="headerlink" title="Vue.js 是什么"></a>Vue.js 是什么</h1><p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<h1 id="holle-word"><a href="#holle-word" class="headerlink" title="holle word!"></a>holle word!</h1><pre><code>&lt;script src=&quot;js/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;div id=&quot;app&quot; &gt;
+    &lt;!--hello vue!--&gt;
+    {{message}}&lt;br/&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    new Vue({
+            el:&quot;#app&quot;,
+            data:{
+                message:&quot;hello vue!&quot;
+            }
+    })
+&lt;/script&gt;
+</code></pre><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ol>
+<li>创建组件方式一<br> //创建全局组件<br> Vue.component(“mycomponent”,{<pre><code>template:&quot;&lt;h1&gt;全局组件&lt;/h1&gt;&quot;
+</code></pre> })<br> new Vue({<pre><code>el:&quot;#app&quot;,
+components:{
+    innercomponent:{
+        template:&quot;&lt;h2&gt;局部组件&lt;/h2&gt;&quot;
+    }
+}
+</code></pre> }) <div id="app"><br>     <mycomponent></mycomponent><br>     <innercomponent></innercomponent><br> </div></li>
+<li>创建组件方式二 <template id="template"><br>     <h1>全局组件创建</h1><br> </template></li>
+<li>创建组件方式三<br> <script type="text/template" id="template"><pre><code>&lt;h1&gt;全局组件创建&lt;/h1&gt;
+</code></pre> </script><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1></li>
+<li>什么是路由<br> 路由是负责将进入的浏览器请求映射到特定的组件代码中，即决定了由谁去响应客户端请求</li>
+<li>使用路由的步骤<ol>
+<li>导入路由的js库</li>
+<li>准备路径</li>
+<li>准备组件</li>
+<li>做一个路径映射到组件的配置</li>
+<li>告诉vue我要使用路由</li>
+<li>最终组件展示的位置<h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1></li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjzoty7r1000higtdfb7v29ep" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/14/面试题/" class="article-date">
+  <time datetime="2019-07-14T01:02:57.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/面试题/">面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>forword和redirect的区别以及各自的应用场景<br> forword请求转发，redirect重定向<br> 区别：<pre><code>1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request
+2. forward地址栏不发生变化，redirect地址栏发生变化
+3. forward是发送一次请求，redirect是发送两次请求
+4. forward不能跨域访问，redirect能跨域访问
+5. forward请求能访问WEB-inf下main的资源
+</code></pre> 应用场景<br> forward一般用于用户登录的时候，根据角色转发到相应的模块<br> redirect一般用于用户注销登录时返回主页面和跳转到其他的网站等</li>
+<li>为什么要进行事务管理,Spring是如何进行事务管理支持的<br> 防止出现脏数据，防止数据库数据出现问题<br> spring是通过“声明式事务(基于AOP)”的方式对事务进行管理，即在配置文件中进行声明</li>
+<li>解释一下DI依赖注入和IOC控制反转，Spring中是如何做的</li>
+<li>Spring中的BeanFactory与ApplicationContext的区别</li>
+<li>什么是aop，aop的作用是什么</li>
+<li>GET与POST的区别，分别用在什么场景合适？</li>
+<li>什么是单例模式，有哪些实现方式，写出其中两种</li>
+<li>数据库储存引擎myisam / innodb的区别</li>
+<li>模糊查询可以使用索引吗？</li>
+<li>索引的优缺点</li>
+<li>介绍一下hibernate的缓存机制</li>
+<li>请描述一下springMvc执行流程<ol>
+<li>客户端发送请求通过springMVC的核心控制器</li>
+</ol>
+</li>
+<li>Servlet的生命周期</li>
+<li>Jsp九大内置对象</li>
+<li>自我介绍</li>
+<li>请谈谈你最近做的一个项目</li>
+<li>你主要负责的模块有哪些</li>
+<li>Sleep与wait的区别</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjzoty7r4000ligtdjdbmi0pg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" class="article-date">
@@ -290,7 +565,7 @@ if ($.cookie(&quot;password&quot;)){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjzhoyjcg000n48tdr83adp5p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjzoty7ri000rigtda1q70ugv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -363,7 +638,7 @@ AOP底层是基于代理模式实现的：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="cjzhoyjbv000j48tdj4qt3l2v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="cjzoty7r7000pigtd2oi19id7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +675,7 @@ AOP底层是基于代理模式实现的：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/21/phaser入门/" data-id="cjzhoyjbq000h48td5nss94k8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/21/phaser入门/" data-id="cjzoty7r4000kigtdt6hdjo0b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -688,7 +963,7 @@ java语言
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/17/JPA/" data-id="cjzhoyjb4000948tdfzyeocnn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/17/JPA/" data-id="cjzoty7qs000bigtdrjlr7lgz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -733,7 +1008,7 @@ java语言
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjzhoyjbk000f48tdccu9gfn9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjzoty7r7000oigtdvygzsyi2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -845,425 +1120,7 @@ $(&#39;#p&#39;).panel({
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjzhoyjam000048tdrygco52l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/11/js高级/" class="article-date">
-  <time datetime="2019-06-11T01:15:53.000Z" itemprop="datePublished">2019-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/11/js高级/">js高级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="js对象"><a href="#js对象" class="headerlink" title="js对象"></a>js对象</h2><pre><code>&lt;script&gt;
-    //js是一个基于对象和事件驱动编程语言
-    //1.js一切皆是对象，你可以把基本类型，引用类型，函数都可以看做对象
-    var num = 2.134141;
-    console.debug(num.toFixed(2));//保留两位小数
-
-    //2.js中的true和false
-    var boo = false;
-     if (boo){
-        console.debug(&quot;不能进入&quot;)
-    }
-    var boo2 = new Boolean(false);
-     if (boo2){
-         console.debug(&quot;可以进入&quot;)
-     }
-     if(NaN){
-         console.debug(&quot;不能进入&quot;)
-     }
-
-    //3.对象的操作
-    //创建对象的方式
-    var obj1 = new Object();
-    var obj2 = {};
-    var obj3 = new user();
-    function user() {
-
-    }
-    console.debug(obj1)
-    console.debug(obj2)
-    console.debug(obj3)
-    //给对象添加属性和方法
-    obj3.name=&quot;小c&quot;;
-    obj3[&quot;age&quot;]=&quot;22&quot;;
-    obj3.play=function (game) {
-        console.debug(this.name+&quot;玩&quot;+game)
-    }
-    //调用方法
-    obj3.play(&quot;lol&quot;)
-
-    //遍历对象
-    for (var key in obj3){
-        console.debug(key)
-
-        //如果是方法就调用方法
-        if (typeof obj3[key] == &quot;function&quot;){
-            obj3[key](&quot;lol&quot;);
-        }else {//是属性直接取值
-            console.debug(obj3[key])
-        }
-    }
-&lt;/script&gt;
-</code></pre><h2 id="json对象和json字符串"><a href="#json对象和json字符串" class="headerlink" title="json对象和json字符串"></a>json对象和json字符串</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-    //json字符串
-    var jsonStr = &quot;{&apos;id&apos;:1,&apos;name&apos;:&apos;霸哥&apos;}&quot;;
-    //json对象转换
-    var jsonObj = eval(&quot;(&quot;+jsonStr+&quot;)&quot;);
-    console.debug(jsonObj)
-
-    //Json.parse()--必须是json标准格式
-    //var obj=$.parseJSON(jsonStr)
-    var jsonStr2 = &apos;{&quot;id&quot;:1,&quot;name&quot;:&quot;霸哥&quot;}&apos;;
-    var obj=$.parseJSON(jsonStr2)
-    console.debug(obj)
-&lt;/script&gt;
-</code></pre><h2 id="js类"><a href="#js类" class="headerlink" title="js类"></a>js类</h2><pre><code>&lt;script&gt;
-    //类构造方法在写的时候，如果方法首字母是大写，一般认为是构造方法
-    function Person(name,age) {
-        this.name=name;
-        this.age=age;
-    }
-
-    //属性拷贝
-    //方式2 一个一个拷贝
-    var obj1 = {
-        name:&quot;gg&quot;,
-        age:&quot;18&quot;
-    }
-    var obj2 = {
-    }
-    obj2.name=obj1.name;
-    obj2.age=obj1.age;
-    console.debug(obj2)
-    //方式3 循环对象
-    for (var key in obj1){
-        if (!obj2.hasOwnProperty(key)){//判断里面是否有属性
-            obj2[key]=obj1[key];
-        }
-    }
-    console.debug(obj2)
-&lt;/script&gt;
-</code></pre><h2 id="js的prototype"><a href="#js的prototype" class="headerlink" title="js的prototype"></a>js的prototype</h2><pre><code>&lt;script&gt;
-    //prototype:原型的意思--js对象都有prototype属性，使你可以向对象添加属性和方法
-    //使用
-    /**
-     * 对象组成 ：自定义属性
-     *             原型属性
-     *      先从自定义属性对象中找，找不到到原型里面找
-     */
-    function User(name,age) {
-        this.name=name;
-        this.age=age;
-    }
-    var user1=new User(&quot;彩旗&quot;,23)
-    var user2=new User(&quot;天霸&quot;,23)
-    //展示目录结构
-    console.dir(user1)
-    console.dir(user2)
-    //对象里面的原型属性__proto__ ，对象里面原型属性是相同或者共享
-    console.debug(user1.__proto__ === user2.__proto__)
-    //原型上面定义方法
-    User.prototype.eat=function (food) {
-        console.debug(this.name+&quot;吃&quot;+food)
-    }
-&lt;/script&gt;
-</code></pre><h2 id="js中的回调函数"><a href="#js中的回调函数" class="headerlink" title="js中的回调函数"></a>js中的回调函数</h2><pre><code>&lt;script&gt;
-    //函数：方法 实现一块逻辑，一堆代码打包成一个方法
-    //普通函数:function user(){}
-    //构造函数:function User(){}
-    //回调函数:函数作为一个参数，传递给另一个函数，重新回调这个函数
-    setTimeout(test,3000);//异步
-    function test() {
-        console.debug(111)
-    }
-    console.debug(222)
-    //匿名函数:没有名字的函数
-    // 作用：1,如果变量只用一次的时候 可以放到匿名函数中  解决作用域污染问题
-    //       2，作为参数传递
-    (function (a,b) {
-        var result=a+b;
-        //window.result=result;暴露到window中
-    })(7,7);
-&lt;/script&gt;
-</code></pre><h2 id="jquery事件委托"><a href="#jquery事件委托" class="headerlink" title="jquery事件委托"></a>jquery事件委托</h2><pre><code>&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;title&gt;Title&lt;/title&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-    //事件委托:给动态元素添加事件
-
-    //绑定事件
-    $(function () {
-        $(&quot;#add&quot;).click(function () {
-            var content = &quot;&lt;div&gt;\n&quot; +
-                &quot;        附件:&lt;input type=\&quot;file\&quot; name=\&quot;file\&quot;&gt;\n&quot; +
-                &quot;        &lt;a class=\&quot;delete\&quot; href=\&quot;javascript:;\&quot;&gt;删除&lt;/a&gt;\n&quot; +
-                &quot;        &lt;a class=\&quot;examine\&quot; href=\&quot;javascript:;\&quot;&gt;查看&lt;/a&gt;\n&quot; +
-                &quot;    &lt;/div&gt;&quot;;
-            $(&quot;#userForm&quot;).append(content);
-        })
-        //事件委托
-        $(&quot;#userForm&quot;).on(&apos;click&apos;,&apos;.delete&apos;,function () {
-            console.debug(&quot;删除&quot;)
-        })
-    })
-
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;a id=&quot;add&quot; href=&quot;javascript:;&quot;&gt;添加&lt;/a&gt;
-&lt;form id=&quot;userForm&quot;&gt;
-&lt;div&gt;
-    附件:&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;
-&lt;/div&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h2 id="js的闭包"><a href="#js的闭包" class="headerlink" title="js的闭包"></a>js的闭包</h2><pre><code>&lt;script&gt;
-    //闭包：函数内使用函数外的变量
-    var a=10;
-    function b() {
-        alert(a)
-    }
-    //闭包案例--计数案例
-    var  result=0;
-    function getSum() {
-        return result++;
-    }
-    console.debug(getSum());
-    console.debug(getSum());
-    result=0;
-    console.debug(getSum())
-
-    //使用闭包和匿名函数结合起来使用
-    (function () {
-        var result1=0;
-        window.getSum1=function () {
-            result1++;
-            return result1;
-        }
-    })();
-    console.debug(getSum1());
-    console.debug(getSum1());
-    //result1=10;
-    console.debug(getSum1());
-&lt;/script&gt;
-</code></pre><h2 id="js里面的this用法"><a href="#js里面的this用法" class="headerlink" title="js里面的this用法"></a>js里面的this用法</h2><p>this的指向的改变</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjzhoyjbn000g48tdwg19robf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/10/jQuery/" class="article-date">
-  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/jQuery/">jQuery</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
-<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
-<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
-<li><p>页面加载事件</p>
-<pre><code>//页面加载完之后再执行代码，先于window.onload执行
-$(function(){
-
-})
-</code></pre></li>
-<li>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</li>
-<li><p>DOM对象和jquery对象的转换</p>
-<pre><code>$(function(){
-    //dom对象
-    var domObj = document.getElementById(&quot;mySpan&quot;);
-
-    //jquery对象
-    var jqueryObj = $(&quot;#mySpan&quot;);
-
-    //有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
-    var domToJquery = $(domObj);
-
-    //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
-    var jqueryToDom = jqueryObj[0];
-})
-</code></pre></li>
-<li><p>选择器</p>
-<pre><code>//id选择器 id一般不重复
-$(&quot;#id&quot;);
-
-//class选择器
-$(&quot;.class&quot;);
-
-//标签选择器 页面上的所有标签都有效果
-$(&quot;div&quot;);
-
-//获取所有元素--没什么用
-$(&quot;*&quot;);
-
-//多元素选择器
-$(&quot;div,span&quot;)
-
-//层次选择器
-//祖先后代
-$(&quot;div span&quot;)
-//父亲儿子
-$(&quot;div &gt; span&quot;)
-//相邻选择器
-$(&quot;input + input&quot;)
-//同级选择器
-$(&quot;form ~ input&quot;)
-
-//属性选择器
-</code></pre></li>
-<li><p>jquery注册事件方式<br> //方式一注册事件<br> $(“#id”).click(function(){<br> })</p>
-<p> //方式二注册事件<br> $(“#id”).on(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).off(‘click’)</p>
-<p> //方式三注册事件<br> $(“#id”).bind(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).unbind(‘click’);</p>
-</li>
-<li>jquery常用方法</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjzhoyjbh000c48td8u3ifj4u" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/09/AJAX/" class="article-date">
-  <time datetime="2019-06-09T01:12:45.000Z" itemprop="datePublished">2019-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/AJAX/">AJAX</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js的引入方式"><a href="#js的引入方式" class="headerlink" title="js的引入方式"></a>js的引入方式</h3><ol>
-<li>直接在行内标签内使用</li>
-<li>在<script>标签内使用</li>
-<li>外部js引入<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3></li>
-<li>如果引入外部js文件，就不要再这个标签内写内容</li>
-<li><script>标签引入文件不能使用单标签</li>
-<li>js加载顺序是从上往下</li>
-<li><p><a herf="#">点击</a>存在锚点效果</p>
-<h3 id="js里面的函数"><a href="#js里面的函数" class="headerlink" title="js里面的函数"></a>js里面的函数</h3><p>什么是函数：函数就是方法，function<br>函数的定义<br> function say(name,food){</p>
-<p> }<br>函数调用<br> 调用方法，参数可以多，如果参数传少了，默认值是undefined666<br> say();<br> window.say();<br>动态调用<br> window<a href="">“say”</a>;<br>js中一切皆对象，函数也是对象</p>
-</li>
-</ol>
-<p>函数返回值<br>    如果方法没有返回值，返回undefined</p>
-<p>java 方法重载：方法名相同，参数列表不同，和返回值无关<br>js没有重载一说，方法名相同，后面的方法会覆盖前面的方法</p>
-<h3 id="js引擎执行过程"><a href="#js引擎执行过程" class="headerlink" title="js引擎执行过程"></a>js引擎执行过程</h3><p>js变量提升</p>
-<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>ajax即Asynchronous JavaScript And XML<br>异步JavaScript和XML，是指一种创建交互式网页应用的网页开发技术<br>异步JavaScript：浏览器处理事情，如果没有处理完，可以做其他事情<br>XML：可拓展性标记语言<br>局部刷新技术，是前端技术，属于js里面的内容</p>
-<h3 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json:JavaScript Object Notation<br>一种轻量级的数据交换格式</p>
-</script></li></ol>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjzhoyjas000148tdmqc0bysy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/09/JavaScript/" class="article-date">
-  <time datetime="2019-06-09T01:12:33.000Z" itemprop="datePublished">2019-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/09/JavaScript/">JavaScript</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjzhoyjb0000548td5ksa3veu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjzoty7qo0008igtdxtkrewrv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1307,23 +1164,23 @@ $(&quot;form ~ input&quot;)
       <ul>
         
           <li>
-            <a href="/2019/08/18/B2C商城/">B2C商城</a>
+            <a href="/2019/08/24/java面试题/">java面试题</a>
           </li>
         
           <li>
-            <a href="/2019/08/14/SpringCloud/">SpringCloud</a>
+            <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
           </li>
         
           <li>
-            <a href="/2019/08/13/springboot/">springboot</a>
+            <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
           </li>
         
           <li>
-            <a href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+            <a href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
           </li>
         
           <li>
-            <a href="/2019/08/10/Redis/">Redis</a>
+            <a href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
           </li>
         
       </ul>
