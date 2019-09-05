@@ -5,17 +5,17 @@
   
   <title>Nginx与Docker | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Nginx1. Nginx是什么2. Nginx 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自己要访">
+  <meta name="description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx与Docker">
 <meta property="og:url" content="http://yoursite.com/2019/09/04/Nginx与Docker/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="Nginx1. Nginx是什么2. Nginx 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自己要访">
+<meta property="og:description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-04T11:57:52.604Z">
+<meta property="og:updated_time" content="2019-09-05T01:48:22.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx与Docker">
-<meta name="twitter:description" content="Nginx1. Nginx是什么2. Nginx 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自己要访">
+<meta name="twitter:description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="1-Nginx是什么"><a href="#1-Nginx是什么" class="headerlink" title="1. Nginx是什么"></a>1. Nginx是什么</h4><h4 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2. Nginx"></a>2. Nginx</h4><ol>
+        <h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="1-Nginx是什么"><a href="#1-Nginx是什么" class="headerlink" title="1. Nginx是什么"></a>1. Nginx是什么</h4><h4 id="2-Nginx的优点"><a href="#2-Nginx的优点" class="headerlink" title="2. Nginx的优点"></a>2. Nginx的优点</h4><ol>
 <li><p>高并发连接</p>
 </li>
 <li><p>内存消耗小</p>
