@@ -62,6 +62,232 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Nginx与Docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/04/Nginx与Docker/" class="article-date">
+  <time datetime="2019-09-04T01:03:44.000Z" itemprop="datePublished">2019-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="1-Nginx是什么"><a href="#1-Nginx是什么" class="headerlink" title="1. Nginx是什么"></a>1. Nginx是什么</h4><h4 id="2-Nginx"><a href="#2-Nginx" class="headerlink" title="2. Nginx"></a>2. Nginx</h4><ol>
+<li><p>高并发连接</p>
+</li>
+<li><p>内存消耗小</p>
+</li>
+<li><p>配置文件非常简单</p>
+</li>
+<li><p>成本低廉</p>
+</li>
+<li><p>支持Rewrite重写规则</p>
+</li>
+<li><p>内置的健康检查功能</p>
+</li>
+<li>节省带宽</li>
+<li>稳定性高</li>
+</ol>
+<h4 id="3-Nginx和apache对比"><a href="#3-Nginx和apache对比" class="headerlink" title="3. Nginx和apache对比"></a>3. Nginx和apache对比</h4><p>apache处理速度慢</p>
+<h4 id="4-正向代理与反向代理"><a href="#4-正向代理与反向代理" class="headerlink" title="4. 正向代理与反向代理"></a>4. 正向代理与反向代理</h4><ol>
+<li><p>正向代理</p>
+<p>知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购</p>
+</li>
+<li><p>反向代理</p>
+<p>不知道自己要访问的后端服务器，他只知道代理服务器，代理服务器知道后端的一些服务器，通过代理服务器拿到最终结果后，反向返回给客户端</p>
+</li>
+</ol>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>虚拟化：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/04/Nginx与Docker/" data-id="ck06129pb000cqctdrfamnpdo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C爱购商城-六-上传图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/25/B2C爱购商城-六-上传图片/" class="article-date">
+  <time datetime="2019-08-25T01:10:02.000Z" itemprop="datePublished">2019-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="传统的图片上传"><a href="#传统的图片上传" class="headerlink" title="传统的图片上传"></a>传统的图片上传</h5><p>直接把文件保存在项目的webapp/upload目录，生成一个随机名字，数据库表中需要保存图片的路径，页面就根据和路径进行显示图片<br>问题：</p>
+<ol>
+<li>传统方式图片是交给Tomcat来处理，Tomcat对图片的处理不占优势，会比较慢</li>
+<li>图片要占用太多的项目服务器的磁盘空间，项目会比较旁大，臃肿</li>
+<li>后台管理平台上传的图片，前台门户网站拿不到，因为图片在后台管理平台的webapp目录中，也可以使用一个中转目录进行图片的复制(后台–&gt;中转目录–&gt;前台)，但是性能很低<h5 id="文件的统一处理"><a href="#文件的统一处理" class="headerlink" title="文件的统一处理"></a>文件的统一处理</h5>一般在图片比较多的项目，我会为了减轻项目服务器对图片处理的压力，一般会把图片/文件统一处理，把图片上传到云服务器中，图片的浏览直接访问云服务器，我的项目中根本不存储图片，项目的数据库只存储图片的路径</li>
+<li>文件服务器如何选择</li>
+<li>java代码怎么对接文件服务器</li>
+<li>如何上传</li>
+<li>如何做图片浏览器</li>
+<li>数据库如何存储图片路径<h5 id="FastDFS搭建文件服务器"><a href="#FastDFS搭建文件服务器" class="headerlink" title="FastDFS搭建文件服务器"></a>FastDFS搭建文件服务器</h5></li>
+<li><p>解压Centos系统</p>
+</li>
+<li><p>虚拟机打开centos系统</p>
+</li>
+<li><p>修改网络模式为桥接：虚拟机–&gt;设置–&gt;网络–&gt;桥接</p>
+</li>
+<li><p>修改ip地址</p>
+<ol>
+<li><p>查看ip是否ok</p>
+<blockquote>
+<p>ifconfig</p>
+</blockquote>
+</li>
+<li><p>查看eth1的mack地址，并记录下来</p>
+<blockquote>
+<p>cat /</p>
+</blockquote>
+</li>
+<li><p>修改网卡eth0为eth1</p>
+<blockquote>
+</blockquote>
+</li>
+<li><p>编辑ip地址文件</p>
+</li>
+<li><p>重启网络服务</p>
+</li>
+<li><p>查看ip地址</p>
+</li>
+<li><p>测试网络</p>
+<blockquote>
+<p>在宿主机 ping liunx的ip</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>使用xshell 连接liunx</p>
+</li>
+<li><p>修改Fastdfs的配置</p>
+<ol>
+<li>client.conf</li>
+<li><p>storage.conf</p>
+</li>
+<li><p>启动tracker和storage</p>
+</li>
+<li>查看是否启动成功</li>
+<li>启动监控命令</li>
+<li>启动nginx</li>
+<li>测试文件上传</li>
+</ol>
+</li>
+</ol>
+<h5 id="修改公共服务实现后台文件上传"><a href="#修改公共服务实现后台文件上传" class="headerlink" title="修改公共服务实现后台文件上传"></a>修改公共服务实现后台文件上传</h5><ol>
+<li>下载fastdfs客户端源码</li>
+<li>把源码打包安装到本地仓库</li>
+<li>导入依赖</li>
+<li>拷贝fastdfs文件上传工具</li>
+<li>编写controller，调用工具实现文件上传</li>
+</ol>
+<h5 id="品牌添加logo上传实现"><a href="#品牌添加logo上传实现" class="headerlink" title="品牌添加logo上传实现"></a>品牌添加logo上传实现</h5><ol>
+<li>修改action地址指向公共服务的文件上传的后台地址</li>
+<li>文件上传成功的回调方法中，拿到图片地址，赋值给数据绑定的logo</li>
+<li>文件删除，在删除的回调方法中使用ajax提交删除请求</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/25/B2C爱购商城-六-上传图片/" data-id="ck06129p60009qctdh04ubvtm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目-五" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/B2C商城项目-五/" class="article-date">
+  <time datetime="2019-08-24T01:21:07.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="redis做中央缓存"><a href="#redis做中央缓存" class="headerlink" title="redis做中央缓存"></a>redis做中央缓存</h3><ol>
+<li>在查询时检查redis中是否有数据</li>
+<li>如果有直接返回数据</li>
+<li><p>如果没有数据</p>
+<ol>
+<li>去mysql中查询</li>
+<li>把数据放到redis中</li>
+<li>返回数据</li>
+</ol>
+</li>
+<li><p>遇到insert，update，delete要重置redis中的数据</p>
+<ul>
+<li><p>方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据</p>
+</li>
+<li><p>方案二：使用重置方案，直接从mysql中查询，放到redis中</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-五/" data-id="ck06129ox0002qctdg77d96tj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java面试题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/24/java面试题/" class="article-date">
@@ -84,11 +310,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li><p>mysql的优化</p>
+<ul>
+<li><p>优化代码</p>
+</li>
+<li><p>优化sql</p>
+</li>
+<li><p>合理利用索引</p>
+</li>
+<li><p>反三范式</p>
+<ul>
+<li>增加冗余字段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/java面试题/" data-id="cjzoty7qx000digtd2t60fanw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/java面试题/" data-id="ck06129pe000eqctdqdt2w8ya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-四/" data-id="cjzoty7qf0001igtd9dshi65y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-四/" data-id="ck06129p20006qctdv0oestwb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/21/B2C商城项目-三-商品中心-品牌管理/" data-id="cjzoty7qi0002igtd6aqdlliu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/21/B2C商城项目-三-商品中心-品牌管理/" data-id="ck06129ov0001qctd6ma7e7yr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/19/B2C商城项目(二)/" data-id="cjzoty7q80000igtdclwbkz44" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/19/B2C商城项目(二)/" data-id="ck06129oz0004qctdci52nlh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/18/B2C商城项目(一)/" data-id="cjzoty7qj0003igtd6zgfsa9m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/18/B2C商城项目(一)/" data-id="ck06129o90000qctdijc2lyud" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="cjzoty7qz000figtdhxdibnc1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="ck06129ps000iqctdpm7m0o0h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,265 +699,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="cjzoty7r5000migtd1arlumx4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Elasticsearch" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/11/Elasticsearch/" class="article-date">
-  <time datetime="2019-08-11T01:11:00.000Z" itemprop="datePublished">2019-08-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-ElasticSearch的基本概念"><a href="#1-ElasticSearch的基本概念" class="headerlink" title="1. ElasticSearch的基本概念"></a>1. ElasticSearch的基本概念</h3><p>ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。</p>
-<h3 id="2-ES的特点"><a href="#2-ES的特点" class="headerlink" title="2. ES的特点"></a>2. ES的特点</h3><ul>
-<li>Es 全文检索框架 使用比lucene更简单</li>
-<li>ES支持集群 支持分布式</li>
-<li>支持json操作</li>
-<li>一般大型全文检索都用ES</li>
-<li><p>通过Restfull风格操作ES</p>
-<h3 id="3-Es和Lucene的区别"><a href="#3-Es和Lucene的区别" class="headerlink" title="3. Es和Lucene的区别"></a>3. Es和Lucene的区别</h3><p>Lucene：</p>
-</li>
-<li><p>使用起来很复杂</p>
-</li>
-<li>Lucene不支持集群</li>
-<li>扩展麻烦</li>
-<li>必须使用Java<h3 id="4-安装ES"><a href="#4-安装ES" class="headerlink" title="4. 安装ES"></a>4. 安装ES</h3></li>
-</ul>
-<ol>
-<li>解压ES文件</li>
-<li>安装Kinaba<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3></li>
-</ol>
-<pre><code>//获取客户端
-public static TransportClient getClient() throws Exception {
-    TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
-            addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
-                    9300));
-    return client;
-}
-
-//保存一条记录
-@Test
-public void createEsIndex() throws Exception {
-    TransportClient client = getClient();
-    //创建索引库
-    IndexRequestBuilder indexRequestBuilder = client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;);
-    Map map = new HashMap();
-    map.put(&quot;id&quot;, 1);
-    map.put(&quot;name&quot;, &quot;huahua&quot;);
-    map.put(&quot;age&quot;, 18);
-    IndexResponse indexResponse = indexRequestBuilder.setSource(map).get();
-    System.out.println(indexResponse);
-
-}
-
-//获取数据
-@Test
-public void testGet() throws Exception {
-    //获取client对象
-    TransportClient client = getClient();
-    //取到值
-    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-    //获取source部分数据
-    System.out.println(response.getSource());
-}
-
-@Test
-public void testUpdate() throws Exception {
-    //获取client对象
-    TransportClient client = getClient();
-    Map mp = new HashMap();
-    mp.put(&quot;id&quot;, 1);
-    mp.put(&quot;name&quot;, &quot;jojo&quot;);
-    mp.put(&quot;age&quot;, 22);
-    //取到值
-    UpdateResponse updateResponse = client.prepareUpdate(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).setDoc(mp).get();
-    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-    //获取source部分数据
-    System.out.println(response.getSource());
-}
-
-@Test
-public void testDelete() throws Exception {
-    //获取client对象
-    TransportClient client = getClient();
-
-    //取到值
-    DeleteResponse deleteResponse = client.prepareDelete(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
-
-    //获取source部分数据
-    System.out.println(deleteResponse);
-}
-//批量操作
-@Test
-public  void testGetBulk()throws Exception{
-//获取客户端
-    TransportClient client = getClient();
-    //获取批量请求对象
-    BulkRequestBuilder bulk = client.prepareBulk();
-    for (int i = 0; i &lt; 10; i++) {
-        Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
-        map.put(&quot;id&quot;, i);
-        map.put(&quot;name&quot;, &quot;sl&quot; + i);
-        map.put(&quot;age&quot;, 18 + i);
-        map.put(&quot;class&quot;,1);
-        BulkRequestBuilder builder = bulk.add(client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, i + &quot;&quot;).setSource(map));
-    }
-    //提交请求
-    BulkResponse bulkResponse = bulk.get();
-    if (bulkResponse.hasFailures()) {
-        System.out.println(&quot;error!!!!&quot;);
-    }
-    //关闭资源
-    client.close();
-}
-//搜索
-@Test
-public  void test()throws Exception{
-    //获取客户端
-    TransportClient client = getClient();
-    //创建boolQuery对象
-    BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-    // 匹配 class =1
-    List&lt;QueryBuilder&gt; must = boolQuery.must();
-    must.add(QueryBuilders.termQuery(&quot;class&quot;,&quot;1&quot;));
-    //搜索年龄范围在18-23的班级在1班的，并且按照id降序，展示第一页，三条数据
-    List&lt;QueryBuilder&gt; filter = boolQuery.filter();
-    filter.add(QueryBuilders.rangeQuery(&quot;age&quot;).gte(18).lte(23));
-    SearchResponse searchResponse = client.prepareSearch(&quot;crm&quot;)
-            .setFrom(0).setSize(3)
-            .setQuery(boolQuery)
-            .addSort(&quot;id&quot;, SortOrder.DESC).get();
-
-    System.out.println(&quot;总条数:&quot;+searchResponse.getHits().getTotalHits());
-    SearchHit[] hits = searchResponse.getHits().getHits();
-    // 循环数据结构
-    for (SearchHit hit : hits) {
-        System.out.println(hit.getSource());
-    }
-    // 关闭资源
-    client.close();
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="cjzoty7qv000cigtdibwyacf9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Redis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/10/Redis/" class="article-date">
-  <time datetime="2019-08-10T01:18:25.000Z" itemprop="datePublished">2019-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/Redis/">Redis</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Nosql"><a href="#Nosql" class="headerlink" title="Nosql"></a>Nosql</h2><h3 id="1-Nosql的概念"><a href="#1-Nosql的概念" class="headerlink" title="1. Nosql的概念"></a>1. Nosql的概念</h3><p>NoSql指非关系型数据库，性能高，解决高并发问题</p>
-<h3 id="2-Nosql的分类"><a href="#2-Nosql的分类" class="headerlink" title="2. Nosql的分类"></a>2. Nosql的分类</h3><ul>
-<li>key-value键值对数据库</li>
-<li>列式存储数据库</li>
-<li>文档型结构数据库</li>
-<li>图形结构数据库<h2 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h2><h3 id="1-Redis的概念"><a href="#1-Redis的概念" class="headerlink" title="1. Redis的概念"></a>1. Redis的概念</h3>Redis是属于Key-Value键值对数据库，是Nosql的一种<h3 id="2-Redis的特点"><a href="#2-Redis的特点" class="headerlink" title="2. Redis的特点"></a>2. Redis的特点</h3></li>
-<li>数据存储到内存</li>
-<li>支持数据持久</li>
-<li>支持Redis集群</li>
-<li>支持事务</li>
-<li>支持订阅发布<h3 id="3-Redis的使用场景"><a href="#3-Redis的使用场景" class="headerlink" title="3. Redis的使用场景"></a>3. Redis的使用场景</h3></li>
-<li>中央缓存</li>
-<li>计数器</li>
-<li>实时防攻防系统</li>
-<li>排行榜</li>
-<li>有效时间</li>
-<li>去重</li>
-<li>队列</li>
-<li>发布订阅<h2 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h2><h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><h3 id="1-String的基本操作"><a href="#1-String的基本操作" class="headerlink" title="1. String的基本操作"></a>1. String的基本操作</h3>设置值：set key value<br>取值：get key<br>同时设置一个或多个 key-value 对：mset<br>返回所有(一个或多个)给定 key 的值：mget<br>将 key 中储存的数字值增1(key不存在,则初始化为0,再加1)：incr key<br>将 key 中储存的数字值减1(key不存在,则初始化为0,再减1)：decr key<br>自增多少：incrBy key num<br>自减多少：decrBy key num<h3 id="2-Key的命令"><a href="#2-Key的命令" class="headerlink" title="2. Key的命令"></a>2. Key的命令</h3>获取所有key列表：key *<br>删除key：del key<br>设置key的过期时间：expire key xx<br>查看key的过期时间：ttl key<br>选择库  默认16个数据库：select 0-15<br>清空整个redis服务器数据，所有的数据库全部清空：flushall<br>清除当前库，redis中默认有16个数据库，名称分别为0,1,2.。。15：flushdb<h3 id="3-List的命令"><a href="#3-List的命令" class="headerlink" title="3. List的命令"></a>3. List的命令</h3></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="cjzoty7qp0009igtdmj7ghass" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-liunx" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/07/liunx/" class="article-date">
-  <time datetime="2019-08-07T01:20:57.000Z" itemprop="datePublished">2019-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/liunx/">liunx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>liunx操作系统的优点：<br>服务器：centos<br>个人环境：Ubuntu</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/liunx/" data-id="cjzoty7r2000iigtdoxsxya21" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="ck06129pw000mqctdxpevqgcx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -727,7 +712,7 @@ public  void test()throws Exception{
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -745,7 +730,7 @@ public  void test()throws Exception{
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -758,23 +743,23 @@ public  void test()throws Exception{
       <ul>
         
           <li>
+            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/24/java面试题/">java面试题</a>
           </li>
         
           <li>
             <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
           </li>
         
       </ul>

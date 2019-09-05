@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>B2C爱购商城(六)-上传图片 | java学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="传统的图片上传直接把文件保存在项目的webapp/upload目录，生成一个随机名字，数据库表中需要保存图片的路径，页面就根据和路径进行显示图片问题：  传统方式图片是交给Tomcat来处理，Tomcat对图片的处理不占优势，会比较慢 图片要占用太多的项目服务器的磁盘空间，项目会比较旁大，臃肿 后台管理平台上传的图片，前台门户网站拿不到，因为图片在后台管理平台的webapp目录中，也可以使用一个中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="B2C爱购商城(六)-上传图片">
+<meta property="og:url" content="http://yoursite.com/2019/08/25/B2C爱购商城-六-上传图片/index.html">
+<meta property="og:site_name" content="java学习笔记">
+<meta property="og:description" content="传统的图片上传直接把文件保存在项目的webapp/upload目录，生成一个随机名字，数据库表中需要保存图片的路径，页面就根据和路径进行显示图片问题：  传统方式图片是交给Tomcat来处理，Tomcat对图片的处理不占优势，会比较慢 图片要占用太多的项目服务器的磁盘空间，项目会比较旁大，臃肿 后台管理平台上传的图片，前台门户网站拿不到，因为图片在后台管理平台的webapp目录中，也可以使用一个中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-25T08:36:40.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="B2C爱购商城(六)-上传图片">
+<meta name="twitter:description" content="传统的图片上传直接把文件保存在项目的webapp/upload目录，生成一个随机名字，数据库表中需要保存图片的路径，页面就根据和路径进行显示图片问题：  传统方式图片是交给Tomcat来处理，Tomcat对图片的处理不占优势，会比较慢 图片要占用太多的项目服务器的磁盘空间，项目会比较旁大，臃肿 后台管理平台上传的图片，前台门户网站拿不到，因为图片在后台管理平台的webapp目录中，也可以使用一个中">
+  
+    <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">java学习笔记</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-B2C爱购商城-六-上传图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/25/B2C爱购商城-六-上传图片/" class="article-date">
+  <time datetime="2019-08-25T01:10:02.000Z" itemprop="datePublished">2019-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      B2C爱购商城(六)-上传图片
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="传统的图片上传"><a href="#传统的图片上传" class="headerlink" title="传统的图片上传"></a>传统的图片上传</h5><p>直接把文件保存在项目的webapp/upload目录，生成一个随机名字，数据库表中需要保存图片的路径，页面就根据和路径进行显示图片<br>问题：</p>
+<ol>
+<li>传统方式图片是交给Tomcat来处理，Tomcat对图片的处理不占优势，会比较慢</li>
+<li>图片要占用太多的项目服务器的磁盘空间，项目会比较旁大，臃肿</li>
+<li>后台管理平台上传的图片，前台门户网站拿不到，因为图片在后台管理平台的webapp目录中，也可以使用一个中转目录进行图片的复制(后台–&gt;中转目录–&gt;前台)，但是性能很低<h5 id="文件的统一处理"><a href="#文件的统一处理" class="headerlink" title="文件的统一处理"></a>文件的统一处理</h5>一般在图片比较多的项目，我会为了减轻项目服务器对图片处理的压力，一般会把图片/文件统一处理，把图片上传到云服务器中，图片的浏览直接访问云服务器，我的项目中根本不存储图片，项目的数据库只存储图片的路径</li>
+<li>文件服务器如何选择</li>
+<li>java代码怎么对接文件服务器</li>
+<li>如何上传</li>
+<li>如何做图片浏览器</li>
+<li>数据库如何存储图片路径<h5 id="FastDFS搭建文件服务器"><a href="#FastDFS搭建文件服务器" class="headerlink" title="FastDFS搭建文件服务器"></a>FastDFS搭建文件服务器</h5></li>
+<li><p>解压Centos系统</p>
+</li>
+<li><p>虚拟机打开centos系统</p>
+</li>
+<li><p>修改网络模式为桥接：虚拟机–&gt;设置–&gt;网络–&gt;桥接</p>
+</li>
+<li><p>修改ip地址</p>
+<ol>
+<li><p>查看ip是否ok</p>
+<blockquote>
+<p>ifconfig</p>
+</blockquote>
+</li>
+<li><p>查看eth1的mack地址，并记录下来</p>
+<blockquote>
+<p>cat /</p>
+</blockquote>
+</li>
+<li><p>修改网卡eth0为eth1</p>
+<blockquote>
+</blockquote>
+</li>
+<li><p>编辑ip地址文件</p>
+</li>
+<li><p>重启网络服务</p>
+</li>
+<li><p>查看ip地址</p>
+</li>
+<li><p>测试网络</p>
+<blockquote>
+<p>在宿主机 ping liunx的ip</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>使用xshell 连接liunx</p>
+</li>
+<li><p>修改Fastdfs的配置</p>
+<ol>
+<li>client.conf</li>
+<li><p>storage.conf</p>
+</li>
+<li><p>启动tracker和storage</p>
+</li>
+<li>查看是否启动成功</li>
+<li>启动监控命令</li>
+<li>启动nginx</li>
+<li>测试文件上传</li>
+</ol>
+</li>
+</ol>
+<h5 id="修改公共服务实现后台文件上传"><a href="#修改公共服务实现后台文件上传" class="headerlink" title="修改公共服务实现后台文件上传"></a>修改公共服务实现后台文件上传</h5><ol>
+<li>下载fastdfs客户端源码</li>
+<li>把源码打包安装到本地仓库</li>
+<li>导入依赖</li>
+<li>拷贝fastdfs文件上传工具</li>
+<li>编写controller，调用工具实现文件上传</li>
+</ol>
+<h5 id="品牌添加logo上传实现"><a href="#品牌添加logo上传实现" class="headerlink" title="品牌添加logo上传实现"></a>品牌添加logo上传实现</h5><ol>
+<li>修改action地址指向公共服务的文件上传的后台地址</li>
+<li>文件上传成功的回调方法中，拿到图片地址，赋值给数据绑定的logo</li>
+<li>文件删除，在删除的回调方法中使用ajax提交删除请求</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/25/B2C爱购商城-六-上传图片/" data-id="ck06129p60009qctdh04ubvtm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/04/Nginx与Docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nginx与Docker
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/24/B2C商城项目-五/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">B2C商城项目(五)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/java面试题/">java面试题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 sunlei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

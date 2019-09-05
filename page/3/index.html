@@ -62,6 +62,451 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JPA" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/17/JPA/" class="article-date">
+  <time datetime="2019-06-17T01:40:25.000Z" itemprop="datePublished">2019-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/17/JPA/">JPA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JPA入门"><a href="#JPA入门" class="headerlink" title="JPA入门"></a>JPA入门</h1><p>ORM规范<br>    ORM：对象关系映射<br>作用:操作数据库<br>JPA是持久化规范，hibernate是其中一个实现</p>
+<h2 id="JPA对比JDBC的优缺点"><a href="#JPA对比JDBC的优缺点" class="headerlink" title="JPA对比JDBC的优缺点"></a>JPA对比JDBC的优缺点</h2><p>JDBC:优点:</p>
+<pre><code>   1. 操作数据库最底层，性能好控制
+缺点:
+   1. 使用复杂(重复代码太多)
+   2. 移植数据库比较麻烦
+   3. 如果要实现缓存，要自己手动去实现，性能上面没有相应的控制
+   4. JDBC操作sql，jpa操作对象 
+</code></pre><p>JPA:优点:</p>
+<pre><code>    1. 操作简单
+    2. 操作对象就相当于操作数据库
+    3. 自带缓存提供
+    4. 移植性比较好，只需要换一个方言
+缺点:
+    1. 不能干预sql语句的生成，性能不好控制 
+    2. 如果一个项目对sql比较高，不适合用jpa
+    3. 如果一个表中有上亿级别的数据量，不适合用jpa，也不适合用jdbc(架构使用数据库读写分离，分库分表方案解决)
+</code></pre><h2 id="连接数据库的配置"><a href="#连接数据库的配置" class="headerlink" title="连接数据库的配置"></a>连接数据库的配置</h2><pre><code>1. 四个基本配置
+2. 配置方言
+3. shou_sql
+    是否显示sql语句
+4. 让jpa自动创建相应的表
+    hbm2ddl.auto
+</code></pre><h2 id="自动建表"><a href="#自动建表" class="headerlink" title="自动建表"></a>自动建表</h2><pre><code>添加注解
+    类上
+        @Entity
+            JPA就知道这里有个对象
+        @Table(name=&quot;表名&quot;)
+            代表对象与那张表建立关系
+            可以不写，表名就是类名
+    属性上
+        @Id
+            主键
+            JPA中必须有主键
+            JPA要求主键必须是serializable类型
+            @GeneratedValue
+                主键生成策略
+                    主键
+                        确定一条数据的唯一性
+                            非空且唯一
+                    自然主键
+                        主键是有意义的
+                    用代理主键
+                        主键是没有意义的
+                            没有意义的数据我们不需要自动填写，自动生成就行了
+                                保持唯一性
+                IDENTITY
+                    自增策略
+                        要求
+                            主键必需是数字
+                            数据库必需支持这个策略
+                        性能高
+                SEQUENCE
+                    序列
+                        序列对象
+                        看起来还是自增
+                        要求
+                            主键必需是数字
+                            数据库必需支持这个策略
+                        性能更高
+                AUTO
+                    自动区分用的数据库，自动选择使用IDENTITY还是SEQUENCE
+                    默认策略
+                TABLE
+                    表策略
+                        兼容所有数据库
+                        模拟序列
+                        性能稍差
+        @ManyToOne
+            外键
+                告诉JPA这里是个多对一
+            fetch：抓取策略
+                FetchType.EAGER
+                    及时加载
+                        默认
+                FetchType.LAZY
+                    懒(延时)加载，要用时才进行数据加载
+            @JoinColum(name=&quot;外键名称&quot;)
+                设置外键的名称
+                子主题 2
+        @Colimn（属性名=别名，length=20，unique=true，nullable=false）
+            改别名
+            长度改为20
+            唯一
+            不能为空
+        @Transient
+            临时属性
+                数据库中不要加上
+        @Lob
+            longtext
+        @Temporary
+建表策略
+    create-drop    
+        删除-创建
+    create
+        删除-创建
+    update
+        没有表就创建，有表就修改
+    validate
+        验证你的domin和表是否对应上
+</code></pre><h2 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h2><pre><code>1. Persistence
+    持久化对象
+    创建EntityManagerFactory对象
+2. EntityManagerFactory
+    EntityManager工厂对象
+    创建EntityManager对象
+    特点
+        重量级对象
+            重
+                数据源【连接池】
+                二级缓存
+                    导jar包
+                    配置信息Second-level Cache
+                    添加persistence.xml配置信息
+                    二级缓存命中
+                        同一个EntityManagerFactory，不同EntityManager同一个OID
+                    使用场景
+                        读取大于配置
+                        独享控制权
+                        允许出现无效数据
+                        数据量不能过大
+                所有jpa的配置
+                预编译的SQL/JPQL
+        这个对象不能随意销毁
+            1:1:1--&gt;一个项目：1个EntityManagerFacttory：一个数据库
+        这个对象线程安全
+            线程安全影响性能
+3. EntityManager
+    操作数据库（CRUD）
+        增删改必须提交事务
+    方法
+        merge
+            添加或者修改
+    特点
+        轻
+            连接对象
+            一级缓存
+                提高了查询速度
+                默认提供
+                一级缓存命中
+                    同一个EntityManagerFactory，同一个EntityManager同一个OID
+        一般来说，一个线程/一次请求 用一次EntityManager
+        线程不安全
+EntityTransaction
+    事务对象（一组操作，要不都成功，要不都失败）
+    JPA 增删改一定要有事务
+    多个数据库：JTA
+</code></pre><h2 id="对象的状态"><a href="#对象的状态" class="headerlink" title="对象的状态"></a>对象的状态</h2><pre><code>1. 四个状态
+    1. 临时状态（瞬时状态）
+        对象刚刚创建出来还没有与entityManager发生关系
+    2. 持久化状态（托管状态）
+        对象与entityManager发生关系了
+            对象就存在一级缓存中，在一级缓存中的对象也就是持久化对象
+        持久化的对象会不会被修改和merge方法没有关系
+        只能删除持久化状态的对象
+        不能修改OID
+    3. 游离状态（脱管状态）
+        对象与entityManager解除了关系
+            从一级缓存中移除了
+    4. 删除状态
+        hibernate中没有删除状态
+        只要调用了remove方法，这个对象就变成删除状态，JPA就要计划把他删除了
+        删除状态是一种特殊的持久化状态
+            还在一级缓存中
+2. 脏数据更新
+    提交数据的时候进行脏数据更新
+3. 报错
+    n-to-n:持久化对象的OID不能修改
+    no session:会话关闭后去拿取数据（懒加载）
+</code></pre><h2 id="域对象-domain对象-的关系"><a href="#域对象-domain对象-的关系" class="headerlink" title="域对象(domain对象)的关系"></a>域对象(domain对象)的关系</h2><pre><code>1. 依赖关系
+    javabean之间的依赖关系
+    分层:表现层,业务层,持久层(依赖关系)
+    Controller表现层依赖于Service业务层，Service依赖于Dao持久层
+2. 关联关系
+    类之间的引用关系，以属性定义的关系表现
+    多重性
+        一对一
+            共享主键
+            唯一外键（建议）
+            默认迫切加载
+        多对一
+            有外键关系，外键在哪边，哪边就是多方
+            先保存一方在保存多方
+                性能高
+            默认迫切加载
+                改为懒加载
+        一对多
+            默认懒加载
+                集合默认懒加载
+        多对多
+            中间表
+                JoinTable
+                    name
+                        自定义中间表名字
+                    JoinColumns
+                        当前类对应的列名
+                    inverseJoinColumns
+                        对应关系表列名
+            集合
+                默认懒加载
+            双向的多对多
+                必须保存表名和列名都是一致的
+            子主题 4
+    导航性
+3. 聚合关系
+    双向的多对一，一对多
+        让一方放弃关系维护
+            两边都在维护
+            mappedBy=&quot;多方维护的字段名&quot;
+        级联
+            cascade=
+                CascadeType.PERSIST
+                    级联添加
+                CascadeType.REMOVE
+                    级联删除
+                CascadeType.MERGE
+                    级联修改
+                CascadeType.ALL
+                    包含级联增删改
+            非常危险的操作，请慎用
+                特别是级联删除
+            orpherRemove
+                孤儿删除
+            组合关系一定要用级联
+                用最强级联
+            凡是单据都是组合关系
+4. 组合关系
+    强聚合(整体和部分不可分割)
+</code></pre><h2 id="hibernate"><a href="#hibernate" class="headerlink" title="hibernate"></a>hibernate</h2><pre><code>操作数据库的框架
+    ORM框架
+数据库
+    关系型数据库
+java语言
+    面向对象的语言
+是jpa的完美实现
+</code></pre><h2 id="JPQL"><a href="#JPQL" class="headerlink" title="JPQL"></a>JPQL</h2><pre><code>JPA的查询语言
+    面向对象
+兼容各种数据库
+底层是SQL
+使用
+    查询结果过滤
+        select o from 表名 o where 
+    查询排序
+        子主题 1
+    使用关联对象属性排序
+    去重
+        distinct
+    size
+    连接
+    jpql关联    黄金法则
+            不需要消灭笛卡尔积
+            关联的是前面的对象的别名，属性
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/17/JPA/" data-id="ck06129pf000gqctd77tjguwm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/16/maven-idea-uml/" class="article-date">
+  <time datetime="2019-06-16T01:15:41.000Z" itemprop="datePublished">2019-06-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/16/maven-idea-uml/">maven&amp;idea&amp;uml</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Maven——一个优秀的项目构建工具"><a href="#Maven——一个优秀的项目构建工具" class="headerlink" title="Maven——一个优秀的项目构建工具"></a>Maven——一个优秀的项目构建工具</h1><p>Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><pre><code>1. 自动构建(mvn jetty:run 清理,编译,测试,部署)
+2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库
+3. 契约编程(代码更加规范)
+</code></pre><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><pre><code>1. 在需要安装的路径下解压maven
+2. 配置MAVEN_HOME环境
+3. 执行mvn命令 生成一个
+</code></pre><h2 id="修改默认本地仓库"><a href="#修改默认本地仓库" class="headerlink" title="修改默认本地仓库"></a>修改默认本地仓库</h2><h2 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h2><p>mvn compile：编译(有点像javac)<br>mvn clean:清理<br>mvn clean compile:先清理，后编译<br>mvn test:测试(运行几个，失败几个，错误几个)<br>mvn package:打包<br>mvc source:jar:打源码包<br>mvn site：生成一个网站(文档)<br>mvn install:把jar包打好放到本地仓库<br>mvn eclipse:eclipse -&gt; 变成eclipse的结构<br>mvn package -Dmaven.test.skip=true -&gt; 打包的时候跳过测试</p>
+<h1 id="IDEA——最好的java开发环境之一"><a href="#IDEA——最好的java开发环境之一" class="headerlink" title="IDEA——最好的java开发环境之一"></a>IDEA——最好的java开发环境之一</h1><h1 id="UML-统一建模语言"><a href="#UML-统一建模语言" class="headerlink" title="UML :统一建模语言"></a>UML :统一建模语言</h1><p>用例图:看权限的图<br>类图:类的关系(继承,多对一，一对多等，组合与聚合关系)<br>流程图:请假流程，开会流程</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="ck06129pz000oqctd3y629f09" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-EasyUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/13/EasyUI/" class="article-date">
+  <time datetime="2019-06-13T01:17:12.000Z" itemprop="datePublished">2019-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/EasyUI/">EasyUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EasyUI的认识"><a href="#EasyUI的认识" class="headerlink" title="EasyUI的认识"></a>EasyUI的认识</h2><ol>
+<li>是基于JQuery的ui(界面)插件集合</li>
+<li>不需要编写复杂的JavaScript，也不需要对css样式有深入了解，开发者只需要了解一些简单的html标签</li>
+<li>学习方式copy+edit<h2 id="EasyUI使用"><a href="#EasyUI使用" class="headerlink" title="EasyUI使用"></a>EasyUI使用</h2></li>
+</ol>
+<ol>
+<li>下载导入easyui文件</li>
+<li><p>在对应页面引入easyui的js文件和css文件</p>
+<p> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt;</p>
+ <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+ <%--引入easyui的js文件--%>
+ <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+ <%--国际化--%>
+ <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</%--国际化--%></%--引入easyui的js文件--%></li>
+<li><p>使用easyui里面的组件</p>
+<ol>
+<li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
+<p> `&lt;div id=”p” class=”easyui-panel” title=”My Panel”</p>
+<pre><code>style=&quot;width:500px;height:150px;padding:10px;background:#fafafa;&quot;
+data-options=&quot;iconCls:&apos;icon-save&apos;,closable:true,
+collapsible:true,minimizable:true,maximizable:true&quot;&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+</code></pre><p> `</p>
+</li>
+<li><p>通过js创建组件<br><code>&lt;div id=&quot;p&quot; style=&quot;padding:10px;&quot;&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+&lt;/div&gt;
+$(&#39;#p&#39;).panel({
+ width:500,
+ height:150,
+ title:&#39;My Panel&#39;,
+ tools:[{
+ iconCls:&#39;icon-add&#39;,
+ handler:function(){alert(&#39;new&#39;)}
+ },{
+ iconCls:&#39;icon-save&#39;,
+ handler:function(){alert(&#39;save&#39;)}
+ }]
+});</code></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2></li>
+<li>一般在创建组件的时候，就应该指定好对应属性，不然，如果创建完之后，在修改对应属性，就没有效果</li>
+<li>指定属性 在 标签里面指定 ，在js代码在创建的时候，也可以指定；<h2 id="组件三要素"><a href="#组件三要素" class="headerlink" title="组件三要素"></a>组件三要素</h2></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>属性:通过标签里面属性，可以让组件展示不同的效果，完成不同的功能<ol>
+<li>在组建创建时都有默认属性</li>
+<li>属性只能在创建(初始化)组件有效，组件创建完毕后，对某个属性修改无效</li>
+<li>属性定义方式<ol>
+<li>方式一:直接在标签里面写 属性=属性值</li>
+<li>方式二:data-options<br> 注意一:如果在标签里面定义一个属性和在data-options里面定义同一属性，标签里面有效果<br> 注意二:有些属性只能写到data-options里面 想tools这种属性，有多个值，不能放到外面</li>
+<li>方式三:直接在js中写</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>方法:<ol>
+<li>调用方法：<br> $(“selector”).组件名(methodName,[params])</li>
+<li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
+</ol>
+</li>
+<li><p>事件</p>
+<p> //点击事件<br> onClick: function(node){</p>
+<pre><code>alert(node.text);  // 在用户点击的时候提示
+</code></pre><p> },</p>
+</li>
+</ol>
+<h2 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h2><ol>
+<li>Tabs选项卡</li>
+<li>message消息提示框</li>
+<li>Form表单</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="ck06129p00005qctdd1kwlbqs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/11/js高级/" class="article-date">
@@ -286,7 +731,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="cjzoty7r3000jigtd76g4x8d4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="ck06129py000nqctd2fyc6043" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +826,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="cjzoty7r0000gigtdnxneqqfx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="ck06129pv000lqctd3cgabgsi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +879,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="cjzoty7qk0004igtdohpz8yun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="ck06129oy0003qctd21rx1nvt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +915,7 @@ $(&quot;form ~ input&quot;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="cjzoty7qm0006igtdrl5j7nuy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="ck06129p9000bqctdgk5g04u9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -515,7 +960,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="cjzoty7r9000qigtdunvxc4zi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="ck06129q2000rqctdwn6e0ybg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -557,7 +1002,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="cjzoty7qy000eigtdm3gtm4j9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="ck06129pg000hqctdxib3tr3n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -769,76 +1214,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="cjzoty7ql0005igtdvvquf8wo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Hexo部署github博客" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/28/Hexo部署github博客/" class="article-date">
-  <time datetime="2019-05-28T11:42:29.000Z" itemprop="datePublished">2019-05-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/28/Hexo部署github博客/">Hexo部署github博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hexo部署github博客"><a href="#Hexo部署github博客" class="headerlink" title="Hexo部署github博客"></a>Hexo部署github博客</h1><h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到github.io仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
-<h2 id="二、安装清单（Win-10）"><a href="#二、安装清单（Win-10）" class="headerlink" title="二、安装清单（Win 10）"></a>二、安装清单（Win 10）</h2><p>安装环境    安装原因<br>git    给github上传文章<br>Node.js    Hexo基于Node.js开发<br>Hexo    生成博客静态页面</p>
-<h2 id="三、创建github-io网站"><a href="#三、创建github-io网站" class="headerlink" title="三、创建github.io网站"></a>三、创建github.io网站</h2><p>1）点击New repository</p>
-<p>2）输入Repository name，必需为username.github.io格式。username替换为用户名</p>
-<p>3）点击按钮Create repository</p>
-<p>4）进入仓库username.github.io,点击setting,找到GitHub Pages模块</p>
-<p>5）点击choose a theme选择一个页面主题</p>
-<p>6）访问<a href="https://username.github.io就可以访问博客网站了" target="_blank" rel="noopener">https://username.github.io就可以访问博客网站了</a></p>
-<h2 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h2><p>下载安装：<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">http://sourceforge.net/projects/git-osx-installer/</a></p>
-<p>验证是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git version</span><br><span class="line">git version 2.15.0</span><br></pre></td></tr></table></figure>
-<h2 id="五、安装Node-js"><a href="#五、安装Node-js" class="headerlink" title="五、安装Node.js"></a>五、安装Node.js</h2><p>下载安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
-<p>验证是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ node -v</span><br><span class="line">v8.9.4</span><br></pre></td></tr></table></figure>
-<h2 id="六、安装Hexo"><a href="#六、安装Hexo" class="headerlink" title="六、安装Hexo"></a>六、安装Hexo</h2><p>安装命令: npm install -g hexo-cli</p>
-<p>验证是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ hexo -v</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Darwin 17.3.0 darwin x64</span><br><span class="line">http_parser: 2.7.0</span><br><span class="line">node: 8.9.4</span><br><span class="line">v8: 6.1.534.50</span><br><span class="line">uv: 1.15.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.10.1-DEV</span><br><span class="line">modules: 57</span><br><span class="line">nghttp2: 1.25.0</span><br><span class="line">openssl: 1.0.2n</span><br><span class="line">icu: 59.1</span><br><span class="line">unicode: 9.0</span><br><span class="line">cldr: 31.0.1</span><br><span class="line">tz: 2017b</span><br></pre></td></tr></table></figure>
-<h2 id="七、创建本地博文服务"><a href="#七、创建本地博文服务" class="headerlink" title="七、创建本地博文服务"></a>七、创建本地博文服务</h2><p>然后创建一个空文件夹, 比如：hexo-blog<br>进入hexo-blog目录<br>执行hexo init初始化博客站点，如果最后一行显示Start blogging with Hexo!，代表创建成功<br>执行hexo server 启动博文站点<br>访问<a href="http://localhost:4000就能打开博文了" target="_blank" rel="noopener">http://localhost:4000就能打开博文了</a><br>Ctrl+C关闭服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mkdir hexo-blog</span><br><span class="line">➜  ~ cd hexo-blog</span><br><span class="line">➜  hexo-blog hexo init</span><br><span class="line">INFO  Cloning hexo-starter to ~/hexo-blog</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog&apos;...</span><br><span class="line">remote: Counting objects: 68, done.</span><br><span class="line">remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67</span><br><span class="line">Unpacking objects: 100% (68/68), done.</span><br><span class="line">Submodule &apos;themes/landscape&apos; (https://github.com/hexojs/hexo-theme-landscape.git) registered for path &apos;themes/landscape&apos;</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog/themes/landscape&apos;...</span><br><span class="line">remote: Counting objects: 838, done.</span><br><span class="line">remote: Compressing objects: 100% (6/6), done.</span><br><span class="line">remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832</span><br><span class="line">Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (441/441), done.</span><br><span class="line">Submodule path &apos;themes/landscape&apos;: checked out &apos;73a23c51f8487cfcd7c6deec96ccc7543960d350&apos;</span><br><span class="line">INFO  Install dependencies</span><br><span class="line">npm WARN deprecated titlecase@1.1.2: no longer maintained</span><br><span class="line">npm WARN deprecated postinstall-build@5.0.3: postinstall-build&apos;s behavior is now built into npm! You should migrate off of postinstall-build and use the new `prepare` lifecycle script with npm 5.0.0 or greater.</span><br><span class="line">fsevents@1.2.4 install /Users/zhengyong/hexo-blog/node_modules/fsevents</span><br><span class="line">node install</span><br><span class="line">[fsevents] Success: &quot;/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node&quot; already installed</span><br><span class="line">Pass --update-binary to reinstall or --build-from-source to recompile</span><br><span class="line">nunjucks@3.1.3 postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks</span><br><span class="line">node postinstall-build.js src</span><br><span class="line">npm notice created a lockfile as package-lock.json. You should commit this file.</span><br><span class="line">added 464 packages in 28.659s</span><br><span class="line">INFO  Start blogging with Hexo!</span><br><span class="line">➜  hexo-blog hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line">^CINFO  Good bye</span><br></pre></td></tr></table></figure>
-<h2 id="七、Hexo关联github"><a href="#七、Hexo关联github" class="headerlink" title="七、Hexo关联github"></a>七、Hexo关联github</h2><p>1）进入hexo-blog根目录</p>
-<p>2）安装npm install hexo-deployer-git –save，用Hexo发布博文</p>
-<p>3）打开hexo-blog根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Deployment</span><br><span class="line"> Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/username/username.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>4）进入hexo-blog根目录执行如下命令（参考：<a href="https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands），第一次上传可能会让你输入git的用户名和密码</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>5）如果成功，就可以打开 <a href="http://username.github.io,username替换成自己用户名" target="_blank" rel="noopener">http://username.github.io,username替换成自己用户名</a></p>
-<h2 id="八、使用Hexo创建和发布文章"><a href="#八、使用Hexo创建和发布文章" class="headerlink" title="八、使用Hexo创建和发布文章"></a>八、使用Hexo创建和发布文章</h2><p>1) 进入hexo-blog根目录</p>
-<p>2) 创建文章命令：hexo new “文章标题”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo new &quot;Hexo部署github博客&quot;</span><br><span class="line">INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md</span><br></pre></td></tr></table></figure>
-<p>3) 打开编辑Hexo部署github博客.md文件进行Markdown编辑</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</span><br></pre></td></tr></table></figure>
-<p>4）发布文章：hexo d -g</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo d -g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 342 ms</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  Generated: 2019/05/28/Hexo部署github博客/index.html</span><br><span class="line">INFO  2 files generated in 142 ms</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">[master 3ede1d6] Site updated: 2019-05-31 13:41:54</span><br><span class="line"> 2 files changed, 273 insertions(+), 271 deletions(-)</span><br><span class="line"> rewrite &quot;2019/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html&quot; (60%)</span><br><span class="line">Enumerating objects: 15, done.</span><br><span class="line">Counting objects: 100% (15/15), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (6/6), done.</span><br><span class="line">Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.</span><br><span class="line">Total 8 (delta 2), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (2/2), completed with 1 local object.</span><br><span class="line">To https://github.com/sunlei9/sunlei9.github.io</span><br><span class="line">   55a9310..3ede1d6  HEAD -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;https://github.com/sunlei9/sunlei9.github.io&apos;.</span><br><span class="line">[32mINFO [39m Deploy done: [35mgit[39m</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/28/Hexo部署github博客/" data-id="cjzoty7qq000aigtddsu1rrv6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="ck06129p40007qctd1l3c78y5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -851,7 +1227,7 @@ public PageBean getPageBean(Condition condition) {
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -869,7 +1245,7 @@ public PageBean getPageBean(Condition condition) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -882,23 +1258,23 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
+            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/24/java面试题/">java面试题</a>
           </li>
         
           <li>
             <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
           </li>
         
       </ul>

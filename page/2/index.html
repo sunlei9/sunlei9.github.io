@@ -62,6 +62,264 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Elasticsearch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/11/Elasticsearch/" class="article-date">
+  <time datetime="2019-08-11T01:11:00.000Z" itemprop="datePublished">2019-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/11/Elasticsearch/">ElasticSearch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-ElasticSearch的基本概念"><a href="#1-ElasticSearch的基本概念" class="headerlink" title="1. ElasticSearch的基本概念"></a>1. ElasticSearch的基本概念</h3><p>ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java语言开发的，并作为Apache许可条款下的开放源码发布，是一种流行的企业级搜索引擎。ElasticSearch用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。官方客户端在Java、.NET（C#）、PHP、Python、Apache Groovy、Ruby和许多其他语言中都是可用的。</p>
+<h3 id="2-ES的特点"><a href="#2-ES的特点" class="headerlink" title="2. ES的特点"></a>2. ES的特点</h3><ul>
+<li>Es 全文检索框架 使用比lucene更简单</li>
+<li>ES支持集群 支持分布式</li>
+<li>支持json操作</li>
+<li>一般大型全文检索都用ES</li>
+<li><p>通过Restfull风格操作ES</p>
+<h3 id="3-Es和Lucene的区别"><a href="#3-Es和Lucene的区别" class="headerlink" title="3. Es和Lucene的区别"></a>3. Es和Lucene的区别</h3><p>Lucene：</p>
+</li>
+<li><p>使用起来很复杂</p>
+</li>
+<li>Lucene不支持集群</li>
+<li>扩展麻烦</li>
+<li>必须使用Java<h3 id="4-安装ES"><a href="#4-安装ES" class="headerlink" title="4. 安装ES"></a>4. 安装ES</h3></li>
+</ul>
+<ol>
+<li>解压ES文件</li>
+<li>安装Kinaba<h3 id="5-ES的crud"><a href="#5-ES的crud" class="headerlink" title="5. ES的crud"></a>5. ES的crud</h3><h3 id="java操作es"><a href="#java操作es" class="headerlink" title="java操作es"></a>java操作es</h3></li>
+</ol>
+<pre><code>//获取客户端
+public static TransportClient getClient() throws Exception {
+    TransportClient client = new PreBuiltTransportClient(Settings.EMPTY).
+            addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(&quot;localhost&quot;),
+                    9300));
+    return client;
+}
+
+//保存一条记录
+@Test
+public void createEsIndex() throws Exception {
+    TransportClient client = getClient();
+    //创建索引库
+    IndexRequestBuilder indexRequestBuilder = client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;);
+    Map map = new HashMap();
+    map.put(&quot;id&quot;, 1);
+    map.put(&quot;name&quot;, &quot;huahua&quot;);
+    map.put(&quot;age&quot;, 18);
+    IndexResponse indexResponse = indexRequestBuilder.setSource(map).get();
+    System.out.println(indexResponse);
+
+}
+
+//获取数据
+@Test
+public void testGet() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+    //取到值
+    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+    //获取source部分数据
+    System.out.println(response.getSource());
+}
+
+@Test
+public void testUpdate() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+    Map mp = new HashMap();
+    mp.put(&quot;id&quot;, 1);
+    mp.put(&quot;name&quot;, &quot;jojo&quot;);
+    mp.put(&quot;age&quot;, 22);
+    //取到值
+    UpdateResponse updateResponse = client.prepareUpdate(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).setDoc(mp).get();
+    GetResponse response = client.prepareGet(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+    //获取source部分数据
+    System.out.println(response.getSource());
+}
+
+@Test
+public void testDelete() throws Exception {
+    //获取client对象
+    TransportClient client = getClient();
+
+    //取到值
+    DeleteResponse deleteResponse = client.prepareDelete(&quot;crm&quot;, &quot;user&quot;, &quot;1&quot;).get();
+
+    //获取source部分数据
+    System.out.println(deleteResponse);
+}
+//批量操作
+@Test
+public  void testGetBulk()throws Exception{
+//获取客户端
+    TransportClient client = getClient();
+    //获取批量请求对象
+    BulkRequestBuilder bulk = client.prepareBulk();
+    for (int i = 0; i &lt; 10; i++) {
+        Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
+        map.put(&quot;id&quot;, i);
+        map.put(&quot;name&quot;, &quot;sl&quot; + i);
+        map.put(&quot;age&quot;, 18 + i);
+        map.put(&quot;class&quot;,1);
+        BulkRequestBuilder builder = bulk.add(client.prepareIndex(&quot;crm&quot;, &quot;user&quot;, i + &quot;&quot;).setSource(map));
+    }
+    //提交请求
+    BulkResponse bulkResponse = bulk.get();
+    if (bulkResponse.hasFailures()) {
+        System.out.println(&quot;error!!!!&quot;);
+    }
+    //关闭资源
+    client.close();
+}
+//搜索
+@Test
+public  void test()throws Exception{
+    //获取客户端
+    TransportClient client = getClient();
+    //创建boolQuery对象
+    BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+    // 匹配 class =1
+    List&lt;QueryBuilder&gt; must = boolQuery.must();
+    must.add(QueryBuilders.termQuery(&quot;class&quot;,&quot;1&quot;));
+    //搜索年龄范围在18-23的班级在1班的，并且按照id降序，展示第一页，三条数据
+    List&lt;QueryBuilder&gt; filter = boolQuery.filter();
+    filter.add(QueryBuilders.rangeQuery(&quot;age&quot;).gte(18).lte(23));
+    SearchResponse searchResponse = client.prepareSearch(&quot;crm&quot;)
+            .setFrom(0).setSize(3)
+            .setQuery(boolQuery)
+            .addSort(&quot;id&quot;, SortOrder.DESC).get();
+
+    System.out.println(&quot;总条数:&quot;+searchResponse.getHits().getTotalHits());
+    SearchHit[] hits = searchResponse.getHits().getHits();
+    // 循环数据结构
+    for (SearchHit hit : hits) {
+        System.out.println(hit.getSource());
+    }
+    // 关闭资源
+    client.close();
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="ck06129p7000aqctdy1m3ec3k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/10/Redis/" class="article-date">
+  <time datetime="2019-08-10T01:18:25.000Z" itemprop="datePublished">2019-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/10/Redis/">Redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Nosql"><a href="#Nosql" class="headerlink" title="Nosql"></a>Nosql</h2><h3 id="1-Nosql的概念"><a href="#1-Nosql的概念" class="headerlink" title="1. Nosql的概念"></a>1. Nosql的概念</h3><p>NoSql指非关系型数据库，性能高，解决高并发问题</p>
+<h3 id="2-Nosql的分类"><a href="#2-Nosql的分类" class="headerlink" title="2. Nosql的分类"></a>2. Nosql的分类</h3><ul>
+<li>key-value键值对数据库</li>
+<li>列式存储数据库</li>
+<li>文档型结构数据库</li>
+<li>图形结构数据库<h2 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h2><h3 id="1-Redis的概念"><a href="#1-Redis的概念" class="headerlink" title="1. Redis的概念"></a>1. Redis的概念</h3>Redis是属于Key-Value键值对数据库，是Nosql的一种<h3 id="2-Redis的特点"><a href="#2-Redis的特点" class="headerlink" title="2. Redis的特点"></a>2. Redis的特点</h3></li>
+<li>数据存储到内存</li>
+<li>支持数据持久</li>
+<li>支持Redis集群</li>
+<li>支持事务</li>
+<li>支持订阅发布<h3 id="3-Redis的使用场景"><a href="#3-Redis的使用场景" class="headerlink" title="3. Redis的使用场景"></a>3. Redis的使用场景</h3></li>
+<li>中央缓存</li>
+<li>计数器</li>
+<li>实时防攻防系统</li>
+<li>排行榜</li>
+<li>有效时间</li>
+<li>去重</li>
+<li>队列</li>
+<li>发布订阅<h2 id="Redis的安装"><a href="#Redis的安装" class="headerlink" title="Redis的安装"></a>Redis的安装</h2><h2 id="Redis的常用命令"><a href="#Redis的常用命令" class="headerlink" title="Redis的常用命令"></a>Redis的常用命令</h2><h3 id="1-String的基本操作"><a href="#1-String的基本操作" class="headerlink" title="1. String的基本操作"></a>1. String的基本操作</h3>设置值：set key value<br>取值：get key<br>同时设置一个或多个 key-value 对：mset<br>返回所有(一个或多个)给定 key 的值：mget<br>将 key 中储存的数字值增1(key不存在,则初始化为0,再加1)：incr key<br>将 key 中储存的数字值减1(key不存在,则初始化为0,再减1)：decr key<br>自增多少：incrBy key num<br>自减多少：decrBy key num<h3 id="2-Key的命令"><a href="#2-Key的命令" class="headerlink" title="2. Key的命令"></a>2. Key的命令</h3>获取所有key列表：key *<br>删除key：del key<br>设置key的过期时间：expire key xx<br>查看key的过期时间：ttl key<br>选择库  默认16个数据库：select 0-15<br>清空整个redis服务器数据，所有的数据库全部清空：flushall<br>清除当前库，redis中默认有16个数据库，名称分别为0,1,2.。。15：flushdb<h3 id="3-List的命令"><a href="#3-List的命令" class="headerlink" title="3. List的命令"></a>3. List的命令</h3></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="ck06129pc000dqctd70f5wfeo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-liunx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/07/liunx/" class="article-date">
+  <time datetime="2019-08-07T01:20:57.000Z" itemprop="datePublished">2019-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/07/liunx/">liunx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>liunx操作系统的优点：<br>服务器：centos<br>个人环境：Ubuntu</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/07/liunx/" data-id="ck06129pt000jqctdn0uf1nwu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-maven-ssm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/23/maven-ssm/" class="article-date">
@@ -100,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="cjzoty7r6000nigtdc7l2t8rf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="ck06129q1000qqctd4h7557lg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="cjzoty7qn0007igtdgf1u1ujt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="ck06129pe000fqctd0uiosji6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +521,7 @@ components:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="cjzoty7r1000higtdfb7v29ep" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="ck06129pu000kqctddv3kt9hp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,7 +585,7 @@ components:{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="cjzoty7r4000ligtdjdbmi0pg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="ck06129qe000tqctdkbdjxy4h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -565,7 +823,7 @@ if ($.cookie(&quot;password&quot;)){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="cjzoty7ri000rigtda1q70ugv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/27/（Spring+SpringDataJPA+SpringMVC+EasyUI+Maven)-智能商贸/" data-id="ck06129qh000uqctddzshxlwu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -638,7 +896,7 @@ AOP底层是基于代理模式实现的：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="cjzoty7r7000pigtd2oi19id7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/spring/" data-id="ck06129q3000sqctd378k8m0g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -675,452 +933,7 @@ AOP底层是基于代理模式实现的：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/21/phaser入门/" data-id="cjzoty7r4000kigtdt6hdjo0b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JPA" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/17/JPA/" class="article-date">
-  <time datetime="2019-06-17T01:40:25.000Z" itemprop="datePublished">2019-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/JPA/">JPA</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JPA入门"><a href="#JPA入门" class="headerlink" title="JPA入门"></a>JPA入门</h1><p>ORM规范<br>    ORM：对象关系映射<br>作用:操作数据库<br>JPA是持久化规范，hibernate是其中一个实现</p>
-<h2 id="JPA对比JDBC的优缺点"><a href="#JPA对比JDBC的优缺点" class="headerlink" title="JPA对比JDBC的优缺点"></a>JPA对比JDBC的优缺点</h2><p>JDBC:优点:</p>
-<pre><code>   1. 操作数据库最底层，性能好控制
-缺点:
-   1. 使用复杂(重复代码太多)
-   2. 移植数据库比较麻烦
-   3. 如果要实现缓存，要自己手动去实现，性能上面没有相应的控制
-   4. JDBC操作sql，jpa操作对象 
-</code></pre><p>JPA:优点:</p>
-<pre><code>    1. 操作简单
-    2. 操作对象就相当于操作数据库
-    3. 自带缓存提供
-    4. 移植性比较好，只需要换一个方言
-缺点:
-    1. 不能干预sql语句的生成，性能不好控制 
-    2. 如果一个项目对sql比较高，不适合用jpa
-    3. 如果一个表中有上亿级别的数据量，不适合用jpa，也不适合用jdbc(架构使用数据库读写分离，分库分表方案解决)
-</code></pre><h2 id="连接数据库的配置"><a href="#连接数据库的配置" class="headerlink" title="连接数据库的配置"></a>连接数据库的配置</h2><pre><code>1. 四个基本配置
-2. 配置方言
-3. shou_sql
-    是否显示sql语句
-4. 让jpa自动创建相应的表
-    hbm2ddl.auto
-</code></pre><h2 id="自动建表"><a href="#自动建表" class="headerlink" title="自动建表"></a>自动建表</h2><pre><code>添加注解
-    类上
-        @Entity
-            JPA就知道这里有个对象
-        @Table(name=&quot;表名&quot;)
-            代表对象与那张表建立关系
-            可以不写，表名就是类名
-    属性上
-        @Id
-            主键
-            JPA中必须有主键
-            JPA要求主键必须是serializable类型
-            @GeneratedValue
-                主键生成策略
-                    主键
-                        确定一条数据的唯一性
-                            非空且唯一
-                    自然主键
-                        主键是有意义的
-                    用代理主键
-                        主键是没有意义的
-                            没有意义的数据我们不需要自动填写，自动生成就行了
-                                保持唯一性
-                IDENTITY
-                    自增策略
-                        要求
-                            主键必需是数字
-                            数据库必需支持这个策略
-                        性能高
-                SEQUENCE
-                    序列
-                        序列对象
-                        看起来还是自增
-                        要求
-                            主键必需是数字
-                            数据库必需支持这个策略
-                        性能更高
-                AUTO
-                    自动区分用的数据库，自动选择使用IDENTITY还是SEQUENCE
-                    默认策略
-                TABLE
-                    表策略
-                        兼容所有数据库
-                        模拟序列
-                        性能稍差
-        @ManyToOne
-            外键
-                告诉JPA这里是个多对一
-            fetch：抓取策略
-                FetchType.EAGER
-                    及时加载
-                        默认
-                FetchType.LAZY
-                    懒(延时)加载，要用时才进行数据加载
-            @JoinColum(name=&quot;外键名称&quot;)
-                设置外键的名称
-                子主题 2
-        @Colimn（属性名=别名，length=20，unique=true，nullable=false）
-            改别名
-            长度改为20
-            唯一
-            不能为空
-        @Transient
-            临时属性
-                数据库中不要加上
-        @Lob
-            longtext
-        @Temporary
-建表策略
-    create-drop    
-        删除-创建
-    create
-        删除-创建
-    update
-        没有表就创建，有表就修改
-    validate
-        验证你的domin和表是否对应上
-</code></pre><h2 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h2><pre><code>1. Persistence
-    持久化对象
-    创建EntityManagerFactory对象
-2. EntityManagerFactory
-    EntityManager工厂对象
-    创建EntityManager对象
-    特点
-        重量级对象
-            重
-                数据源【连接池】
-                二级缓存
-                    导jar包
-                    配置信息Second-level Cache
-                    添加persistence.xml配置信息
-                    二级缓存命中
-                        同一个EntityManagerFactory，不同EntityManager同一个OID
-                    使用场景
-                        读取大于配置
-                        独享控制权
-                        允许出现无效数据
-                        数据量不能过大
-                所有jpa的配置
-                预编译的SQL/JPQL
-        这个对象不能随意销毁
-            1:1:1--&gt;一个项目：1个EntityManagerFacttory：一个数据库
-        这个对象线程安全
-            线程安全影响性能
-3. EntityManager
-    操作数据库（CRUD）
-        增删改必须提交事务
-    方法
-        merge
-            添加或者修改
-    特点
-        轻
-            连接对象
-            一级缓存
-                提高了查询速度
-                默认提供
-                一级缓存命中
-                    同一个EntityManagerFactory，同一个EntityManager同一个OID
-        一般来说，一个线程/一次请求 用一次EntityManager
-        线程不安全
-EntityTransaction
-    事务对象（一组操作，要不都成功，要不都失败）
-    JPA 增删改一定要有事务
-    多个数据库：JTA
-</code></pre><h2 id="对象的状态"><a href="#对象的状态" class="headerlink" title="对象的状态"></a>对象的状态</h2><pre><code>1. 四个状态
-    1. 临时状态（瞬时状态）
-        对象刚刚创建出来还没有与entityManager发生关系
-    2. 持久化状态（托管状态）
-        对象与entityManager发生关系了
-            对象就存在一级缓存中，在一级缓存中的对象也就是持久化对象
-        持久化的对象会不会被修改和merge方法没有关系
-        只能删除持久化状态的对象
-        不能修改OID
-    3. 游离状态（脱管状态）
-        对象与entityManager解除了关系
-            从一级缓存中移除了
-    4. 删除状态
-        hibernate中没有删除状态
-        只要调用了remove方法，这个对象就变成删除状态，JPA就要计划把他删除了
-        删除状态是一种特殊的持久化状态
-            还在一级缓存中
-2. 脏数据更新
-    提交数据的时候进行脏数据更新
-3. 报错
-    n-to-n:持久化对象的OID不能修改
-    no session:会话关闭后去拿取数据（懒加载）
-</code></pre><h2 id="域对象-domain对象-的关系"><a href="#域对象-domain对象-的关系" class="headerlink" title="域对象(domain对象)的关系"></a>域对象(domain对象)的关系</h2><pre><code>1. 依赖关系
-    javabean之间的依赖关系
-    分层:表现层,业务层,持久层(依赖关系)
-    Controller表现层依赖于Service业务层，Service依赖于Dao持久层
-2. 关联关系
-    类之间的引用关系，以属性定义的关系表现
-    多重性
-        一对一
-            共享主键
-            唯一外键（建议）
-            默认迫切加载
-        多对一
-            有外键关系，外键在哪边，哪边就是多方
-            先保存一方在保存多方
-                性能高
-            默认迫切加载
-                改为懒加载
-        一对多
-            默认懒加载
-                集合默认懒加载
-        多对多
-            中间表
-                JoinTable
-                    name
-                        自定义中间表名字
-                    JoinColumns
-                        当前类对应的列名
-                    inverseJoinColumns
-                        对应关系表列名
-            集合
-                默认懒加载
-            双向的多对多
-                必须保存表名和列名都是一致的
-            子主题 4
-    导航性
-3. 聚合关系
-    双向的多对一，一对多
-        让一方放弃关系维护
-            两边都在维护
-            mappedBy=&quot;多方维护的字段名&quot;
-        级联
-            cascade=
-                CascadeType.PERSIST
-                    级联添加
-                CascadeType.REMOVE
-                    级联删除
-                CascadeType.MERGE
-                    级联修改
-                CascadeType.ALL
-                    包含级联增删改
-            非常危险的操作，请慎用
-                特别是级联删除
-            orpherRemove
-                孤儿删除
-            组合关系一定要用级联
-                用最强级联
-            凡是单据都是组合关系
-4. 组合关系
-    强聚合(整体和部分不可分割)
-</code></pre><h2 id="hibernate"><a href="#hibernate" class="headerlink" title="hibernate"></a>hibernate</h2><pre><code>操作数据库的框架
-    ORM框架
-数据库
-    关系型数据库
-java语言
-    面向对象的语言
-是jpa的完美实现
-</code></pre><h2 id="JPQL"><a href="#JPQL" class="headerlink" title="JPQL"></a>JPQL</h2><pre><code>JPA的查询语言
-    面向对象
-兼容各种数据库
-底层是SQL
-使用
-    查询结果过滤
-        select o from 表名 o where 
-    查询排序
-        子主题 1
-    使用关联对象属性排序
-    去重
-        distinct
-    size
-    连接
-    jpql关联    黄金法则
-            不需要消灭笛卡尔积
-            关联的是前面的对象的别名，属性
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/17/JPA/" data-id="cjzoty7qs000bigtdrjlr7lgz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/16/maven-idea-uml/" class="article-date">
-  <time datetime="2019-06-16T01:15:41.000Z" itemprop="datePublished">2019-06-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/maven-idea-uml/">maven&amp;idea&amp;uml</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Maven——一个优秀的项目构建工具"><a href="#Maven——一个优秀的项目构建工具" class="headerlink" title="Maven——一个优秀的项目构建工具"></a>Maven——一个优秀的项目构建工具</h1><p>Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><pre><code>1. 自动构建(mvn jetty:run 清理,编译,测试,部署)
-2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库
-3. 契约编程(代码更加规范)
-</code></pre><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><pre><code>1. 在需要安装的路径下解压maven
-2. 配置MAVEN_HOME环境
-3. 执行mvn命令 生成一个
-</code></pre><h2 id="修改默认本地仓库"><a href="#修改默认本地仓库" class="headerlink" title="修改默认本地仓库"></a>修改默认本地仓库</h2><h2 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h2><p>mvn compile：编译(有点像javac)<br>mvn clean:清理<br>mvn clean compile:先清理，后编译<br>mvn test:测试(运行几个，失败几个，错误几个)<br>mvn package:打包<br>mvc source:jar:打源码包<br>mvn site：生成一个网站(文档)<br>mvn install:把jar包打好放到本地仓库<br>mvn eclipse:eclipse -&gt; 变成eclipse的结构<br>mvn package -Dmaven.test.skip=true -&gt; 打包的时候跳过测试</p>
-<h1 id="IDEA——最好的java开发环境之一"><a href="#IDEA——最好的java开发环境之一" class="headerlink" title="IDEA——最好的java开发环境之一"></a>IDEA——最好的java开发环境之一</h1><h1 id="UML-统一建模语言"><a href="#UML-统一建模语言" class="headerlink" title="UML :统一建模语言"></a>UML :统一建模语言</h1><p>用例图:看权限的图<br>类图:类的关系(继承,多对一，一对多等，组合与聚合关系)<br>流程图:请假流程，开会流程</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="cjzoty7r7000oigtdvygzsyi2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-EasyUI" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/13/EasyUI/" class="article-date">
-  <time datetime="2019-06-13T01:17:12.000Z" itemprop="datePublished">2019-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/EasyUI/">EasyUI</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="EasyUI的认识"><a href="#EasyUI的认识" class="headerlink" title="EasyUI的认识"></a>EasyUI的认识</h2><ol>
-<li>是基于JQuery的ui(界面)插件集合</li>
-<li>不需要编写复杂的JavaScript，也不需要对css样式有深入了解，开发者只需要了解一些简单的html标签</li>
-<li>学习方式copy+edit<h2 id="EasyUI使用"><a href="#EasyUI使用" class="headerlink" title="EasyUI使用"></a>EasyUI使用</h2></li>
-</ol>
-<ol>
-<li>下载导入easyui文件</li>
-<li><p>在对应页面引入easyui的js文件和css文件</p>
-<p> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt;</p>
- <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
- <%--引入easyui的js文件--%>
- <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
- <%--国际化--%>
- <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script>
-</%--国际化--%></%--引入easyui的js文件--%></li>
-<li><p>使用easyui里面的组件</p>
-<ol>
-<li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
-<p> `&lt;div id=”p” class=”easyui-panel” title=”My Panel”</p>
-<pre><code>style=&quot;width:500px;height:150px;padding:10px;background:#fafafa;&quot;
-data-options=&quot;iconCls:&apos;icon-save&apos;,closable:true,
-collapsible:true,minimizable:true,maximizable:true&quot;&gt;
-&lt;p&gt;panel content.&lt;/p&gt;
-&lt;p&gt;panel content.&lt;/p&gt;
-</code></pre><p> `</p>
-</li>
-<li><p>通过js创建组件<br><code>&lt;div id=&quot;p&quot; style=&quot;padding:10px;&quot;&gt;
- &lt;p&gt;panel content.&lt;/p&gt;
- &lt;p&gt;panel content.&lt;/p&gt;
-&lt;/div&gt;
-$(&#39;#p&#39;).panel({
- width:500,
- height:150,
- title:&#39;My Panel&#39;,
- tools:[{
- iconCls:&#39;icon-add&#39;,
- handler:function(){alert(&#39;new&#39;)}
- },{
- iconCls:&#39;icon-save&#39;,
- handler:function(){alert(&#39;save&#39;)}
- }]
-});</code></p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2></li>
-<li>一般在创建组件的时候，就应该指定好对应属性，不然，如果创建完之后，在修改对应属性，就没有效果</li>
-<li>指定属性 在 标签里面指定 ，在js代码在创建的时候，也可以指定；<h2 id="组件三要素"><a href="#组件三要素" class="headerlink" title="组件三要素"></a>组件三要素</h2></li>
-</ol>
-</li>
-</ol>
-<ol>
-<li>属性:通过标签里面属性，可以让组件展示不同的效果，完成不同的功能<ol>
-<li>在组建创建时都有默认属性</li>
-<li>属性只能在创建(初始化)组件有效，组件创建完毕后，对某个属性修改无效</li>
-<li>属性定义方式<ol>
-<li>方式一:直接在标签里面写 属性=属性值</li>
-<li>方式二:data-options<br> 注意一:如果在标签里面定义一个属性和在data-options里面定义同一属性，标签里面有效果<br> 注意二:有些属性只能写到data-options里面 想tools这种属性，有多个值，不能放到外面</li>
-<li>方式三:直接在js中写</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>方法:<ol>
-<li>调用方法：<br> $(“selector”).组件名(methodName,[params])</li>
-<li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
-</ol>
-</li>
-<li><p>事件</p>
-<p> //点击事件<br> onClick: function(node){</p>
-<pre><code>alert(node.text);  // 在用户点击的时候提示
-</code></pre><p> },</p>
-</li>
-</ol>
-<h2 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h2><ol>
-<li>Tabs选项卡</li>
-<li>message消息提示框</li>
-<li>Form表单</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="cjzoty7qo0008igtdxtkrewrv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/21/phaser入门/" data-id="ck06129q0000pqctd182nvo67" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1133,7 +946,7 @@ $(&#39;#p&#39;).panel({
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -1151,7 +964,7 @@ $(&#39;#p&#39;).panel({
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -1164,23 +977,23 @@ $(&#39;#p&#39;).panel({
       <ul>
         
           <li>
+            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/24/java面试题/">java面试题</a>
           </li>
         
           <li>
             <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
           </li>
         
       </ul>

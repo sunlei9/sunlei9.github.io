@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>AJAX | java学习笔记</title>
+  <title>B2C商城项目(五) | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jsjs的引入方式 直接在行内标签内使用 在标签内使用 外部js引入注意事项 如果引入外部js文件，就不要再这个标签内写内容 标签引入文件不能使用单标签 js加载顺序是从上往下 点击存在锚点效果 js里面的函数什么是函数：函数就是方法，function函数的定义 function say(name,food){  }函数调用 调用方法，参数可以多，如果参数传少了，默认值是undefined666">
+  <meta name="description" content="redis做中央缓存 在查询时检查redis中是否有数据 如果有直接返回数据 如果没有数据  去mysql中查询 把数据放到redis中 返回数据   遇到insert，update，delete要重置redis中的数据  方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据  方案二：使用重置方案，直接从mysql中查询，放到redis中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AJAX">
-<meta property="og:url" content="http://yoursite.com/2019/06/09/AJAX/index.html">
+<meta property="og:title" content="B2C商城项目(五)">
+<meta property="og:url" content="http://yoursite.com/2019/08/24/B2C商城项目-五/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="jsjs的引入方式 直接在行内标签内使用 在标签内使用 外部js引入注意事项 如果引入外部js文件，就不要再这个标签内写内容 标签引入文件不能使用单标签 js加载顺序是从上往下 点击存在锚点效果 js里面的函数什么是函数：函数就是方法，function函数的定义 function say(name,food){  }函数调用 调用方法，参数可以多，如果参数传少了，默认值是undefined666">
+<meta property="og:description" content="redis做中央缓存 在查询时检查redis中是否有数据 如果有直接返回数据 如果没有数据  去mysql中查询 把数据放到redis中 返回数据   遇到insert，update，delete要重置redis中的数据  方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据  方案二：使用重置方案，直接从mysql中查询，放到redis中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-09T08:47:24.502Z">
+<meta property="og:updated_time" content="2019-08-24T07:13:18.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AJAX">
-<meta name="twitter:description" content="jsjs的引入方式 直接在行内标签内使用 在标签内使用 外部js引入注意事项 如果引入外部js文件，就不要再这个标签内写内容 标签引入文件不能使用单标签 js加载顺序是从上往下 点击存在锚点效果 js里面的函数什么是函数：函数就是方法，function函数的定义 function say(name,food){  }函数调用 调用方法，参数可以多，如果参数传少了，默认值是undefined666">
+<meta name="twitter:title" content="B2C商城项目(五)">
+<meta name="twitter:description" content="redis做中央缓存 在查询时检查redis中是否有数据 如果有直接返回数据 如果没有数据  去mysql中查询 把数据放到redis中 返回数据   遇到insert，update，delete要重置redis中的数据  方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据  方案二：使用重置方案，直接从mysql中查询，放到redis中">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-B2C商城项目-五" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/09/AJAX/" class="article-date">
-  <time datetime="2019-06-09T01:12:45.000Z" itemprop="datePublished">2019-06-09</time>
+    <a href="/2019/08/24/B2C商城项目-五/" class="article-date">
+  <time datetime="2019-08-24T01:21:07.000Z" itemprop="datePublished">2019-08-24</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      AJAX
+      B2C商城项目(五)
     </h1>
   
 
@@ -86,28 +86,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js的引入方式"><a href="#js的引入方式" class="headerlink" title="js的引入方式"></a>js的引入方式</h3><ol>
-<li>直接在行内标签内使用</li>
-<li>在<script>标签内使用</li>
-<li>外部js引入<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3></li>
-<li>如果引入外部js文件，就不要再这个标签内写内容</li>
-<li><script>标签引入文件不能使用单标签</li>
-<li>js加载顺序是从上往下</li>
-<li><p><a herf="#">点击</a>存在锚点效果</p>
-<h3 id="js里面的函数"><a href="#js里面的函数" class="headerlink" title="js里面的函数"></a>js里面的函数</h3><p>什么是函数：函数就是方法，function<br>函数的定义<br> function say(name,food){</p>
-<p> }<br>函数调用<br> 调用方法，参数可以多，如果参数传少了，默认值是undefined666<br> say();<br> window.say();<br>动态调用<br> window<a href="">“say”</a>;<br>js中一切皆对象，函数也是对象</p>
+        <h3 id="redis做中央缓存"><a href="#redis做中央缓存" class="headerlink" title="redis做中央缓存"></a>redis做中央缓存</h3><ol>
+<li>在查询时检查redis中是否有数据</li>
+<li>如果有直接返回数据</li>
+<li><p>如果没有数据</p>
+<ol>
+<li>去mysql中查询</li>
+<li>把数据放到redis中</li>
+<li>返回数据</li>
+</ol>
+</li>
+<li><p>遇到insert，update，delete要重置redis中的数据</p>
+<ul>
+<li><p>方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据</p>
+</li>
+<li><p>方案二：使用重置方案，直接从mysql中查询，放到redis中</p>
+</li>
+</ul>
 </li>
 </ol>
-<p>函数返回值<br>    如果方法没有返回值，返回undefined</p>
-<p>java 方法重载：方法名相同，参数列表不同，和返回值无关<br>js没有重载一说，方法名相同，后面的方法会覆盖前面的方法</p>
-<h3 id="js引擎执行过程"><a href="#js引擎执行过程" class="headerlink" title="js引擎执行过程"></a>js引擎执行过程</h3><p>js变量提升</p>
-<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>ajax即Asynchronous JavaScript And XML<br>异步JavaScript和XML，是指一种创建交互式网页应用的网页开发技术<br>异步JavaScript：浏览器处理事情，如果没有处理完，可以做其他事情<br>XML：可拓展性标记语言<br>局部刷新技术，是前端技术，属于js里面的内容</p>
-<h3 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json:JavaScript Object Notation<br>一种轻量级的数据交换格式</p>
-</script></li></ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="ck06129oy0003qctd21rx1nvt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-五/" data-id="ck06129ox0002qctdg77d96tj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -116,19 +118,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/10/jQuery/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/25/B2C爱购商城-六-上传图片/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          jQuery
+          B2C爱购商城(六)-上传图片
         
       </div>
     </a>
   
   
-    <a href="/2019/06/09/JavaScript/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/24/java面试题/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript</div>
+      <div class="article-nav-title">java面试题</div>
     </a>
   
 </nav>
