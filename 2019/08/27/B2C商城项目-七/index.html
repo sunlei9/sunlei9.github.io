@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>maven&amp;idea&amp;uml | java学习笔记</title>
+  <title>B2B商城项目(七) | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+  <meta name="description" content="skusku是一个库存/销售的一个精确单位，它能够决定一个具体商品的销售价格 表设计1. 商品表 分类的id   2. 商品扩展表3. 商品媒体表4. 收货地址表分库分表1. 分库​    不同的服务连接不同的数据库即可，数据库根据服务走 2.分表​    a. 水平拆分​        按照数据水平拆分，就是把一个大表里面的数据拆分到多个小表中 ​    b. 垂直拆分 商品管理 代码生成商品的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven&amp;idea&amp;uml">
-<meta property="og:url" content="http://yoursite.com/2019/06/16/maven-idea-uml/index.html">
+<meta property="og:title" content="B2B商城项目(七)">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/B2C商城项目-七/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+<meta property="og:description" content="skusku是一个库存/销售的一个精确单位，它能够决定一个具体商品的销售价格 表设计1. 商品表 分类的id   2. 商品扩展表3. 商品媒体表4. 收货地址表分库分表1. 分库​    不同的服务连接不同的数据库即可，数据库根据服务走 2.分表​    a. 水平拆分​        按照数据水平拆分，就是把一个大表里面的数据拆分到多个小表中 ​    b. 垂直拆分 商品管理 代码生成商品的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T00:51:27.347Z">
+<meta property="og:updated_time" content="2019-09-05T01:50:19.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven&amp;idea&amp;uml">
-<meta name="twitter:description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+<meta name="twitter:title" content="B2B商城项目(七)">
+<meta name="twitter:description" content="skusku是一个库存/销售的一个精确单位，它能够决定一个具体商品的销售价格 表设计1. 商品表 分类的id   2. 商品扩展表3. 商品媒体表4. 收货地址表分库分表1. 分库​    不同的服务连接不同的数据库即可，数据库根据服务走 2.分表​    a. 水平拆分​        按照数据水平拆分，就是把一个大表里面的数据拆分到多个小表中 ​    b. 垂直拆分 商品管理 代码生成商品的">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-B2C商城项目-七" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/16/maven-idea-uml/" class="article-date">
-  <time datetime="2019-06-16T01:15:41.000Z" itemprop="datePublished">2019-06-16</time>
+    <a href="/2019/08/27/B2C商城项目-七/" class="article-date">
+  <time datetime="2019-08-27T01:55:17.000Z" itemprop="datePublished">2019-08-27</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      maven&amp;idea&amp;uml
+      B2B商城项目(七)
     </h1>
   
 
@@ -86,20 +86,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Maven——一个优秀的项目构建工具"><a href="#Maven——一个优秀的项目构建工具" class="headerlink" title="Maven——一个优秀的项目构建工具"></a>Maven——一个优秀的项目构建工具</h1><p>Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><pre><code>1. 自动构建(mvn jetty:run 清理,编译,测试,部署)
-2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库
-3. 契约编程(代码更加规范)
-</code></pre><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><pre><code>1. 在需要安装的路径下解压maven
-2. 配置MAVEN_HOME环境
-3. 执行mvn命令 生成一个
-</code></pre><h2 id="修改默认本地仓库"><a href="#修改默认本地仓库" class="headerlink" title="修改默认本地仓库"></a>修改默认本地仓库</h2><h2 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h2><p>mvn compile：编译(有点像javac)<br>mvn clean:清理<br>mvn clean compile:先清理，后编译<br>mvn test:测试(运行几个，失败几个，错误几个)<br>mvn package:打包<br>mvc source:jar:打源码包<br>mvn site：生成一个网站(文档)<br>mvn install:把jar包打好放到本地仓库<br>mvn eclipse:eclipse -&gt; 变成eclipse的结构<br>mvn package -Dmaven.test.skip=true -&gt; 打包的时候跳过测试</p>
-<h1 id="IDEA——最好的java开发环境之一"><a href="#IDEA——最好的java开发环境之一" class="headerlink" title="IDEA——最好的java开发环境之一"></a>IDEA——最好的java开发环境之一</h1><h1 id="UML-统一建模语言"><a href="#UML-统一建模语言" class="headerlink" title="UML :统一建模语言"></a>UML :统一建模语言</h1><p>用例图:看权限的图<br>类图:类的关系(继承,多对一，一对多等，组合与聚合关系)<br>流程图:请假流程，开会流程</p>
+        <h4 id="sku"><a href="#sku" class="headerlink" title="sku"></a>sku</h4><p>sku是一个库存/销售的一个精确单位，它能够决定一个具体商品的销售价格</p>
+<h4 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h4><h5 id="1-商品表"><a href="#1-商品表" class="headerlink" title="1. 商品表"></a>1. 商品表</h5><ul>
+<li>分类的id</li>
+<li></li>
+</ul>
+<h5 id="2-商品扩展表"><a href="#2-商品扩展表" class="headerlink" title="2. 商品扩展表"></a>2. 商品扩展表</h5><h5 id="3-商品媒体表"><a href="#3-商品媒体表" class="headerlink" title="3. 商品媒体表"></a>3. 商品媒体表</h5><h5 id="4-收货地址表"><a href="#4-收货地址表" class="headerlink" title="4. 收货地址表"></a>4. 收货地址表</h5><h4 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h4><h5 id="1-分库"><a href="#1-分库" class="headerlink" title="1. 分库"></a>1. 分库</h5><p>​    不同的服务连接不同的数据库即可，数据库根据服务走</p>
+<h5 id="2-分表"><a href="#2-分表" class="headerlink" title="2.分表"></a>2.分表</h5><p>​    a. 水平拆分<br>​        按照数据水平拆分，就是把一个大表里面的数据拆分到多个小表中</p>
+<p>​    b. 垂直拆分</p>
+<h4 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h4><ol>
+<li>代码生成商品的后台的crud</li>
+<li>完成列表的后台分页查询方法</li>
+<li>完成前端商品列表</li>
+<li>完成商品分类的下拉树</li>
+<li>完成简介的输入框</li>
+<li>商品详情-富文本编辑框插件使用</li>
+<li>后台代码生成ProductExt的crud</li>
+<li>商品对象关联拓展对象Product，ProductExt</li>
+<li>完成后台添加功能<ul>
+<li>覆写自动生成的添加方法</li>
+<li></li>
+</ul>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="ck06129pz000oqctd3y629f09" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/27/B2C商城项目-七/" data-id="ck061ajqc000164tdgls7svlk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +122,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/17/JPA/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/28/B2C商城项目-八/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          JPA
+          B2B商城项目(八)
         
       </div>
     </a>
   
   
-    <a href="/2019/06/13/EasyUI/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/25/B2C爱购商城-六-上传图片/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">EasyUI</div>
+      <div class="article-nav-title">B2C爱购商城(六)-上传图片</div>
     </a>
   
 </nav>

@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>maven&amp;idea&amp;uml | java学习笔记</title>
+  <title>B2C商城项目(12) | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+  <meta name="description" content="准备模板 product-detail.vm 更改路径  在商品上架时生成静态页面 输出文件加上id 准备模板数据 model.数据   购物车 购物车如何存储  cookies+mysql  如果      购物车对象   接入第三方支付平台 注册账号-商户账号 签署协议 密钥的信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="maven&amp;idea&amp;uml">
-<meta property="og:url" content="http://yoursite.com/2019/06/16/maven-idea-uml/index.html">
+<meta property="og:title" content="B2C商城项目(12)">
+<meta property="og:url" content="http://yoursite.com/2019/09/03/B2C商城项目-12/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+<meta property="og:description" content="准备模板 product-detail.vm 更改路径  在商品上架时生成静态页面 输出文件加上id 准备模板数据 model.数据   购物车 购物车如何存储  cookies+mysql  如果      购物车对象   接入第三方支付平台 注册账号-商户账号 签署协议 密钥的信息">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-17T00:51:27.347Z">
+<meta property="og:updated_time" content="2019-09-05T01:50:29.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="maven&amp;idea&amp;uml">
-<meta name="twitter:description" content="Maven——一个优秀的项目构建工具Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具 优点1. 自动构建(mvn jetty:run 清理,编译,测试,部署) 2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库 3. 契约编程(代码更加规范) Maven安装1. 在需要安装的路径下解压maven 2. 配置MAVEN_HO">
+<meta name="twitter:title" content="B2C商城项目(12)">
+<meta name="twitter:description" content="准备模板 product-detail.vm 更改路径  在商品上架时生成静态页面 输出文件加上id 准备模板数据 model.数据   购物车 购物车如何存储  cookies+mysql  如果      购物车对象   接入第三方支付平台 注册账号-商户账号 签署协议 密钥的信息">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-maven-idea-uml" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-B2C商城项目-12" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/16/maven-idea-uml/" class="article-date">
-  <time datetime="2019-06-16T01:15:41.000Z" itemprop="datePublished">2019-06-16</time>
+    <a href="/2019/09/03/B2C商城项目-12/" class="article-date">
+  <time datetime="2019-09-03T01:14:18.000Z" itemprop="datePublished">2019-09-03</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      maven&amp;idea&amp;uml
+      B2C商城项目(12)
     </h1>
   
 
@@ -86,20 +86,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Maven——一个优秀的项目构建工具"><a href="#Maven——一个优秀的项目构建工具" class="headerlink" title="Maven——一个优秀的项目构建工具"></a>Maven——一个优秀的项目构建工具</h1><p>Maven项目对象模型(pom)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><pre><code>1. 自动构建(mvn jetty:run 清理,编译,测试,部署)
-2. 自动导包 pom.xml中配置，先找本地仓库，如果没有，找中央仓库
-3. 契约编程(代码更加规范)
-</code></pre><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><pre><code>1. 在需要安装的路径下解压maven
-2. 配置MAVEN_HOME环境
-3. 执行mvn命令 生成一个
-</code></pre><h2 id="修改默认本地仓库"><a href="#修改默认本地仓库" class="headerlink" title="修改默认本地仓库"></a>修改默认本地仓库</h2><h2 id="maven命令"><a href="#maven命令" class="headerlink" title="maven命令"></a>maven命令</h2><p>mvn compile：编译(有点像javac)<br>mvn clean:清理<br>mvn clean compile:先清理，后编译<br>mvn test:测试(运行几个，失败几个，错误几个)<br>mvn package:打包<br>mvc source:jar:打源码包<br>mvn site：生成一个网站(文档)<br>mvn install:把jar包打好放到本地仓库<br>mvn eclipse:eclipse -&gt; 变成eclipse的结构<br>mvn package -Dmaven.test.skip=true -&gt; 打包的时候跳过测试</p>
-<h1 id="IDEA——最好的java开发环境之一"><a href="#IDEA——最好的java开发环境之一" class="headerlink" title="IDEA——最好的java开发环境之一"></a>IDEA——最好的java开发环境之一</h1><h1 id="UML-统一建模语言"><a href="#UML-统一建模语言" class="headerlink" title="UML :统一建模语言"></a>UML :统一建模语言</h1><p>用例图:看权限的图<br>类图:类的关系(继承,多对一，一对多等，组合与聚合关系)<br>流程图:请假流程，开会流程</p>
+        <ol>
+<li><p>准备模板 product-detail.vm</p>
+<p>更改路径</p>
+</li>
+<li><p>在商品上架时生成静态页面</p>
+<p>输出文件加上id</p>
+<p>准备模板数据 model.数据</p>
+</li>
+</ol>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><ol>
+<li><p>购物车如何存储</p>
+<ol>
+<li><p>cookies+mysql</p>
+<blockquote>
+<p>如果</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>购物车对象</p>
+</li>
+</ol>
+<h4 id="接入第三方支付平台"><a href="#接入第三方支付平台" class="headerlink" title="接入第三方支付平台"></a>接入第三方支付平台</h4><ol>
+<li>注册账号-商户账号</li>
+<li>签署协议</li>
+<li>密钥的信息</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/maven-idea-uml/" data-id="ck06129pz000oqctd3y629f09" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/03/B2C商城项目-12/" data-id="ck061ajq7000064tdbo6imzx1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +127,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/06/17/JPA/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/04/Nginx与Docker/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          JPA
+          Nginx与Docker
         
       </div>
     </a>
   
   
-    <a href="/2019/06/13/EasyUI/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/28/B2C商城项目-八/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">EasyUI</div>
+      <div class="article-nav-title">B2B商城项目(八)</div>
     </a>
   
 </nav>

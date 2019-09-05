@@ -124,6 +124,166 @@
 
 
   
+    <article id="post-B2C商城项目-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/03/B2C商城项目-12/" class="article-date">
+  <time datetime="2019-09-03T01:14:18.000Z" itemprop="datePublished">2019-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/03/B2C商城项目-12/">B2C商城项目(12)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>准备模板 product-detail.vm</p>
+<p>更改路径</p>
+</li>
+<li><p>在商品上架时生成静态页面</p>
+<p>输出文件加上id</p>
+<p>准备模板数据 model.数据</p>
+</li>
+</ol>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><ol>
+<li><p>购物车如何存储</p>
+<ol>
+<li><p>cookies+mysql</p>
+<blockquote>
+<p>如果</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+</li>
+<li><p>购物车对象</p>
+</li>
+</ol>
+<h4 id="接入第三方支付平台"><a href="#接入第三方支付平台" class="headerlink" title="接入第三方支付平台"></a>接入第三方支付平台</h4><ol>
+<li>注册账号-商户账号</li>
+<li>签署协议</li>
+<li>密钥的信息</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/03/B2C商城项目-12/" data-id="ck061ajq7000064tdbo6imzx1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目-八" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/28/B2C商城项目-八/" class="article-date">
+  <time datetime="2019-08-28T01:20:33.000Z" itemprop="datePublished">2019-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/28/B2C商城项目-八/">B2B商城项目(八)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="显示属性"><a href="#显示属性" class="headerlink" title="显示属性"></a>显示属性</h4><p>显示属性就是商品的常规属性，只是提供给用户看的，没有实质的功能</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/28/B2C商城项目-八/" data-id="ck061ajqh000264td62deby5w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目-七" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/27/B2C商城项目-七/" class="article-date">
+  <time datetime="2019-08-27T01:55:17.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/27/B2C商城项目-七/">B2B商城项目(七)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="sku"><a href="#sku" class="headerlink" title="sku"></a>sku</h4><p>sku是一个库存/销售的一个精确单位，它能够决定一个具体商品的销售价格</p>
+<h4 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h4><h5 id="1-商品表"><a href="#1-商品表" class="headerlink" title="1. 商品表"></a>1. 商品表</h5><ul>
+<li>分类的id</li>
+<li></li>
+</ul>
+<h5 id="2-商品扩展表"><a href="#2-商品扩展表" class="headerlink" title="2. 商品扩展表"></a>2. 商品扩展表</h5><h5 id="3-商品媒体表"><a href="#3-商品媒体表" class="headerlink" title="3. 商品媒体表"></a>3. 商品媒体表</h5><h5 id="4-收货地址表"><a href="#4-收货地址表" class="headerlink" title="4. 收货地址表"></a>4. 收货地址表</h5><h4 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h4><h5 id="1-分库"><a href="#1-分库" class="headerlink" title="1. 分库"></a>1. 分库</h5><p>​    不同的服务连接不同的数据库即可，数据库根据服务走</p>
+<h5 id="2-分表"><a href="#2-分表" class="headerlink" title="2.分表"></a>2.分表</h5><p>​    a. 水平拆分<br>​        按照数据水平拆分，就是把一个大表里面的数据拆分到多个小表中</p>
+<p>​    b. 垂直拆分</p>
+<h4 id="商品管理"><a href="#商品管理" class="headerlink" title="商品管理"></a>商品管理</h4><ol>
+<li>代码生成商品的后台的crud</li>
+<li>完成列表的后台分页查询方法</li>
+<li>完成前端商品列表</li>
+<li>完成商品分类的下拉树</li>
+<li>完成简介的输入框</li>
+<li>商品详情-富文本编辑框插件使用</li>
+<li>后台代码生成ProductExt的crud</li>
+<li>商品对象关联拓展对象Product，ProductExt</li>
+<li>完成后台添加功能<ul>
+<li>覆写自动生成的添加方法</li>
+<li></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/27/B2C商城项目-七/" data-id="ck061ajqc000164tdgls7svlk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-B2C爱购商城-六-上传图片" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/25/B2C爱购商城-六-上传图片/" class="article-date">
@@ -492,223 +652,6 @@
 
 
   
-    <article id="post-B2C商城项目(一)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/18/B2C商城项目(一)/" class="article-date">
-  <time datetime="2019-08-18T01:34:04.000Z" itemprop="datePublished">2019-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/18/B2C商城项目(一)/">B2C商城项目(一)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="商城的介绍"><a href="#商城的介绍" class="headerlink" title="商城的介绍"></a>商城的介绍</h2><ol>
-<li><p>商城的发展</p>
-</li>
-<li><p>商城的分类</p>
-</li>
-<li><p>商城的业务模块</p>
-</li>
-<li><p>项目的业务流程</p>
-</li>
-</ol>
-<h2 id="后台项目架构"><a href="#后台项目架构" class="headerlink" title="后台项目架构"></a>后台项目架构</h2><ol>
-<li><p>商城的业务架构-前后端分离</p>
-</li>
-<li><p>商城技术架构分析-springcloud</p>
-</li>
-<li><p>搭建后台架构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">aigou-parent</span><br><span class="line">  aigou-eureka-server</span><br><span class="line">  aigou-gateway-zuul</span><br><span class="line">  aigou-basic-parent</span><br><span class="line">  	aigou-basic-utils</span><br><span class="line">  aigou-plat-parent</span><br><span class="line">  	aigou-plat-interface</span><br><span class="line">  	aigou-plat-server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>平台服务简单登录实现</p>
-</li>
-<li>Postmain的使用</li>
-<li>平台服务集成Swagger</li>
-<li>zuul集成swagger</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/18/B2C商城项目(一)/" data-id="ck06129o90000qctdijc2lyud" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringCloud" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/14/SpringCloud/" class="article-date">
-  <time datetime="2019-08-14T01:47:00.000Z" itemprop="datePublished">2019-08-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/SpringCloud/">SpringCloud</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h3><ol>
-<li><p>什么是单体应用</p>
-<p> 所有的功能都在一个包里面</p>
-</li>
-<li><p>单体应用的缺点：</p>
-<ul>
-<li>单节点问题</li>
-<li>项目会越来越大，编译，维护麻烦，责任不分离</li>
-<li>性能问题，局部拓展不方便</li>
-<li>重启，全部都要重启</li>
-<li>技术选型单一</li>
-<li>数据库选型单一</li>
-</ul>
-</li>
-</ol>
-<h3 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h3><ol>
-<li><p>什么是微服务</p>
-<p>就是把一个项目拆分成多个小的服务(应用)，每个服务都有自己独立的tomcat，有自己独立的进程，有自己独立的数据库，一个服务只关注一个功能，服务与服务之间使用网络协议进行通信</p>
-</li>
-<li><p>微服务的特点：</p>
-<ul>
-<li><p>微服务架构由多个小的服务注册</p>
-</li>
-<li><p>每个服务都有自己的进程</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="SpringCloud简介"><a href="#SpringCloud简介" class="headerlink" title="SpringCloud简介"></a>SpringCloud简介</h3><ol>
-<li><p>什么是springcloud</p>
-<p>Spring Cloud是一个含概多个子项目的开发工具集,集合了众多的开源框架,他利用了Spring Boot开发的便利性实现了很多功能,如服务注册,服务注册发现,负载均衡等.Spring Cloud在整合过程中主要是针对Netflix(耐非)开源组件的封装.</p>
-</li>
-<li><p>常见的组件</p>
-<ul>
-<li>服务发现——Netflix Eureka</li>
-<li>客服端负载均衡——Netflix Ribbon</li>
-<li>断路器——Netflix Hystrix</li>
-<li>服务网关——Netflix Zuul</li>
-<li>分布式配置——Spring Cloud Config</li>
-</ul>
-</li>
-<li><p>springcloud和dubbo的区别</p>
-<p>dubbo只解决网络通信问题</p>
-<p>springcloud是微服务框架解决一系列问题，基于springboot，使用起来简单</p>
-</li>
-</ol>
-<h3 id="注册中心EurekaServer"><a href="#注册中心EurekaServer" class="headerlink" title="注册中心EurekaServer"></a>注册中心EurekaServer</h3><ol>
-<li><p>什么是注册中心</p>
-<h3 id="提供者服务-dept-Provider"><a href="#提供者服务-dept-Provider" class="headerlink" title="提供者服务- dept-Provider"></a>提供者服务- dept-Provider</h3></li>
-<li><p>创建工程</p>
-</li>
-<li>导入eureka-client等依赖</li>
-</ol>
-<h3 id="服务消费者-user-consumer"><a href="#服务消费者-user-consumer" class="headerlink" title="服务消费者 - user-consumer"></a>服务消费者 - user-consumer</h3><h3 id="注册中心EurekaServer集群"><a href="#注册中心EurekaServer集群" class="headerlink" title="注册中心EurekaServer集群"></a>注册中心EurekaServer集群</h3><h3 id="ribbon"><a href="#ribbon" class="headerlink" title="ribbon"></a>ribbon</h3><h3 id="feign"><a href="#feign" class="headerlink" title="feign"></a>feign</h3><h3 id="Hystrix-断路器"><a href="#Hystrix-断路器" class="headerlink" title="Hystrix 断路器"></a>Hystrix 断路器</h3><ol>
-<li><p>项目中的问题</p>
-</li>
-<li><p>Hystrix的介绍</p>
-<ul>
-<li><p>Hystrix的作用</p>
-<p>​    Hystrix是一个能够解决分布式框架中打造高可用服务器面临的一系列问题</p>
-<p>​    Hystrix具有自我保护的能力</p>
-<ul>
-<li></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Ribbon+Hystrix</p>
-<ul>
-<li>导入依赖</li>
-<li></li>
-</ul>
-</li>
-</ol>
-<p>资源隔离：包括线程池隔离和信号量隔离，限制</p>
-<p>熔断：熔断在消费方做</p>
-<p>降级机制</p>
-<p>缓存</p>
-<h3 id="Zuul路由网关"><a href="#Zuul路由网关" class="headerlink" title="Zuul路由网关"></a>Zuul路由网关</h3><ol>
-<li>项目中的问题</li>
-<li></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="ck06129ps000iqctdpm7m0o0h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-springboot" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/13/springboot/" class="article-date">
-  <time datetime="2019-08-13T00:58:26.000Z" itemprop="datePublished">2019-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/13/springboot/">springboot</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>springboot的概念</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="ck06129pw000mqctdxpevqgcx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -747,19 +690,19 @@
           </li>
         
           <li>
+            <a href="/2019/09/03/B2C商城项目-12/">B2C商城项目(12)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/28/B2C商城项目-八/">B2B商城项目(八)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/27/B2C商城项目-七/">B2B商城项目(七)</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/java面试题/">java面试题</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
           </li>
         
       </ul>
