@@ -62,6 +62,536 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-EasyUI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/13/EasyUI/" class="article-date">
+  <time datetime="2019-06-13T01:17:12.000Z" itemprop="datePublished">2019-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/EasyUI/">EasyUI</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="EasyUI的认识"><a href="#EasyUI的认识" class="headerlink" title="EasyUI的认识"></a>EasyUI的认识</h2><ol>
+<li>是基于JQuery的ui(界面)插件集合</li>
+<li>不需要编写复杂的JavaScript，也不需要对css样式有深入了解，开发者只需要了解一些简单的html标签</li>
+<li>学习方式copy+edit<h2 id="EasyUI使用"><a href="#EasyUI使用" class="headerlink" title="EasyUI使用"></a>EasyUI使用</h2></li>
+</ol>
+<ol>
+<li>下载导入easyui文件</li>
+<li><p>在对应页面引入easyui的js文件和css文件</p>
+<p> &lt;%–引入easyui的样式–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css"><br> &lt;%–引入easyui的图标–%&gt;<br> <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css"><br> &lt;%–引入jquery的js文件–%&gt;</p>
+ <script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+ <%--引入easyui的js文件--%>
+ <script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+ <%--国际化--%>
+ <script type="text/javascript" src="js/easyui/locale/easyui-lang-zh_CN.js"></script>
+</%--国际化--%></%--引入easyui的js文件--%></li>
+<li><p>使用easyui里面的组件</p>
+<ol>
+<li><p>直接通过标签来使用<br> 核心添加class=“easyui-组件名”</p>
+<p> `&lt;div id=”p” class=”easyui-panel” title=”My Panel”</p>
+<pre><code>style=&quot;width:500px;height:150px;padding:10px;background:#fafafa;&quot;
+data-options=&quot;iconCls:&apos;icon-save&apos;,closable:true,
+collapsible:true,minimizable:true,maximizable:true&quot;&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+&lt;p&gt;panel content.&lt;/p&gt;
+</code></pre><p> `</p>
+</li>
+<li><p>通过js创建组件<br><code>&lt;div id=&quot;p&quot; style=&quot;padding:10px;&quot;&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+ &lt;p&gt;panel content.&lt;/p&gt;
+&lt;/div&gt;
+$(&#39;#p&#39;).panel({
+ width:500,
+ height:150,
+ title:&#39;My Panel&#39;,
+ tools:[{
+ iconCls:&#39;icon-add&#39;,
+ handler:function(){alert(&#39;new&#39;)}
+ },{
+ iconCls:&#39;icon-save&#39;,
+ handler:function(){alert(&#39;save&#39;)}
+ }]
+});</code></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2></li>
+<li>一般在创建组件的时候，就应该指定好对应属性，不然，如果创建完之后，在修改对应属性，就没有效果</li>
+<li>指定属性 在 标签里面指定 ，在js代码在创建的时候，也可以指定；<h2 id="组件三要素"><a href="#组件三要素" class="headerlink" title="组件三要素"></a>组件三要素</h2></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>属性:通过标签里面属性，可以让组件展示不同的效果，完成不同的功能<ol>
+<li>在组建创建时都有默认属性</li>
+<li>属性只能在创建(初始化)组件有效，组件创建完毕后，对某个属性修改无效</li>
+<li>属性定义方式<ol>
+<li>方式一:直接在标签里面写 属性=属性值</li>
+<li>方式二:data-options<br> 注意一:如果在标签里面定义一个属性和在data-options里面定义同一属性，标签里面有效果<br> 注意二:有些属性只能写到data-options里面 想tools这种属性，有多个值，不能放到外面</li>
+<li>方式三:直接在js中写</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>方法:<ol>
+<li>调用方法：<br> $(“selector”).组件名(methodName,[params])</li>
+<li>创建组件<br> $(“selector”).组件名（{属性键值对}）</li>
+</ol>
+</li>
+<li><p>事件</p>
+<p> //点击事件<br> onClick: function(node){</p>
+<pre><code>alert(node.text);  // 在用户点击的时候提示
+</code></pre><p> },</p>
+</li>
+</ol>
+<h2 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h2><ol>
+<li>Tabs选项卡</li>
+<li>message消息提示框</li>
+<li>Form表单</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/13/EasyUI/" data-id="ck0cb6ta3000l8ktddch5uqkf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js高级" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/11/js高级/" class="article-date">
+  <time datetime="2019-06-11T01:15:53.000Z" itemprop="datePublished">2019-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/11/js高级/">js高级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js对象"><a href="#js对象" class="headerlink" title="js对象"></a>js对象</h2><pre><code>&lt;script&gt;
+    //js是一个基于对象和事件驱动编程语言
+    //1.js一切皆是对象，你可以把基本类型，引用类型，函数都可以看做对象
+    var num = 2.134141;
+    console.debug(num.toFixed(2));//保留两位小数
+
+    //2.js中的true和false
+    var boo = false;
+     if (boo){
+        console.debug(&quot;不能进入&quot;)
+    }
+    var boo2 = new Boolean(false);
+     if (boo2){
+         console.debug(&quot;可以进入&quot;)
+     }
+     if(NaN){
+         console.debug(&quot;不能进入&quot;)
+     }
+
+    //3.对象的操作
+    //创建对象的方式
+    var obj1 = new Object();
+    var obj2 = {};
+    var obj3 = new user();
+    function user() {
+
+    }
+    console.debug(obj1)
+    console.debug(obj2)
+    console.debug(obj3)
+    //给对象添加属性和方法
+    obj3.name=&quot;小c&quot;;
+    obj3[&quot;age&quot;]=&quot;22&quot;;
+    obj3.play=function (game) {
+        console.debug(this.name+&quot;玩&quot;+game)
+    }
+    //调用方法
+    obj3.play(&quot;lol&quot;)
+
+    //遍历对象
+    for (var key in obj3){
+        console.debug(key)
+
+        //如果是方法就调用方法
+        if (typeof obj3[key] == &quot;function&quot;){
+            obj3[key](&quot;lol&quot;);
+        }else {//是属性直接取值
+            console.debug(obj3[key])
+        }
+    }
+&lt;/script&gt;
+</code></pre><h2 id="json对象和json字符串"><a href="#json对象和json字符串" class="headerlink" title="json对象和json字符串"></a>json对象和json字符串</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //json字符串
+    var jsonStr = &quot;{&apos;id&apos;:1,&apos;name&apos;:&apos;霸哥&apos;}&quot;;
+    //json对象转换
+    var jsonObj = eval(&quot;(&quot;+jsonStr+&quot;)&quot;);
+    console.debug(jsonObj)
+
+    //Json.parse()--必须是json标准格式
+    //var obj=$.parseJSON(jsonStr)
+    var jsonStr2 = &apos;{&quot;id&quot;:1,&quot;name&quot;:&quot;霸哥&quot;}&apos;;
+    var obj=$.parseJSON(jsonStr2)
+    console.debug(obj)
+&lt;/script&gt;
+</code></pre><h2 id="js类"><a href="#js类" class="headerlink" title="js类"></a>js类</h2><pre><code>&lt;script&gt;
+    //类构造方法在写的时候，如果方法首字母是大写，一般认为是构造方法
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+
+    //属性拷贝
+    //方式2 一个一个拷贝
+    var obj1 = {
+        name:&quot;gg&quot;,
+        age:&quot;18&quot;
+    }
+    var obj2 = {
+    }
+    obj2.name=obj1.name;
+    obj2.age=obj1.age;
+    console.debug(obj2)
+    //方式3 循环对象
+    for (var key in obj1){
+        if (!obj2.hasOwnProperty(key)){//判断里面是否有属性
+            obj2[key]=obj1[key];
+        }
+    }
+    console.debug(obj2)
+&lt;/script&gt;
+</code></pre><h2 id="js的prototype"><a href="#js的prototype" class="headerlink" title="js的prototype"></a>js的prototype</h2><pre><code>&lt;script&gt;
+    //prototype:原型的意思--js对象都有prototype属性，使你可以向对象添加属性和方法
+    //使用
+    /**
+     * 对象组成 ：自定义属性
+     *             原型属性
+     *      先从自定义属性对象中找，找不到到原型里面找
+     */
+    function User(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    var user1=new User(&quot;彩旗&quot;,23)
+    var user2=new User(&quot;天霸&quot;,23)
+    //展示目录结构
+    console.dir(user1)
+    console.dir(user2)
+    //对象里面的原型属性__proto__ ，对象里面原型属性是相同或者共享
+    console.debug(user1.__proto__ === user2.__proto__)
+    //原型上面定义方法
+    User.prototype.eat=function (food) {
+        console.debug(this.name+&quot;吃&quot;+food)
+    }
+&lt;/script&gt;
+</code></pre><h2 id="js中的回调函数"><a href="#js中的回调函数" class="headerlink" title="js中的回调函数"></a>js中的回调函数</h2><pre><code>&lt;script&gt;
+    //函数：方法 实现一块逻辑，一堆代码打包成一个方法
+    //普通函数:function user(){}
+    //构造函数:function User(){}
+    //回调函数:函数作为一个参数，传递给另一个函数，重新回调这个函数
+    setTimeout(test,3000);//异步
+    function test() {
+        console.debug(111)
+    }
+    console.debug(222)
+    //匿名函数:没有名字的函数
+    // 作用：1,如果变量只用一次的时候 可以放到匿名函数中  解决作用域污染问题
+    //       2，作为参数传递
+    (function (a,b) {
+        var result=a+b;
+        //window.result=result;暴露到window中
+    })(7,7);
+&lt;/script&gt;
+</code></pre><h2 id="jquery事件委托"><a href="#jquery事件委托" class="headerlink" title="jquery事件委托"></a>jquery事件委托</h2><pre><code>&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;Title&lt;/title&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../../js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    //事件委托:给动态元素添加事件
+
+    //绑定事件
+    $(function () {
+        $(&quot;#add&quot;).click(function () {
+            var content = &quot;&lt;div&gt;\n&quot; +
+                &quot;        附件:&lt;input type=\&quot;file\&quot; name=\&quot;file\&quot;&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;delete\&quot; href=\&quot;javascript:;\&quot;&gt;删除&lt;/a&gt;\n&quot; +
+                &quot;        &lt;a class=\&quot;examine\&quot; href=\&quot;javascript:;\&quot;&gt;查看&lt;/a&gt;\n&quot; +
+                &quot;    &lt;/div&gt;&quot;;
+            $(&quot;#userForm&quot;).append(content);
+        })
+        //事件委托
+        $(&quot;#userForm&quot;).on(&apos;click&apos;,&apos;.delete&apos;,function () {
+            console.debug(&quot;删除&quot;)
+        })
+    })
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a id=&quot;add&quot; href=&quot;javascript:;&quot;&gt;添加&lt;/a&gt;
+&lt;form id=&quot;userForm&quot;&gt;
+&lt;div&gt;
+    附件:&lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="js的闭包"><a href="#js的闭包" class="headerlink" title="js的闭包"></a>js的闭包</h2><pre><code>&lt;script&gt;
+    //闭包：函数内使用函数外的变量
+    var a=10;
+    function b() {
+        alert(a)
+    }
+    //闭包案例--计数案例
+    var  result=0;
+    function getSum() {
+        return result++;
+    }
+    console.debug(getSum());
+    console.debug(getSum());
+    result=0;
+    console.debug(getSum())
+
+    //使用闭包和匿名函数结合起来使用
+    (function () {
+        var result1=0;
+        window.getSum1=function () {
+            result1++;
+            return result1;
+        }
+    })();
+    console.debug(getSum1());
+    console.debug(getSum1());
+    //result1=10;
+    console.debug(getSum1());
+&lt;/script&gt;
+</code></pre><h2 id="js里面的this用法"><a href="#js里面的this用法" class="headerlink" title="js里面的this用法"></a>js里面的this用法</h2><p>this的指向的改变</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/11/js高级/" data-id="ck0cb6ta9000r8ktdfawci4k6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jQuery" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/10/jQuery/" class="article-date">
+  <time datetime="2019-06-10T01:14:35.000Z" itemprop="datePublished">2019-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/10/jQuery/">jQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jQuery——write-less-do-more"><a href="#jQuery——write-less-do-more" class="headerlink" title="jQuery——write less do more"></a>jQuery——write less do more</h1><p>jQuery:优秀的js框架</p>
+<h2 id="jQuery的使用"><a href="#jQuery的使用" class="headerlink" title="jQuery的使用"></a>jQuery的使用</h2><ol>
+<li>引入jquery文件<br> <code>&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.min.js&quot;&gt;&lt;/script&gt;</code></li>
+<li><p>页面加载事件</p>
+<pre><code>//页面加载完之后再执行代码，先于window.onload执行
+$(function(){
+
+})
+</code></pre></li>
+<li>jquery中$和jQuery<br> $ === jQuery<br> 如果其他框架里面也使用了$符号，就使用jQuery的写法</li>
+<li><p>DOM对象和jquery对象的转换</p>
+<pre><code>$(function(){
+    //dom对象
+    var domObj = document.getElementById(&quot;mySpan&quot;);
+
+    //jquery对象
+    var jqueryObj = $(&quot;#mySpan&quot;);
+
+    //有时候需要把dom对象转成jquery对象--可以调用jquery里面的方法
+    var domToJquery = $(domObj);
+
+    //有时候需要把jquery对象转成dom对象--可以使用dom原生的属性和方法
+    var jqueryToDom = jqueryObj[0];
+})
+</code></pre></li>
+<li><p>选择器</p>
+<pre><code>//id选择器 id一般不重复
+$(&quot;#id&quot;);
+
+//class选择器
+$(&quot;.class&quot;);
+
+//标签选择器 页面上的所有标签都有效果
+$(&quot;div&quot;);
+
+//获取所有元素--没什么用
+$(&quot;*&quot;);
+
+//多元素选择器
+$(&quot;div,span&quot;)
+
+//层次选择器
+//祖先后代
+$(&quot;div span&quot;)
+//父亲儿子
+$(&quot;div &gt; span&quot;)
+//相邻选择器
+$(&quot;input + input&quot;)
+//同级选择器
+$(&quot;form ~ input&quot;)
+
+//属性选择器
+</code></pre></li>
+<li><p>jquery注册事件方式<br> //方式一注册事件<br> $(“#id”).click(function(){<br> })</p>
+<p> //方式二注册事件<br> $(“#id”).on(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).off(‘click’)</p>
+<p> //方式三注册事件<br> $(“#id”).bind(‘click’,function(){<br> })<br> //取消事件<br> $(“#id”).unbind(‘click’);</p>
+</li>
+<li>jquery常用方法</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/10/jQuery/" data-id="ck0cb6ta8000q8ktdo0v0ez5p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/AJAX/" class="article-date">
+  <time datetime="2019-06-09T01:12:45.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/AJAX/">AJAX</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js的引入方式"><a href="#js的引入方式" class="headerlink" title="js的引入方式"></a>js的引入方式</h3><ol>
+<li>直接在行内标签内使用</li>
+<li>在<script>标签内使用</li>
+<li>外部js引入<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3></li>
+<li>如果引入外部js文件，就不要再这个标签内写内容</li>
+<li><script>标签引入文件不能使用单标签</li>
+<li>js加载顺序是从上往下</li>
+<li><p><a herf="#">点击</a>存在锚点效果</p>
+<h3 id="js里面的函数"><a href="#js里面的函数" class="headerlink" title="js里面的函数"></a>js里面的函数</h3><p>什么是函数：函数就是方法，function<br>函数的定义<br> function say(name,food){</p>
+<p> }<br>函数调用<br> 调用方法，参数可以多，如果参数传少了，默认值是undefined666<br> say();<br> window.say();<br>动态调用<br> window<a href="">“say”</a>;<br>js中一切皆对象，函数也是对象</p>
+</li>
+</ol>
+<p>函数返回值<br>    如果方法没有返回值，返回undefined</p>
+<p>java 方法重载：方法名相同，参数列表不同，和返回值无关<br>js没有重载一说，方法名相同，后面的方法会覆盖前面的方法</p>
+<h3 id="js引擎执行过程"><a href="#js引擎执行过程" class="headerlink" title="js引擎执行过程"></a>js引擎执行过程</h3><p>js变量提升</p>
+<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h2><p>ajax即Asynchronous JavaScript And XML<br>异步JavaScript和XML，是指一种创建交互式网页应用的网页开发技术<br>异步JavaScript：浏览器处理事情，如果没有处理完，可以做其他事情<br>XML：可拓展性标记语言<br>局部刷新技术，是前端技术，属于js里面的内容</p>
+<h3 id="获取服务器时间"><a href="#获取服务器时间" class="headerlink" title="获取服务器时间"></a>获取服务器时间</h3><h2 id="json"><a href="#json" class="headerlink" title="json"></a>json</h2><p>json:JavaScript Object Notation<br>一种轻量级的数据交换格式</p>
+</script></li></ol>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/AJAX/" data-id="ck0cb6t8p00008ktdam9pm8k0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/09/JavaScript/" class="article-date">
+  <time datetime="2019-06-09T01:12:33.000Z" itemprop="datePublished">2019-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/09/JavaScript/">JavaScript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/09/JavaScript/" data-id="ck0cb6t9t000d8ktdyj2tebku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-缓存" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/06/缓存/" class="article-date">
@@ -97,7 +627,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="ck06129q2000rqctdwn6e0ybg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/06/缓存/" data-id="ck0cb6tai00118ktdd7gv5pzp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +659,7 @@ Memcached：只支持简单的key/value数据结构
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，    并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具<br>FreeMarker是免费的，基于Apache许可证2.0版本发布。<br>FreeMarker原理：模板+数据==&gt;数据</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>FreeMarker是一款模板引擎： 即一种基于模板和要改变的数据，并用来生成输出文本（HTML网页、电子邮件、配置文件、源代码等）的通用工具<br>FreeMarker是免费的，基于Apache许可证2.0版本发布。<br>FreeMarker原理：模板+数据==&gt;数据</p>
 <h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="1-pom文件添加jar包"><a href="#1-pom文件添加jar包" class="headerlink" title="1.pom文件添加jar包"></a>1.pom文件添加jar包</h3><pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.freemarker&lt;/groupId&gt;
     &lt;artifactId&gt;freemarker&lt;/artifactId&gt;
@@ -139,7 +669,7 @@ Memcached：只支持简单的key/value数据结构
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="ck06129pg000hqctdxib3tr3n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/04/freemaker入门demo/" data-id="ck0cb6ta5000n8ktdi85jp8zs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +881,7 @@ public PageBean getPageBean(Condition condition) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="ck06129p40007qctd1l3c78y5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/31/CMS招聘网站/" data-id="ck0cb6t9j00098ktdqv1qlzf5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -415,12 +945,12 @@ public PageBean getPageBean(Condition condition) {
 <p>3) 打开编辑Hexo部署github博客.md文件进行Markdown编辑</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</span><br></pre></td></tr></table></figure>
 <p>4）发布文章：hexo d -g</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo d -g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 342 ms</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  Generated: 2019/05/28/Hexo部署github博客/index.html</span><br><span class="line">INFO  2 files generated in 142 ms</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">[master 3ede1d6] Site updated: 2019-05-31 13:41:54</span><br><span class="line"> 2 files changed, 273 insertions(+), 271 deletions(-)</span><br><span class="line"> rewrite &quot;2019/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html&quot; (60%)</span><br><span class="line">Enumerating objects: 15, done.</span><br><span class="line">Counting objects: 100% (15/15), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (6/6), done.</span><br><span class="line">Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.</span><br><span class="line">Total 8 (delta 2), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (2/2), completed with 1 local object.</span><br><span class="line">To https://github.com/sunlei9/sunlei9.github.io</span><br><span class="line">   55a9310..3ede1d6  HEAD -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;https://github.com/sunlei9/sunlei9.github.io&apos;.</span><br><span class="line">[32mINFO [39m Deploy done: [35mgit[39m</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo d -g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 342 ms</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  Generated: 2018/05/28/Hexo部署github博客/index.html</span><br><span class="line">INFO  2 files generated in 142 ms</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">[master 3ede1d6] Site updated: 2018-05-31 13:41:54</span><br><span class="line"> 2 files changed, 273 insertions(+), 271 deletions(-)</span><br><span class="line"> rewrite &quot;2018/05/28/Hexo\351\203\250\347\275\262github\345\215\232\345\256\242/index.html&quot; (60%)</span><br><span class="line">Enumerating objects: 15, done.</span><br><span class="line">Counting objects: 100% (15/15), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (6/6), done.</span><br><span class="line">Writing objects: 100% (8/8), 3.81 KiB | 779.00 KiB/s, done.</span><br><span class="line">Total 8 (delta 2), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (2/2), completed with 1 local object.</span><br><span class="line">To https://github.com/sunlei9/sunlei9.github.io</span><br><span class="line">   55a9310..3ede1d6  HEAD -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;https://github.com/sunlei9/sunlei9.github.io&apos;.</span><br><span class="line">[32mINFO [39m Deploy done: [35mgit[39m</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/28/Hexo部署github博客/" data-id="ck06129p50008qctdeew9w1r3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/28/Hexo部署github博客/" data-id="ck0cb6t9v000f8ktdbyw8lut9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -464,23 +994,23 @@ public PageBean getPageBean(Condition condition) {
       <ul>
         
           <li>
-            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+            <a href="/2019/09/09/数据库优化/">数据库优化</a>
           </li>
         
           <li>
-            <a href="/2019/09/03/B2C商城项目-十二/">B2C商城项目(十二)</a>
+            <a href="/2019/09/09/多线程和线程并发库/">多线程和线程并发库</a>
           </li>
         
           <li>
-            <a href="/2019/08/28/B2C商城项目-八/">B2B商城项目(八)</a>
+            <a href="/2019/09/08/Java新特性/">Java新特性</a>
           </li>
         
           <li>
-            <a href="/2019/08/27/B2C商城项目-七/">B2B商城项目(七)</a>
+            <a href="/2019/09/08/JVM优化/">JVM优化</a>
           </li>
         
           <li>
-            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+            <a href="/2019/09/07/数据结构/">数据结构</a>
           </li>
         
       </ul>

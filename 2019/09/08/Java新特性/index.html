@@ -3,19 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Nginx与Docker | java学习笔记</title>
+  <title>Java新特性 | java学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
+  <meta name="description" content="1. lambda表达式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nginx与Docker">
-<meta property="og:url" content="http://yoursite.com/2019/09/04/Nginx与Docker/index.html">
+<meta property="og:title" content="Java新特性">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/Java新特性/index.html">
 <meta property="og:site_name" content="java学习笔记">
-<meta property="og:description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
+<meta property="og:description" content="1. lambda表达式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-05T01:48:22.678Z">
+<meta property="og:updated_time" content="2019-09-08T09:02:02.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nginx与Docker">
-<meta name="twitter:description" content="Nginx1. Nginx是什么2. Nginx的优点 高并发连接  内存消耗小  配置文件非常简单  成本低廉  支持Rewrite重写规则  内置的健康检查功能  节省带宽 稳定性高  3. Nginx和apache对比apache处理速度慢 4. 正向代理与反向代理 正向代理 知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购  反向代理 不知道自">
+<meta name="twitter:title" content="Java新特性">
+<meta name="twitter:description" content="1. lambda表达式">
   
     <link rel="alternate" href="/atom.xml" title="java学习笔记" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Nginx与Docker" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Java新特性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/04/Nginx与Docker/" class="article-date">
-  <time datetime="2019-09-04T01:03:44.000Z" itemprop="datePublished">2019-09-04</time>
+    <a href="/2019/09/08/Java新特性/" class="article-date">
+  <time datetime="2019-09-08T06:06:21.000Z" itemprop="datePublished">2019-09-08</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Nginx与Docker
+      Java新特性
     </h1>
   
 
@@ -86,37 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="1-Nginx是什么"><a href="#1-Nginx是什么" class="headerlink" title="1. Nginx是什么"></a>1. Nginx是什么</h4><h4 id="2-Nginx的优点"><a href="#2-Nginx的优点" class="headerlink" title="2. Nginx的优点"></a>2. Nginx的优点</h4><ol>
-<li><p>高并发连接</p>
-</li>
-<li><p>内存消耗小</p>
-</li>
-<li><p>配置文件非常简单</p>
-</li>
-<li><p>成本低廉</p>
-</li>
-<li><p>支持Rewrite重写规则</p>
-</li>
-<li><p>内置的健康检查功能</p>
-</li>
-<li>节省带宽</li>
-<li>稳定性高</li>
-</ol>
-<h4 id="3-Nginx和apache对比"><a href="#3-Nginx和apache对比" class="headerlink" title="3. Nginx和apache对比"></a>3. Nginx和apache对比</h4><p>apache处理速度慢</p>
-<h4 id="4-正向代理与反向代理"><a href="#4-正向代理与反向代理" class="headerlink" title="4. 正向代理与反向代理"></a>4. 正向代理与反向代理</h4><ol>
-<li><p>正向代理</p>
-<p>知道自己要访问的目标，无奈访问不了，找一个代理帮他去访问目标，通过代理返回结果，就如同海外代购</p>
-</li>
-<li><p>反向代理</p>
-<p>不知道自己要访问的后端服务器，他只知道代理服务器，代理服务器知道后端的一些服务器，通过代理服务器拿到最终结果后，反向返回给客户端</p>
-</li>
-</ol>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>虚拟化：</p>
-
+        <h4 id="1-lambda表达式"><a href="#1-lambda表达式" class="headerlink" title="1. lambda表达式"></a>1. lambda表达式</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/04/Nginx与Docker/" data-id="ck0cb6t9w000g8ktddp6m8nqo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/08/Java新特性/" data-id="ck0cb6t9q000c8ktdofwa24i8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,19 +99,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/09/07/数据结构/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/09/多线程和线程并发库/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          数据结构
+          多线程和线程并发库
         
       </div>
     </a>
   
   
-    <a href="/2019/09/03/B2C商城项目-十二/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/09/08/JVM优化/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">B2C商城项目(十二)</div>
+      <div class="article-nav-title">JVM优化</div>
     </a>
   
 </nav>

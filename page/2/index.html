@@ -62,6 +62,265 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-B2C商城项目-五" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/B2C商城项目-五/" class="article-date">
+  <time datetime="2019-08-24T01:21:07.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/B2C商城项目-五/">B2C商城项目(五)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="redis做中央缓存"><a href="#redis做中央缓存" class="headerlink" title="redis做中央缓存"></a>redis做中央缓存</h3><ol>
+<li>在查询时检查redis中是否有数据</li>
+<li>如果有直接返回数据</li>
+<li><p>如果没有数据</p>
+<ol>
+<li>去mysql中查询</li>
+<li>把数据放到redis中</li>
+<li>返回数据</li>
+</ol>
+</li>
+<li><p>遇到insert，update，delete要重置redis中的数据</p>
+<ul>
+<li><p>方案一：直接删除redis中的数据，下一次查询的时候去会去重新同步redis中的数据</p>
+</li>
+<li><p>方案二：使用重置方案，直接从mysql中查询，放到redis中</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-五/" data-id="ck0cb6t8w00028ktd3vg4vevx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/java面试题/" class="article-date">
+  <time datetime="2019-08-24T00:50:10.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/java面试题/">java面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>mysql的优化</p>
+<ul>
+<li><p>优化代码</p>
+</li>
+<li><p>优化sql</p>
+</li>
+<li><p>合理利用索引</p>
+</li>
+<li><p>反三范式</p>
+<ul>
+<li>增加冗余字段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/24/java面试题/" data-id="ck0cb6ta4000m8ktdatprtmn1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目-四" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/B2C商城项目-四/" class="article-date">
+  <time datetime="2019-08-24T00:48:44.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/B2C商城项目-四/">B2C商城项目(四)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/24/B2C商城项目-四/" data-id="ck0cb6t8y00048ktdxqh2zpj8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目-三-商品中心-品牌管理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/" class="article-date">
+  <time datetime="2019-08-21T01:04:11.000Z" itemprop="datePublished">2019-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/21/B2C商城项目-三-商品中心-品牌管理/">B2C商城项目(三)-商品中心-品牌管理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前后端分离介绍"><a href="#前后端分离介绍" class="headerlink" title="前后端分离介绍"></a>前后端分离介绍</h2><h4 id="前后端如何交互"><a href="#前后端如何交互" class="headerlink" title="前后端如何交互"></a>前后端如何交互</h4><h5 id="开发模式一"><a href="#开发模式一" class="headerlink" title="开发模式一"></a>开发模式一</h5><ol>
+<li>前后端约定一个开发规范(开发接口文档)</li>
+<li>前端按照规范开发前端代码，后端按照规范开发后端代码</li>
+<li>前端自己测试-通过mock模拟后端，后端开发好了之后自己测试-通过postman测试</li>
+<li>前后端都ok，前端把mock的路径改为后端的路径，然后前后端开发人员一起进行联调测试</li>
+</ol>
+<h5 id="开发模式二"><a href="#开发模式二" class="headerlink" title="开发模式二"></a>开发模式二</h5><ol>
+<li>前后端不约定规范，后端开发</li>
+<li>后端集成swagger接口规范文档</li>
+<li>后端自己使用postman进行测试</li>
+<li>前端根据swagger接口文档进行开发</li>
+<li>前端开发好之后联调</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/21/B2C商城项目-三-商品中心-品牌管理/" data-id="ck0cb6t9g00078ktd13fwy738" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-B2C商城项目(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/19/B2C商城项目(二)/" class="article-date">
+  <time datetime="2019-08-19T01:17:08.000Z" itemprop="datePublished">2019-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/19/B2C商城项目(二)/">B2C商城项目(二)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ol>
+<li><h4 id="Git与svn的区别"><a href="#Git与svn的区别" class="headerlink" title="Git与svn的区别"></a>Git与svn的区别</h4><p>svn是集中式管理工具</p>
+<p>git是分布式管理工具  </p>
+</li>
+<li><h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4></li>
+<li><h4 id="Git的基本命令"><a href="#Git的基本命令" class="headerlink" title="Git的基本命令"></a>Git的基本命令</h4></li>
+</ol>
+<ul>
+<li>创建中央仓库：git init –bare shared.git</li>
+<li>复制仓库到本地：git clone 仓库路径</li>
+<li>添加：git add 文件/ git add .</li>
+<li>提交：git commit -m “日志”</li>
+<li>提交到中央仓库：git push origin master  /  git push</li>
+<li>从远程拉去：git pull origin /  git pull</li>
+</ul>
+<ol start="4">
+<li><h4 id="Git的可视化界面"><a href="#Git的可视化界面" class="headerlink" title="Git的可视化界面"></a>Git的可视化界面</h4></li>
+<li><h4 id="Git集成IDEA操作"><a href="#Git集成IDEA操作" class="headerlink" title="Git集成IDEA操作"></a>Git集成IDEA操作</h4></li>
+<li><h4 id="Git远程共享仓库"><a href="#Git远程共享仓库" class="headerlink" title="Git远程共享仓库"></a>Git远程共享仓库</h4><h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2></li>
+<li><h4 id="安装nodejs-npm"><a href="#安装nodejs-npm" class="headerlink" title="安装nodejs/npm"></a>安装nodejs/npm</h4></li>
+<li><h4 id="搭建静态网站项目"><a href="#搭建静态网站项目" class="headerlink" title="搭建静态网站项目"></a>搭建静态网站项目</h4></li>
+<li><h4 id="在项目中局部安装vue：npm-install-i-vue"><a href="#在项目中局部安装vue：npm-install-i-vue" class="headerlink" title="在项目中局部安装vue：npm install -i vue"></a>在项目中局部安装vue：npm install -i vue</h4><h2 id="VUE"><a href="#VUE" class="headerlink" title="VUE"></a>VUE</h2><h2 id="ECMAScirpt-6语法"><a href="#ECMAScirpt-6语法" class="headerlink" title="ECMAScirpt 6语法"></a>ECMAScirpt 6语法</h2></li>
+<li><h4 id="let局部变量"><a href="#let局部变量" class="headerlink" title="let局部变量"></a>let局部变量</h4></li>
+<li><h4 id="const：定义常量"><a href="#const：定义常量" class="headerlink" title="const：定义常量"></a>const：定义常量</h4></li>
+<li><h4 id="结构表达式"><a href="#结构表达式" class="headerlink" title="结构表达式"></a>结构表达式</h4></li>
+<li><h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4></li>
+<li><h4 id="Promise：异步编程"><a href="#Promise：异步编程" class="headerlink" title="Promise：异步编程"></a>Promise：异步编程</h4></li>
+<li><h4 id="模块化export导出和import导入"><a href="#模块化export导出和import导入" class="headerlink" title="模块化export导出和import导入"></a>模块化export导出和import导入</h4></li>
+<li><h4 id="安装-vue-cli"><a href="#安装-vue-cli" class="headerlink" title="安装 vue-cli"></a>安装 vue-cli</h4></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/19/B2C商城项目(二)/" data-id="ck0cb6t9000068ktduscb8yr6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-B2C商城项目(一)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/18/B2C商城项目(一)/" class="article-date">
@@ -112,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/18/B2C商城项目(一)/" data-id="ck06129o90000qctdijc2lyud" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/18/B2C商城项目(一)/" data-id="ck0cb6t8u00018ktdvyfxq22n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="ck06129ps000iqctdpm7m0o0h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/14/SpringCloud/" data-id="ck0cb6ta2000k8ktdab59ijwf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="ck06129pw000mqctdxpevqgcx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/springboot/" data-id="ck0cb6tac000v8ktd71p6vkng" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +693,7 @@ public  void test()throws Exception{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="ck06129p7000aqctdy1m3ec3k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/11/Elasticsearch/" data-id="ck0cb6t9u000e8ktdus0go6xu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -490,319 +749,7 @@ public  void test()throws Exception{
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="ck06129pc000dqctd70f5wfeo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-liunx" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/07/liunx/" class="article-date">
-  <time datetime="2019-08-07T01:20:57.000Z" itemprop="datePublished">2019-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/liunx/">liunx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>liunx操作系统的优点：<br>服务器：centos<br>个人环境：Ubuntu</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/07/liunx/" data-id="ck06129pt000jqctdn0uf1nwu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-maven-ssm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/23/maven-ssm/" class="article-date">
-  <time datetime="2019-07-23T01:02:16.000Z" itemprop="datePublished">2019-07-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/23/maven-ssm/">maven+ssm</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="maven多模块开发"><a href="#maven多模块开发" class="headerlink" title="maven多模块开发"></a>maven多模块开发</h1><p>多模块：把当前的项目拆分成多个模块</p>
-<h1 id="idea集成svn"><a href="#idea集成svn" class="headerlink" title="idea集成svn"></a>idea集成svn</h1><h2 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h2><h1 id="Lucene"><a href="#Lucene" class="headerlink" title="Lucene"></a>Lucene</h1><p>全文搜索引擎框架：从全文数据中进行检索就叫全文搜索，基于文本的搜索<br>对纯文本进行检索<br>全文搜索特点：</p>
-<pre><code>1. 搜索非常快
-2. 只关注文本，不关注语义
-3. 对于查询最终结果值进行高亮展示
-4. 对一部分关键字进行截取
-5. 相关度最高的排在最前面，官网中相关的网页排在最前面
-</code></pre><p>62//3/35/85//33<br>数据结构：</p>
-<pre><code>1. 结构化数据：就是数据库中对应的表
-2. 非结构化数据：word，pdf，txt
-3. 半结构化数据：xml，html 
-</code></pre><h1 id="异构系统"><a href="#异构系统" class="headerlink" title="异构系统"></a>异构系统</h1><p>用不同语言搭建的架构就叫做异构系统<br>CXF：webservice提供的框架</p>
-<h1 id="第三方登录"><a href="#第三方登录" class="headerlink" title="第三方登录"></a>第三方登录</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/maven-ssm/" data-id="ck06129q1000qqctd4h7557lg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MyBatis" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/19/MyBatis/" class="article-date">
-  <time datetime="2019-07-19T01:04:27.000Z" itemprop="datePublished">2019-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/19/MyBatis/">MyBatis</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ORM概述"><a href="#ORM概述" class="headerlink" title="ORM概述"></a>ORM概述</h1><h2 id="流行的ORM框架"><a href="#流行的ORM框架" class="headerlink" title="流行的ORM框架"></a>流行的ORM框架</h2><pre><code>1. jpa：本身是一种ORM规范，不是ORM框架，有各大ORM框架提供实现
-</code></pre><h2 id="JDBC操作数据库缺陷"><a href="#JDBC操作数据库缺陷" class="headerlink" title="JDBC操作数据库缺陷"></a>JDBC操作数据库缺陷</h2><h1 id="MyBatis使用"><a href="#MyBatis使用" class="headerlink" title="MyBatis使用"></a>MyBatis使用</h1><ol>
-<li>导包<pre><code>&lt;dependency&gt;
-      &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-      &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-      &lt;version&gt;x.x.x&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre></li>
-<li><p>XML配置文件<br> 创建一个XML配置文件，XML配置文件中包含了对MyBatis系统的核心设置，包含：</p>
-<pre><code>1. 数据库连接实例的数据源(DataSource)
-2. 决定事物作用域和控制方式的事务管理器(TransactionManager)
-</code></pre><p> 当然，XML 配置文件还可以配置很多。<br> 下面给出一个示例：<br>&lt;?xml version=”1.0” encoding=”UTF-8” ?&gt;<br>`    &lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN”</p>
-<pre><code>&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-</code></pre><!--mybatis的根元素-->
-<p><configuration><br> <properties resource="jdbc.properties"></properties></configuration></p>
- <!--给类型取别名-->
-<p> <typealiases></typealiases></p>
-<pre><code>&lt;!--
-方式1:给每个类型取一个别名
-&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Product&quot; alias=&quot;Product&quot;/&gt;
-&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Customer&quot; alias=&quot;Customer&quot;/&gt;
-&lt;typeAlias type=&quot;cn.itsource.mybatis._01hello.domain.Order&quot; alias=&quot;Order&quot;/&gt;
---&gt;
-&lt;!--方式2: 所有的domain都得放在同一个地方--&gt;
-&lt;package name=&quot;cn.itsource.domain&quot;/&gt;
-</code></pre><p> </p>
- <!--配置环境(操作数据库的环境)-->
- <environments default="mysql"><br>     <environment id="mysql"><br>         <!--事务管理器,凡是用框架都有事务--><br>         <transactionmanager type="JDBC"><br>         <!--配置数据源(连接池)--><br>         <datasource type="POOLED"><br>             <property name="username" value="${jdbc.username}"><br>             <property name="password" value="${jdbc.password}"><br>             <property name="driver" value="${jdbc.driverClassName}"><br>             <property name="url" value="${jdbc.url}"><br>         </property></property></property></property></datasource><br>     </transactionmanager></environment><br> </environments>
-
- <!--引入多个mapper对象-->
-<p> <mappers></mappers></p>
-<pre><code>&lt;mapper resource=&quot;cn/itsource/dao/impl/ProductDaoImpl.xml&quot;/&gt;
-</code></pre><p> <br>`</p>
-</li>
-</ol>
-<p>mybatis提供的三大核心对象：</p>
-<pre><code>1. SqlSessionFactoryBuilder主要用来创建SQLSessionFactory对象
-2. SQLSessionFactory他是一个重量级对象，它是线程安全的所以在使用SQLSessionFactory时，不能随意销毁，因为创建它一次很不容易
-</code></pre><h2 id="mapper映射器的使用"><a href="#mapper映射器的使用" class="headerlink" title="mapper映射器的使用"></a>mapper映射器的使用</h2><h1 id="MyBatis代码生成器"><a href="#MyBatis代码生成器" class="headerlink" title="MyBatis代码生成器"></a>MyBatis代码生成器</h1><h1 id="MyBatis拦截器"><a href="#MyBatis拦截器" class="headerlink" title="MyBatis拦截器"></a>MyBatis拦截器</h1><p>拦截器作用：拦截请求，织入自己额外的业务逻辑，增强功能<br>mybatis作为一个orm框架，它也给我们提供了一个拦截器，该拦截器主要是拦截你操作数据库的那一刻(操作数据库之前，之后，获取到结果值)<br>mybatis分页插件：底层基于拦截器实现</p>
-<h1 id="SSM集成"><a href="#SSM集成" class="headerlink" title="SSM集成"></a>SSM集成</h1><ol>
-<li>创建web项目</li>
-<li>导入jar包</li>
-<li>配置核心配置文件<ol>
-<li>applicationContext.xml</li>
-<li>jdbc.properties</li>
-<li>dataSource</li>
-<li>sqlSessionFactory</li>
-<li>dao</li>
-<li>service</li>
-<li>controller</li>
-<li></li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/19/MyBatis/" data-id="ck06129pe000fqctd0uiosji6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-VUE" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/16/VUE/" class="article-date">
-  <time datetime="2019-07-16T01:00:35.000Z" itemprop="datePublished">2019-07-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/VUE/">VUE</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue-js-是什么"><a href="#Vue-js-是什么" class="headerlink" title="Vue.js 是什么"></a>Vue.js 是什么</h1><p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
-<h1 id="holle-word"><a href="#holle-word" class="headerlink" title="holle word!"></a>holle word!</h1><pre><code>&lt;script src=&quot;js/vue.min.js&quot;&gt;&lt;/script&gt;
-&lt;div id=&quot;app&quot; &gt;
-    &lt;!--hello vue!--&gt;
-    {{message}}&lt;br/&gt;
-&lt;/div&gt;
-&lt;script&gt;
-    new Vue({
-            el:&quot;#app&quot;,
-            data:{
-                message:&quot;hello vue!&quot;
-            }
-    })
-&lt;/script&gt;
-</code></pre><h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ol>
-<li>创建组件方式一<br> //创建全局组件<br> Vue.component(“mycomponent”,{<pre><code>template:&quot;&lt;h1&gt;全局组件&lt;/h1&gt;&quot;
-</code></pre> })<br> new Vue({<pre><code>el:&quot;#app&quot;,
-components:{
-    innercomponent:{
-        template:&quot;&lt;h2&gt;局部组件&lt;/h2&gt;&quot;
-    }
-}
-</code></pre> }) <div id="app"><br>     <mycomponent></mycomponent><br>     <innercomponent></innercomponent><br> </div></li>
-<li>创建组件方式二 <template id="template"><br>     <h1>全局组件创建</h1><br> </template></li>
-<li>创建组件方式三<br> <script type="text/template" id="template"><pre><code>&lt;h1&gt;全局组件创建&lt;/h1&gt;
-</code></pre> </script><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1></li>
-<li>什么是路由<br> 路由是负责将进入的浏览器请求映射到特定的组件代码中，即决定了由谁去响应客户端请求</li>
-<li>使用路由的步骤<ol>
-<li>导入路由的js库</li>
-<li>准备路径</li>
-<li>准备组件</li>
-<li>做一个路径映射到组件的配置</li>
-<li>告诉vue我要使用路由</li>
-<li>最终组件展示的位置<h1 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h1></li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/16/VUE/" data-id="ck06129pu000kqctddv3kt9hp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-面试题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/14/面试题/" class="article-date">
-  <time datetime="2019-07-14T01:02:57.000Z" itemprop="datePublished">2019-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/面试题/">面试题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>forword和redirect的区别以及各自的应用场景<br> forword请求转发，redirect重定向<br> 区别：<pre><code>1. forward是一个请求的延续，可以共享request的数据，redirect开启一个新的请求，不可以共享request
-2. forward地址栏不发生变化，redirect地址栏发生变化
-3. forward是发送一次请求，redirect是发送两次请求
-4. forward不能跨域访问，redirect能跨域访问
-5. forward请求能访问WEB-inf下main的资源
-</code></pre> 应用场景<br> forward一般用于用户登录的时候，根据角色转发到相应的模块<br> redirect一般用于用户注销登录时返回主页面和跳转到其他的网站等</li>
-<li>为什么要进行事务管理,Spring是如何进行事务管理支持的<br> 防止出现脏数据，防止数据库数据出现问题<br> spring是通过“声明式事务(基于AOP)”的方式对事务进行管理，即在配置文件中进行声明</li>
-<li>解释一下DI依赖注入和IOC控制反转，Spring中是如何做的</li>
-<li>Spring中的BeanFactory与ApplicationContext的区别</li>
-<li>什么是aop，aop的作用是什么</li>
-<li>GET与POST的区别，分别用在什么场景合适？</li>
-<li>什么是单例模式，有哪些实现方式，写出其中两种</li>
-<li>数据库储存引擎myisam / innodb的区别</li>
-<li>模糊查询可以使用索引吗？</li>
-<li>索引的优缺点</li>
-<li>介绍一下hibernate的缓存机制</li>
-<li>请描述一下springMvc执行流程<ol>
-<li>客户端发送请求通过springMVC的核心控制器</li>
-</ol>
-</li>
-<li>Servlet的生命周期</li>
-<li>Jsp九大内置对象</li>
-<li>自我介绍</li>
-<li>请谈谈你最近做的一个项目</li>
-<li>你主要负责的模块有哪些</li>
-<li>Sleep与wait的区别</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/面试题/" data-id="ck06129qe000tqctdkbdjxy4h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/Redis/" data-id="ck0cb6ta1000j8ktdg13ty6ka" class="article-share-link">Share</a>
       
       
     </footer>
@@ -846,23 +793,23 @@ components:{
       <ul>
         
           <li>
-            <a href="/2019/09/04/Nginx与Docker/">Nginx与Docker</a>
+            <a href="/2019/09/09/数据库优化/">数据库优化</a>
           </li>
         
           <li>
-            <a href="/2019/09/03/B2C商城项目-十二/">B2C商城项目(十二)</a>
+            <a href="/2019/09/09/多线程和线程并发库/">多线程和线程并发库</a>
           </li>
         
           <li>
-            <a href="/2019/08/28/B2C商城项目-八/">B2B商城项目(八)</a>
+            <a href="/2019/09/08/Java新特性/">Java新特性</a>
           </li>
         
           <li>
-            <a href="/2019/08/27/B2C商城项目-七/">B2B商城项目(七)</a>
+            <a href="/2019/09/08/JVM优化/">JVM优化</a>
           </li>
         
           <li>
-            <a href="/2019/08/25/B2C爱购商城-六-上传图片/">B2C爱购商城(六)-上传图片</a>
+            <a href="/2019/09/07/数据结构/">数据结构</a>
           </li>
         
       </ul>
